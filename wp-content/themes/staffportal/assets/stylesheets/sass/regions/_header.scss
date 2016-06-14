@@ -1,0 +1,48 @@
+header, .text-block {
+	padding: 40px 0;
+	text-align: center;
+	background: #eceae7;
+	width: 100%;
+	@include tablet-portrait-and-up {
+		padding: 90px 0;
+	}
+	p {
+		width: 90%;
+		max-width: 500px;
+	}
+}
+
+header {
+	p {
+		max-width: 660px;
+	}
+
+	a {
+		color: $fourpoint_blue;
+	}
+
+	h1 {
+		max-width: 94%;
+    	margin: 0 auto;
+	}
+}
+
+.alt_leader {
+	background: #eceae7;
+	text-align: left;
+
+	.container {
+		margin: 0 auto;
+	}
+	h1, p {
+		max-width: 100%;
+		width: auto;
+	}
+	img {
+		width: auto;
+		height: 100%;
+		@include tablet-portrait-and-up {
+			float: right;
+		}
+	}
+}

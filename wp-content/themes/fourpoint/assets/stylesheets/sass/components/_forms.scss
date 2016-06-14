@@ -1,0 +1,144 @@
+.form_wrap {
+	@include outer-container;
+	div {
+		@include clearfix;
+		margin: 15px auto;
+		label, input, .gform_wrapper .top_label .gfield_label {
+			// display: block;
+			width: 97%;
+			// margin: 0 auto;
+		}
+		select {
+			border-radius: 2px !important;
+		}
+		input, textarea {
+		  padding: 0.7em;
+		  border: none;
+		  border-radius: 2px;
+		  display: block;
+		}
+		input[type="text"], input[type="email"], textarea, select, #user_pass {
+		  margin: 10px auto 1em;
+		  border: 1px solid darken($form_fill, 10%);
+		  outline: none;
+		  background: $form_fill;
+		  height: 50px;
+		}
+		
+		label {
+			min-width: 100px;
+			padding: 0.5em 0;
+			max-width: 400px;
+			text-align: left;
+			display: inline-block;
+    		width: 90%;
+		}
+		input, textarea {
+			width: 90%;
+			max-width: 400px;
+		}
+		textarea {
+			min-height: 80px;
+		}
+		@include media(tablet) {
+			input, label, .form_select, input[type="text"], input[type="email"], textarea {
+				float: none;
+				width: 90%;
+				margin: 0 auto;
+				// max-width: 450px;
+				text-align: left;
+				display: block;
+			}
+			label {
+				padding: 0.7em 0;
+				width: 97%;
+			}
+		}
+	}
+
+	.form_select {
+		width: 99%;
+		margin-left: auto !important;
+		select {
+			background: $form_fill;
+			border: 1px solid darken($form_fill, 10%);
+			color: darken($form_fill, 30%);;
+			border-radius: 2px;
+			padding: 0.7em;
+			max-width: 400px;
+			width: 90%;
+			position: relative;
+			font: normal 11px/normal 'Lucida Grande';
+			cursor: pointer;
+			margin: 0 auto !important;
+			display: block;
+			// -webkit-appearance: none;
+
+			&:after { 
+				content: "▼";
+				color: darken($form_fill, 20%);
+				font-size: 12px;
+				margin-top: -7px;
+				position: absolute;
+				top: 50%; 
+				right: 10px;
+				vertical-align: middle;
+				z-index: 1;
+			}
+		}
+		// &:hover {
+		// 	background: darken($form_fill, 5%);
+		// }
+
+		label {
+			margin-left: 0;
+		}
+
+	  .select {
+	    background-color: transparent;
+	    border: 0;
+	    color: #fff;
+	    padding: 25px 20px;
+	    position: absolute;
+	    left: 0; top: 0; right: 0; bottom: 0;
+	    z-index: 2; 
+	    
+	    option { background: $light_gray; }
+	  	}
+	}
+}
+
+.gform_wrapper .gform_footer input.button {
+	display: block !important;
+	width: auto;
+	padding: 15px 30px;
+}
+
+.gform_wrapper .top_label .gfield_label {
+	margin: 0 auto !important;
+	font-weight: 400 !important;
+	display: block !important;
+}
+
+.form_wrap div input[type="text"], .form_wrap div textarea {
+	margin: 0 auto;
+}
+
+.gform_wrapper input[type="text"] {
+	padding-left: 6px !important;
+}
+
+.gform_wrapper .top_label select.medium, .gform_wrapper .top_label input.medium  {
+	margin: 0 auto !important;
+	width: 99% !important;
+	display: block;
+}
+.ginput_container_select {
+	position: relative;
+}
+
+.gform_wrapper .gform_body {
+	.form_select select, .form_select {
+		width: 99% !important;
+	}
+}
