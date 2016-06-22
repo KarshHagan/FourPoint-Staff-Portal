@@ -54,12 +54,20 @@
     <div class="link-container">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
+<?php
+        if(!isset($quicklinks)) {
+          $quicklinks = get_posts(
+            array(
+              'post_type' => 'quick-link',
+              'post_status' => 'publish',
+            )
+          );
+        }
+        foreach($quicklinks as $quicklink) { ?>
+            <li><a href="<?php the_field('url',$quicklink->ID) ?>"><?php echo $quicklink->post_title ?></a></li>
+        <?php 
+        }
+?>
       </ul>
     </div>
   </div>

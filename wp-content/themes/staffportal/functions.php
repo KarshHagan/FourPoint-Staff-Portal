@@ -364,7 +364,6 @@ class Fourpoint {
 			'has_archive' => false,
 			'hierarchical' => false,
 			'menu_position' => 3,
-			'taxonomies' => array('category'),
 			'supports' => array('title')
 		);
 		register_post_type('quick-link', $args);
