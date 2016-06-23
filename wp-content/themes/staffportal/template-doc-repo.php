@@ -73,7 +73,6 @@ $category_taxonomy = get_field('category_taxonomy');
       </div>
       <div class="border"></div>
       <div class="box-right">
-        <ul>
           <?php $documents = get_posts(
             array(
               'post_type' => $post_type,
@@ -88,21 +87,16 @@ $category_taxonomy = get_field('category_taxonomy');
             )
           );
           foreach($documents as $document) { ?>
-              <li>
-                <div class="document-title collapse-item-click">
-                  <?php echo $document->post_title ?><span>+</span>
-                </div>
-                <div class="document-files collapsible-content">
+            <h4 class="collapse-item-click"><?php echo $document->post_title ?><span>+</span></h4>
                 <?php $document_files = get_field('document_files',$document->ID);
-                if($document_files) {
-                  foreach($document_files as $document_file) { ?>
-                      <a href="<?php the_field('file_path',$document_file->ID) ?>" target="_blank"><?php echo $document_file->post_title ?></a>
+                if($document_files) { ?>
+                  <ul class="collapsible-content">
+                  <?php foreach($document_files as $document_file) { ?>
+                      <li><a href="<?php the_field('file_path',$document_file->ID) ?>" target="_blank"><?php echo $document_file->post_title ?></a></li>
                   <?php }
                 }  ?>
-                </div>
-              </li>
+                  </ul>
           <?php } ?>
-        </ul>
       </div>
     </div>
     <a href="#top" class="to-top">Back to top</a>
