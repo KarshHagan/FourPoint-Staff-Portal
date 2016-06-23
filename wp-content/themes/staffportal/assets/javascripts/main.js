@@ -96,11 +96,69 @@ $(document).ready(function() {
     });
 
 
+  // staff portal anchor links - set width
+  var $links = $('.anchor-links li');
+  var linksLength = $links.length;
+  var widthOfLink = 100 / linksLength;
+  
+  function linkWidth(windowWidth) {
+    if(windowWidth >= 1024) {
+      $links.each(function() {
+        $(this).width(widthOfLink + '%');
+      });
+    } else if(windowWidth <= 1023 && windowWidth >= 768) {
+      $links.each(function() {
+        $(this).width(50 + '%');
+      });
+    } else {
+      $links.each(function() {
+        $(this).width(100 + '%');
+      });
+    }
+  }
+
+  linkWidth(windowWidth);
+
 
   win.on('resize', function(windowWidth) {
     windowWidth = $(window).width();
     changeSliderImages(windowWidth);
+    linkWidth(windowWidth);
   });
+
+  document.getElementById('alert-toggle').addEventListener('click', function() {
+    $('body').css('overflow-Y', 'hidden');
+    $('.alert-modal').fadeToggle(200);
+    $('.alert-list-panel').addClass('scale-in');
+  });
+
+  $('.close-alert').on('click', function() {
+    $('.alert-modal').fadeToggle('fast', function() {
+      $('.alert-list-panel').removeClass('scale-in');
+      $('body').css('overflow-Y', 'scroll');
+    });
+  });
+
+
+
+  // STAFF PORTAL ACCORDIONS
+  // var collapseItems = document.getElementsByClassName('collapse-item-click');
+  // for(var i = 0; i < collapseItems.length; i++) {
+  //   collapseItems[i].addEventListener('click', function(e) {
+  //     e.preventDefault();
+  //     this.nextElementSibling.classList.toggle('show');
+  //   });
+  // }
+    function accordionCollapse(windowWidth) {
+      if(windowWidth <= 768) {
+        $('.collapse-item-click').on('click', function() {
+          console.log($(this))
+          $(this).next().slideToggle(250);
+        });
+      }
+    }
+
+    accordionCollapse(windowWidth);
 
   // HOVER ANIMATION TRICKS
 
@@ -232,5 +290,6 @@ $(document).ready(function() {
     $(this).addClass("active-nav-item");
     $(".nav .more").removeClass("active-nav-item");
   });
+
 
 });
