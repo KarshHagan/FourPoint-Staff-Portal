@@ -89,10 +89,10 @@ $category_taxonomy = get_field('category_taxonomy');
           );
           foreach($documents as $document) { ?>
               <li>
-                <div class="document-title">
-                  <?php echo $document->post_title ?>
+                <div class="document-title collapse-item-click">
+                  <?php echo $document->post_title ?><span>+</span>
                 </div>
-                <div class="document-files">
+                <div class="document-files collapsible-content">
                 <?php $document_files = get_field('document_files',$document->ID);
                 if($document_files) {
                   foreach($document_files as $document_file) { ?>
