@@ -367,6 +367,37 @@ class Fourpoint {
 			'supports' => array('title')
 		);
 		register_post_type('quick-link', $args);
+
+		//Ticket
+		$labels = array(
+			'name' => 'Ticket',
+			'singular_name' => 'Ticket',
+			'add_new' => 'Add New Ticket',
+			'add_new_item' => 'Add Ticket',
+			'edit_item' => 'Edit Ticket',
+			'new_item' => 'New Ticket',
+			'all_items' => 'All Ticket',
+			'view_item' => 'View Ticket',
+			'search_items' => 'Search Tickets',
+			'not_found' =>  'No tickets found',
+			'not_found_in_trash' => 'No tickets found in Trash',
+			'menu_name' => 'IT Tickets'
+		);
+		$args = array(
+			'labels' => $labels,
+			'public' => true,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'tickets'),
+			'capability_type' => 'post',
+			'has_archive' => false,
+			'hierarchical' => false,
+			'menu_position' => 3,
+			'supports' => array('title')
+		);
+		register_post_type('ticket', $args);
 	}
 
 
@@ -788,8 +819,8 @@ function add_office_admin_page() {
 }
 
 /* Update the profession terms when the edit user page is updated. */
-// add_action( 'personal_options_update', 'save_user_profession_terms' );
-// add_action( 'edit_user_profile_update', 'save_user_profession_terms' );
+// add_action( 'personal_options_update', 'save_user_office_terms' );
+// add_action( 'edit_user_profile_update', 'save_user_office_terms' );
 
 /**
  * Saves the term selected on the edit user/profile page in the admin. This function is triggered when the page
@@ -797,9 +828,10 @@ function add_office_admin_page() {
  *
  * @param int $user_id The ID of the user to save the terms for.
  */
-function save_user_profession_terms( $user_id ) {
+function save_user_office_terms( $user_id ) {
 	$tax = get_taxonomy( 'office' );
-
+	var_dump($_POST);
+	die();
 	$term = esc_attr( $_POST['office'] );
 	/* Sets the terms (we're just using a single term) for the user. */
 	wp_set_object_terms( $user_id, array( $term ), 'office', false);

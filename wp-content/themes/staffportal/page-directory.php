@@ -94,7 +94,6 @@ global $theme;
         );
         $employees = get_users($args);
         foreach($employees as $employee) {
-          $terms = wp_get_post_terms( $employee->ID, 'office' );
           $user_title = get_field('title','user_'.$employee->ID);
           $outside_dial = get_field('outside_dial','user_'.$employee->ID);
           $extension = get_field('extension','user_'.$employee->ID);
@@ -102,14 +101,16 @@ global $theme;
           $conf_call_id = get_field('conf_call_id','user_'.$employee->ID);
           $profile_photo = get_field('profile_photo','user_'.$employee->ID);
           $last_name_category = $theme->get_last_name_filer($employee->last_name);
+          $offices = get_field('employee_office','user_'.$employee->ID);
+          $office = $offices[0];
         ?>
         <li class="employee-bio-container">
-          <div class="employee-bio" data-name="<?php echo $last_name_category ?>">
+          <div class="employee-bio" data-office="<?php echo $office->slug ?>" data-name="<?php echo $last_name_category ?>">
             <div class="front">
               <img src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
               <h2><?php echo $employee->display_name ?></h2>
               <h3><?php echo $user_title ?></h3>
-              <p class="office">Shammrock</p>
+              <p class="office"><?php echo $office->name ?></p>
               <ul class="contact-info">
                 <li>Email: <span><?php echo $employee->user_email ?></span></li>
                 <li>Outside Dial: <span><?php echo $outside_dial ?></span></li>
@@ -121,9 +122,9 @@ global $theme;
             </div>
 
             <div class="back">
-              <img src="/wp-content/themes/fourpoint/assets/images/frenchy.jpg">
+              <img src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
               <div class="inner">
-                <p><span>Shammrock</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                <p><?php echo $employee->description ?></p>
               </div>
               <p href="#">Less</p>
             </div>
@@ -131,52 +132,7 @@ global $theme;
           </div>
         </li>
         <?php } ?>
-        <!-- <li class="employee-bio-container">
-          <div class="employee-bio">
-
-            <div class="front">
-            <p>FRONT</p>
-              <img src="/wp-content/themes/fourpoint/assets/images/frenchy.jpg">
-            </div>
-
-            <div class="back">
-              <p>BACK</p>
-            </div>
-
-          </div>
-        </li>
-        <li class="employee-bio-container">
-          <div class="employee-bio">
-
-            <div class="front">
-            <p>FRONT</p>
-              <img src="/wp-content/themes/fourpoint/assets/images/frenchy.jpg">
-            </div>
-
-            <div class="back">
-              <p>BACK</p>
-            </div>
-
-          </div>
-        </li>
-        <li class="employee-bio-container">
-          <div class="employee-bio">
-
-            <div class="front">
-            <p>FRONT</p>
-            <img src="/wp-content/themes/fourpoint/assets/images/frenchy.jpg">
-            </div>
-
-            <div class="back">
-              <p>BACK</p>
-            </div>
-
-          </div>
-        </li> -->
-
       </ul>
-
-
     </div>
   </div>
 <?php get_footer(); ?>
