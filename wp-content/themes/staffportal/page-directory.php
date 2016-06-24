@@ -43,10 +43,9 @@ global $theme;
         foreach($terms as $office) {
       ?>
       <div class="address">
-        <?php the_field('',$office) ?>
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
+        <p><?php the_field('address',$office) ?></p>
+        <a href="tel:<?php echo preg_replace("/[^0-9]/", "", get_field('phone',$office)); ?>"><?php the_field('phone',$office) ?></a>
+        <a href="<?php the_field('org_chart_file',$office) ?>" target="_blank"><?php echo $office->name ?> Organizational Chart</a>
       </div>
       <?php } ?>
     </div>
@@ -58,11 +57,16 @@ global $theme;
         <h3>Choose Office:</h3>
         <ul>
           <li><a href="#" class="button btn-white active" data-office="all">All</a></li>
-          <li><a href="#" class="button btn-white" data-office="borger">Borger</a></li>
+          <?php
+            foreach($terms as $office) {
+          ?>
+            <li><a href="#" class="button btn-white" data-office="<?php echo $office->slug ?>"><?php echo $office->name ?></a></li>
+          <?php } ?>
+          <!-- <li><a href="#" class="button btn-white" data-office="borger">Borger</a></li>
           <li><a href="#" class="button btn-white" data-office="denver">Denver</a></li>
           <li><a href="#" class="button btn-white" data-office="elk-city">Elk City</a></li>
           <li><a href="#" class="button btn-white" data-office="shamrock">Shamrock</a></li>
-          <li><a href="#" class="button btn-white" data-office="woodward">Woodward</a></li>
+          <li><a href="#" class="button btn-white" data-office="woodward">Woodward</a></li> -->
         </ul>
       </div>
       <div class="name-sort">
