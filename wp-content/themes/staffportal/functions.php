@@ -167,12 +167,12 @@ class Fourpoint {
 			wp_enqueue_script('modernizr', get_bloginfo("stylesheet_directory") . "/assets/javascripts/modernizr.js", false);
 			/* wp_enqueue_script('fontawesome', "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", false); */
 			wp_enqueue_script('jquery');
-			// wp_enqueue_script('libs', get_bloginfo('stylesheet_directory') . '/assets/javascripts/libs.js', array('jquery'), $this->scripts_version, true);
+			wp_enqueue_script('libs', get_bloginfo('stylesheet_directory') . '/assets/javascripts/libs.js', array('jquery'), $this->scripts_version, true);
 
 			// wp_enqueue_script('nav', get_bloginfo('stylesheet_directory') . '/assets/javascripts/nav.js', array('jquery'), $this->scripts_version, true);
 			// wp_enqueue_script($this->theme_name . '-site', get_bloginfo('stylesheet_directory') . '/assets/javascripts/main.js', array('jquery', 'libs', 'nav'), $this->scripts_version, true);
 			// wp_enqueue_script('fancybox', get_bloginfo('stylesheet_directory') . '/assets/fancybox/source/jquery.fancybox.pack.js', array('jquery'), $this->scripts_version, true);
-			wp_enqueue_script($this->theme_name . '-site', get_bloginfo('stylesheet_directory') . '/assets/javascripts/staff-portal.js', array('jquery'), $this->scripts_version, true);
+			wp_enqueue_script($this->theme_name . '-site', get_bloginfo('stylesheet_directory') . '/assets/javascripts/staff-portal.js', array('jquery','libs'), $this->scripts_version, true);
 		}
 	}
 
@@ -368,6 +368,36 @@ class Fourpoint {
 		);
 		register_post_type('quick-link', $args);
 
+		//Alerts
+		$labels = array(
+			'name' => 'Alert',
+			'singular_name' => 'Alert',
+			'add_new' => 'Add New Alert',
+			'add_new_item' => 'Add Alert',
+			'edit_item' => 'Edit Alert',
+			'new_item' => 'New Alert',
+			'all_items' => 'All Alert',
+			'view_item' => 'View Alert',
+			'search_items' => 'Search Alerts',
+			'not_found' =>  'No alerts found',
+			'not_found_in_trash' => 'No alerts found in Trash',
+			'menu_name' => 'Alerts'
+		);
+		$args = array(
+			'labels' => $labels,
+			'public' => true,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'alerts'),
+			'capability_type' => 'post',
+			'has_archive' => false,
+			'hierarchical' => false,
+			'menu_position' => 3,
+		);
+		register_post_type('alert', $args);
+
 		//Ticket
 		$labels = array(
 			'name' => 'Ticket',
@@ -398,6 +428,37 @@ class Fourpoint {
 			'supports' => array('title')
 		);
 		register_post_type('ticket', $args);
+
+		//Holidays
+		$labels = array(
+			'name' => 'Holiday',
+			'singular_name' => 'Holiday',
+			'add_new' => 'Add New Holiday',
+			'add_new_item' => 'Add Holiday',
+			'edit_item' => 'Edit Holiday',
+			'new_item' => 'New Holiday',
+			'all_items' => 'All Holidays',
+			'view_item' => 'View Holiday',
+			'search_items' => 'Search Holidays',
+			'not_found' =>  'No holidays found',
+			'not_found_in_trash' => 'No holidays found in Trash',
+			'menu_name' => 'Holidays'
+		);
+		$args = array(
+			'labels' => $labels,
+			'public' => true,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'holidays'),
+			'capability_type' => 'post',
+			'has_archive' => false,
+			'hierarchical' => false,
+			'menu_position' => 3,
+			'supports' => array('title')
+		);
+		register_post_type('holiday', $args);
 	}
 
 

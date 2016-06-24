@@ -17,21 +17,7 @@ $category_taxonomy = get_field('category_taxonomy');
         <h3>Search for a document or resource</h3>
         <form>SEARCH BOX GOES HERE</form>
       </div>
-      <div class="quick-links shadow-border">
-        <h3 class="blue-caps-headline">Quick Links</h3>
-        <ul>
-          <?php
-          $quicklinks = get_posts(
-            array(
-              'post_type' => 'quick-link',
-              'post_status' => 'publish',
-            )
-          );
-          foreach($quicklinks as $quicklink) { ?>
-              <li><a href="<?php the_field('url',$quicklink->ID) ?>"><?php echo $quicklink->post_title ?></a></li>
-          <?php } ?>
-        </ul>
-      </div>
+      <?php include_once('inc_quicklinks.php'); ?>
     </div>
   </section>
 

@@ -4,6 +4,7 @@
  * Header template
  **/
 global $theme;
+get_header();
 ?>
   <!-- section w/bg image, search, quick links box -->
   <section class="hero-main">
@@ -13,17 +14,7 @@ global $theme;
         <h3>Search for a document or resource</h3>
         <form>SEARCH BOX GOES HERE</form>
       </div>
-      <div class="quick-links shadow-border">
-        <h3 class="blue-caps-headline">Quick Links</h3>
-        <ul>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-        </ul>
-      </div>
+      <?php include_once('inc_quicklinks.php'); ?>
     </div>
   </section>
 
