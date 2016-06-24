@@ -181,35 +181,35 @@ class Fourpoint {
 	 */
 	function init_custom_post_types() {
 		// Employee
-		$labels = array(
-			'name' => 'Employee',
-			'singular_name' => 'Employee',
-			'add_new' => 'Add New Employee',
-			'add_new_item' => 'Add Employee',
-			'edit_item' => 'Edit Employee',
-			'new_item' => 'New Employee',
-			'all_items' => 'All Employees',
-			'view_item' => 'View Employees',
-			'search_items' => 'Search Employees',
-			'not_found' =>  'No employees found',
-			'not_found_in_trash' => 'No employees found in Trash',
-			'menu_name' => 'Employee'
-		);
-		$args = array(
-			'labels' => $labels,
-			'public' => true,
-			'publicly_queryable' => true,
-			'show_ui' => true,
-			'show_in_menu' => true,
-			'query_var' => true,
-			'rewrite' => array( 'slug' => 'employee'),
-			'capability_type' => 'post',
-			'has_archive' => false,
-			'hierarchical' => false,
-			'menu_position' => 3,
-			'supports' => array('title')
-		);
-		register_post_type('employee', $args);
+		// $labels = array(
+		// 	'name' => 'Employee',
+		// 	'singular_name' => 'Employee',
+		// 	'add_new' => 'Add New Employee',
+		// 	'add_new_item' => 'Add Employee',
+		// 	'edit_item' => 'Edit Employee',
+		// 	'new_item' => 'New Employee',
+		// 	'all_items' => 'All Employees',
+		// 	'view_item' => 'View Employees',
+		// 	'search_items' => 'Search Employees',
+		// 	'not_found' =>  'No employees found',
+		// 	'not_found_in_trash' => 'No employees found in Trash',
+		// 	'menu_name' => 'Employee'
+		// );
+		// $args = array(
+		// 	'labels' => $labels,
+		// 	'public' => true,
+		// 	'publicly_queryable' => true,
+		// 	'show_ui' => true,
+		// 	'show_in_menu' => true,
+		// 	'query_var' => true,
+		// 	'rewrite' => array( 'slug' => 'employee'),
+		// 	'capability_type' => 'post',
+		// 	'has_archive' => false,
+		// 	'hierarchical' => false,
+		// 	'menu_position' => 3,
+		// 	'supports' => array('title')
+		// );
+		// register_post_type('employee', $args);
 
 		//Benefits
 		$labels = array(
@@ -369,6 +369,7 @@ class Fourpoint {
 		register_post_type('quick-link', $args);
 	}
 
+
 	/**
 	 * Initialize custom taxonomies.
 	 */
@@ -387,14 +388,22 @@ class Fourpoint {
 			'menu_name' => __( 'Office' ),
 		);
 		$args = array(
+			'public' => true,
 			'hierarchical' => false,
 			'labels' => $labels,
 			'show_ui' => true,
 			'show_admin_column' => true,
 			'query_var' => true,
-			'rewrite' => array('slug' => 'office'),
+			'rewrite' => array('with_front' => true,'slug' => 'author/office'),
+			'capabilities' => array(
+				'manage_terms' => 'edit_users', // Using 'edit_users' cap to keep this simple.
+				'edit_terms'   => 'edit_users',
+				'delete_terms' => 'edit_users',
+				'assign_terms' => 'read',
+			),
+			'update_count_callback' => 'update_office_count'
 		);
-		register_taxonomy('office', array('employee'), $args);
+		register_taxonomy('office', 'user', $args);
 
 		/** Document Category **/
 		$labels = array(
@@ -471,78 +480,8 @@ class Fourpoint {
 	**/
 	function init_custom_user_roles() {
 		$result = add_role(
-		    'investor',
-		    __( 'Investor' ),
-		    array(
-		    	'administrator' => false,
-		        'read'         => true,  // true allows this capability
-		        'edit_posts'   => false,
-		        'delete_posts' => false, // Use false to explicitly deny
-		        'delete_others_posts' => false,
-		        'delete_others_pages' => false,
-		        'edit_others_posts' => false,
-		        'edit_others_pages' => false,
-		        'manage_categories' => false,
-		        'moderate_comments' => false,
-		        'publish_posts' => true,
-		        'publish_pages' => false,
-		        'upload_files' => true,
-		        'update_core' => false,
-		        'update_plugins' => false,
-		        'update_themes' => false,
-		        'install_plugins' => false,
-		        'install_themes' => false,
-		        'delete_themes' => false,
-		        'delete_plugins' => false,
-		        'edit_plugins' => false,
-		        'edit_themes' => false,
-		        'edit_files' => false,
-		        'edit_users' => false,
-		        'create_users' => false,
-		        'delete_users' => false,
-		        'activate_plugins' => false,
-		        'delete_pages' => false,
-		    )
-		);
-
-		$result = add_role(
-		    'interest-owner',
-		    __( 'Interest Owner' ),
-		    array(
-		    	'administrator' => false,
-		        'read'         => true,  // true allows this capability
-		        'edit_posts'   => false,
-		        'delete_posts' => false, // Use false to explicitly deny
-		        'delete_others_posts' => false,
-		        'delete_others_pages' => false,
-		        'edit_others_posts' => false,
-		        'edit_others_pages' => false,
-		        'manage_categories' => false,
-		        'moderate_comments' => false,
-		        'publish_posts' => true,
-		        'publish_pages' => false,
-		        'upload_files' => true,
-		        'update_core' => false,
-		        'update_plugins' => false,
-		        'update_themes' => false,
-		        'install_plugins' => false,
-		        'install_themes' => false,
-		        'delete_themes' => false,
-		        'delete_plugins' => false,
-		        'edit_plugins' => false,
-		        'edit_themes' => false,
-		        'edit_files' => false,
-		        'edit_users' => false,
-		        'create_users' => false,
-		        'delete_users' => false,
-		        'activate_plugins' => false,
-		        'delete_pages' => false,
-		    )
-		);
-
-		$result = add_role(
-		    'staff',
-		    __( 'Staff' ),
+		    'employee',
+		    __( 'Employee' ),
 		    array(
 		    	'administrator' => false,
 		        'read'         => true,  // true allows this capability
@@ -781,6 +720,26 @@ class Fourpoint {
 	function custom_excerpt_length( $length ) {
 		return 20;
 	}
+
+	function get_last_name_filer( $last_name ) {
+		$category = '';
+		$last_name_ord = ord( strtolower($last_name) );
+		switch( $last_name_ord ) {
+			case ( $last_name_ord <= ord( 'f' ) ):
+				$category = 'a-f';
+				break;
+			case ( $last_name_ord >= ord( 'g' ) && $last_name_ord <= ord( 'm' ) ):
+				$category = 'g-m';
+				break;
+			case ( $last_name_ord >= ord( 'n' ) && $last_name_ord <= ord( 's' ) ):
+				$category = 'n-s';
+				break;
+			case ( $last_name_ord >= ord( 't' ) && $last_name_ord <= ord( 'z' ) ):
+				$category = 't-z';
+				break;
+		}
+		return $category;
+	}
 }
 
 $theme = new Fourpoint();
@@ -797,6 +756,54 @@ function my_mce_buttons_2($buttons) {
 
 function is_login_page() {
 	return in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'));
+}
+
+function update_office_count( $terms, $taxonomy ) {
+	global $wpdb;
+	foreach ( (array) $terms as $term ) {
+		$count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM $wpdb->term_relationships WHERE term_taxonomy_id = %d", $term ) );
+		do_action( 'edit_term_taxonomy', $term, $taxonomy );
+		$wpdb->update( $wpdb->term_taxonomy, compact( 'count' ), array( 'term_taxonomy_id' => $term ) );
+		do_action( 'edited_term_taxonomy', $term, $taxonomy );
+	}
+}
+
+/* Adds the taxonomy page in the admin. */
+add_action( 'admin_menu', 'add_office_admin_page' );
+
+/**
+ * Creates the admin page for the 'profession' taxonomy under the 'Users' menu.  It works the same as any
+ * other taxonomy page in the admin.  However, this is kind of hacky and is meant as a quick solution.  When
+ * clicking on the menu item in the admin, WordPress' menu system thinks you're viewing something under 'Posts'
+ * instead of 'Users'.  We really need WP core support for this.
+ */
+function add_office_admin_page() {
+	$tax = get_taxonomy( 'office' );
+	add_users_page(
+		esc_attr( $tax->labels->menu_name ),
+		esc_attr( $tax->labels->menu_name ),
+		$tax->cap->manage_terms,
+		'edit-tags.php?taxonomy=' . $tax->name
+	);
+}
+
+/* Update the profession terms when the edit user page is updated. */
+// add_action( 'personal_options_update', 'save_user_profession_terms' );
+// add_action( 'edit_user_profile_update', 'save_user_profession_terms' );
+
+/**
+ * Saves the term selected on the edit user/profile page in the admin. This function is triggered when the page
+ * is updated.  We just grab the posted data and use wp_set_object_terms() to save it.
+ *
+ * @param int $user_id The ID of the user to save the terms for.
+ */
+function save_user_profession_terms( $user_id ) {
+	$tax = get_taxonomy( 'office' );
+
+	$term = esc_attr( $_POST['office'] );
+	/* Sets the terms (we're just using a single term) for the user. */
+	wp_set_object_terms( $user_id, array( $term ), 'office', false);
+	clean_object_term_cache( $user_id, 'office' );
 }
 
 show_admin_bar(false);
