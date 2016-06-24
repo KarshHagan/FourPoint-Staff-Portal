@@ -54,7 +54,7 @@ $category_taxonomy = get_field('category_taxonomy');
   ?>
   <a name="<?php echo $category->slug ?>"></a>
   <section class="box <?php the_field('background_color',$category) ?>">
-    <div class="container">
+    <div class="container shadow-border">
       <div class="box-left">
         <?php $links = get_field('links',$category); ?>
         <?php if($links && count($links) > 0) { ?>
