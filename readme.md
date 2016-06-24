@@ -6,5 +6,5 @@ This is the staff portal for Fourpoint Energy. The site is built on wordpress an
 *Username:* admin@fourpointenergy.com
 *Password:* FPE#100400
 
-## Compile SASS ##
-sass --watch wp-content/themes/fourpoint/assets/stylesheets/sass/style.scss:wp-content/themes/fourpoint/assets/stylesheets/style.css
+## Compile & Minify SASS ##
+sass --watch wp-content/themes/staffportal/assets/stylesheets/sass/style.scss:wp-content/themes/staffportal/assets/stylesheets/style.css --style compressed
