@@ -29,36 +29,26 @@ global $theme;
 
   <div class="address-container">
     <div class="container">
-      <p>Lorem ipsum Aliqua ut laboris sit voluptate tempor deserunt. Lorem ipsum Aliqua ut laboris sit voluptate tempor deserunt.</p>
+      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+      <?php the_content(); ?>
+      <?php endwhile;// end of the loop. ?>
+      <?php
+      $terms = get_terms( array(
+        'taxonomy' => 'office',
+        'hide_empty' => false,
+      ) );
+      // $terms = get_field('office')
+      ?>
+      <?php
+        foreach($terms as $office) {
+      ?>
       <div class="address">
+        <?php the_field('',$office) ?>
         <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
         <a href="tel:3033033030">303.300.3030</a>
         <a href="#">Denver Organizational Chart</a>
       </div>
-
-      <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
-      </div>
-
-      <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
-      </div>
-
-      <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
-      </div>
-
-      <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
-      </div>
+      <?php } ?>
     </div>
   </div>
 
