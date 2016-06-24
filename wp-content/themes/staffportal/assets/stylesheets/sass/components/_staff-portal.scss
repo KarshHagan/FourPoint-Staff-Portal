@@ -76,6 +76,54 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
             width: 33%;
             display: inline-block;
         }
+        &:first-child {
+          a {
+            padding-left: 38px;
+            .sp-icon:before {
+              background: url("../images/icons/icon_benefits_wht-01.svg") no-repeat;
+              background-size: 26px;
+              width: 36px;
+              height: 24px;
+              content: '';
+              display: inline-block;
+              position: absolute;
+              margin-left: -34px;
+              margin-top: -2px;
+            }
+          }
+        }
+        &:nth-child(2) {
+          a {
+            padding-left: 33px;
+            .sp-icon:before {
+              background: url("../images/icons/icon_docs_forms_wht-01.svg") no-repeat;
+              background-size: 21px;
+              width: 21px;
+              height: 24px;
+              content: '';
+              display: inline-block;
+              position: absolute;
+              margin-left: -28px;
+              margin-top: -1px;
+            }
+          }
+        }
+        &:last-child {
+          a {
+            padding-left: 36px;
+            .sp-icon:before {
+              background: url("../images/icons/icon_brandcenter_wht-01.svg") no-repeat;
+              background-size: 26px;
+              width: 34px;
+              height: 24px;
+              content: '';
+              display: inline-block;
+              position: absolute;
+              margin-left: -32px;
+              margin-top: -2px;
+            }
+          }
+        }
     }
 }
 
@@ -243,6 +291,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .link-container {
+    vertical-align: top;
     width: 100%;
     margin-bottom: 40px;
     @include tablet-portrait-and-up {
@@ -274,6 +323,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 
 .box {
     padding: 50px 0 30px;
+    overflow: auto;
     .container {
         // border: 1px solid;
         background-color: $white;
@@ -283,6 +333,16 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         @include tablet-portrait-and-up {
             padding: 40px 60px;
         }
+    }
+    .border {
+        position:absolute;
+        right:55%;
+        top:40px;
+        bottom:60px;
+        width:1px;
+        margin-right: -7px;
+        // padding-left: 40px;
+        border-left: 1px solid $medium_gray;
     }
 }
 
@@ -298,10 +358,31 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     @include tablet-portrait-and-up {
       width: 43%;
       float: left;
-      // position: absolute;
-      // top: 50%;
-      // @include transform(translateY(-50%));
       padding-right: 3%;  
+    }
+    .benefit-category-links {
+      @include clearfix;
+      text-align:left;
+      margin-bottom: 25px;
+      .benefit-category-link {
+        @include clearfix;
+        margin-bottom:20px;
+        .logo {
+          float:left;
+          height:70px;
+        }
+        a.link {
+          display:block;
+          float:right;
+          color:$fourpoint_blue;
+          font-size:14px;
+          height:70px;
+          line-height:70px;
+          background:url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat right 21px;
+          background-size:28px;
+          padding-right:28px;
+        }
+      }
     }
 }
 .box-right {
@@ -318,6 +399,35 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
             margin-left: 1.5em;
         }
     }
+
+    li {
+        margin-bottom: 45px;
+        text-transform: capitalize;
+        @include clearfix;
+    }
+    .document-title {
+        width:55%;
+        width: calc(50% - 28px);
+        float:left;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size:20px;
+        line-height:1.4em;
+    }
+    .document-files {
+        width:40%;
+        margin-left: 5%;
+        float:right;
+        a {
+            color: $fourpoint_blue;
+            vertical-align: top;
+            padding-left:28px;
+            background:url('../images/icons/icon-document.svg') no-repeat;
+            background-size:16px;
+            display:block;
+            min-height: 24px;
+            margin-bottom: 14px;
+        }
+    }
     a {
         color: $fourpoint_blue;
     }
@@ -328,6 +438,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     cursor: pointer;
     font-size: 15px;
     font-weight: normal;
+    clear: both;
     @include tablet-portrait-and-up {
         float: left;
         width: 50%;
