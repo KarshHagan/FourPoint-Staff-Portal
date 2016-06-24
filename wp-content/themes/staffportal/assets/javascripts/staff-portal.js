@@ -6,14 +6,17 @@ $(document).ready(function() {
   $flipTrigger.on('click', function(e) {
     e.preventDefault();
     $(this).closest('.employee-bio').toggleClass('flip');
-  }); 
+  });
 
   // alert Modal toggle
-  document.getElementById('alert-toggle').addEventListener('click', function() {
+  $("#alert-toggle").on('click',function(evt) {
     $('body').css('overflow-Y', 'hidden');
     $('.alert-modal').fadeToggle(200);
     $('.alert-list-panel').addClass('scale-in');
   });
+  // document.getElementById('alert-toggle').addEventListener('click', function() {
+  //
+  // });
 
   $('.close-alert').on('click', function() {
     $('.alert-modal').fadeToggle('fast', function() {
@@ -55,7 +58,7 @@ function EmployeeSort() {
 
   // item to hide/show
   this.$sortItem = $('.employee-bio-container');
-  
+
   this.sortByOffice();
   this.sortByName();
 }
@@ -141,7 +144,7 @@ EmployeeSort.prototype.sortByName = function() {
             // if selected name is all and office matches chosen office
             else if(selectedName == 'all' && officeItemActive == officeName) {
                 $(this).addClass('card-visible').removeClass('card-hidden');
-            } 
+            }
 
             // if nothing matches, fade out those items
             else {
