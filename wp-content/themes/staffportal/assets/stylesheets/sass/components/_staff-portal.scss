@@ -128,6 +128,8 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .hero-main {
+  background:$sp-light-gray;
+  padding:60px;
     .container {
         margin-top: 0;
         @include tablet-portrait-and-up {
@@ -166,6 +168,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     margin: 0 auto;
     max-width: 350px;
     padding: 20px;
+    background:white;
     @include tablet-portrait-and-up {
        width: 36%;
        float: right;
@@ -173,7 +176,12 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     }
     a {
         font-size: 1.25em;
-        color: $medium_gray;
+        color: $dark_gray;
+        display:block;
+        background:url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat center right;
+        background-size:30px;
+        font-weight:normal;
+        padding-right:20px;
         &:hover {
             color: $yellow;
         }
@@ -253,9 +261,12 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 
 .holiday {
     background: white;
-    padding: 10px 0 20px;
+    padding: 65px 0 25px;
     margin: 0 8px;
-
+    // width:29px;
+    // height:auto;
+    background:url('../images/icons/icon_calendar.svg') no-repeat center 20px white;
+    background-size:29px;
     h4 {
         font-size: 20px;
         font-weight: 300;
@@ -265,11 +276,15 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .sp-cal-icon {
-    margin: 5px auto 10px;
+    // margin: 5px auto 10px;
+    // width:29px;
+    // height:auto;
+    // background:url('../images/icons/icon_calendar.svg') no-repeat center top;
+
 }
 
 .date {
-    background-color: $light_gray;
+    background-color: $sp-light-gray;
     p {
         text-align: center;
         padding: 10px 0;
@@ -323,6 +338,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 
 .box {
     padding: 50px 0 30px;
+    clear:both;
     overflow: auto;
     .container {
         // border: 1px solid;
@@ -358,7 +374,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     @include tablet-portrait-and-up {
       width: 43%;
       float: left;
-      padding-right: 3%;  
+      padding-right: 3%;
     }
     .benefit-category-links {
       @include clearfix;
@@ -391,7 +407,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         width: 55%;
         float: right;
         padding-left: 5%;
-        border-left: 1px solid $medium_gray;   
+        border-left: 1px solid $medium_gray;
     }
     ul:first-child {
         margin-left: 0;
@@ -459,7 +475,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     li {
         padding: 15px 0 15px 20px;
         @include tablet-portrait-and-up {
-            padding: 15px 0 0 20px;   
+            padding: 15px 0 0 20px;
         }
     }
     a {
@@ -512,7 +528,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         @include tablet-portrait-and-up {
             width: 50%;
             text-align: center;
-            border-bottom: none;  
+            border-bottom: none;
         }
         @include tablet-landscape-and-up {
             width: auto;
@@ -578,7 +594,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     @include tablet-portrait-and-up {
         width: 28%;
     }
-    p { 
+    p {
         width: 75%;
         margin: 0 20% 5px 0;
         float: left;
@@ -677,7 +693,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .flip {
-    @include transform(rotateY(180deg)); 
+    @include transform(rotateY(180deg));
 }
 
 .more-flip {
@@ -887,5 +903,3 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         float: right;
     }
 }
-
-

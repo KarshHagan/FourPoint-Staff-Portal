@@ -1,25 +1,77 @@
 <?php
 /**
- * Main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * @package WordPress
- * @subpackage Twenty_Ten
- * @since Twenty Ten 1.0
+ * Template for displaying the home page
  */
-
+global $theme;
 get_header(); ?>
-			<?php
-			/*
-			 * Run the loop to output the posts.
-			 * If you want to overload this in a child theme then include a file
-			 * called loop-index.php and that will be used instead.
-			 */
-			 get_template_part( 'loop', 'index' );
-			?>
-<?php get_footer(); ?>
+<!-- section w/bg image, search, quick links box -->
+<section class="hero-main">
+  <div class="container">
+    <div class="search-left">
+      <h1>Fourpoint energy employee resource center</h1>
+      <h3>Search for a document or resource</h3>
+      <form>SEARCH BOX GOES HERE</form>
+    </div>
+    <?php include_once('inc_quicklinks.php'); ?>
+  </div>
+</section>
+
+<!-- Holiday schedule -->
+<section class="holiday-schedule">
+  <div class="holiday-wrapper">
+    <h3 class="blue-caps-headline">Fourpoint Holiday Schedule</h3>
+    <a href="#">View Holiday Schedule</a>
+
+    <div class="holiday-container">
+      <div class="holiday shadow-border">
+        <img src="/wp-content/themes/fourpoint/assets/images/icons/icon-qmark.svg" class="sp-cal-icon" />
+        <h4>Labor Day</h4>
+        <div class="date">
+          <p><span>Monday</span>September 5, 2016</p>
+        </div>
+      </div>
+
+      <div class="holiday shadow-border">
+        <img src="/wp-content/themes/fourpoint/assets/images/icons/icon-qmark.svg" class="sp-cal-icon" />
+        <h4>Labor Day</h4>
+        <div class="date">
+          <p><span>Monday</span>September 5, 2016</p>
+        </div>
+      </div>
+
+      <div class="holiday shadow-border">
+        <img src="/wp-content/themes/fourpoint/assets/images/icons/icon-qmark.svg" class="sp-cal-icon" />
+        <h4>Labor Day</h4>
+        <div class="date">
+          <p><span>Monday</span>September 5, 2016</p>
+        </div>
+      </div>
+
+      <div class="holiday shadow-border">
+        <img src="/wp-content/themes/fourpoint/assets/images/icons/icon-qmark.svg" class="sp-cal-icon" />
+        <h4>Labor Day</h4>
+        <div class="date">
+          <p><span>Monday</span>September 5, 2016</p>
+        </div>
+      </div>
+
+      <div class="holiday shadow-border">
+        <img src="/wp-content/themes/fourpoint/assets/images/icons/icon-qmark.svg" class="sp-cal-icon" />
+        <h4>Labor Day</h4>
+        <div class="date">
+          <p><span>Monday</span>September 5, 2016</p>
+        </div>
+      </div>
+
+      <div class="holiday">
+        <img src="/wp-content/themes/fourpoint/assets/images/icons/icon-qmark.svg" class="sp-cal-icon" />
+        <h4>Labor Day</h4>
+        <div class="date">
+          <p><span>Monday</span>September 5, 2016</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <?php get_footer(); ?>

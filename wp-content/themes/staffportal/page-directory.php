@@ -4,6 +4,7 @@
  * Header template
  **/
 global $theme;
+get_header();
 ?>
   <!-- section w/bg image, search, quick links box -->
   <section class="hero-main">
@@ -13,52 +14,31 @@ global $theme;
         <h3>Search for a document or resource</h3>
         <form>SEARCH BOX GOES HERE</form>
       </div>
-      <div class="quick-links shadow-border">
-        <h3 class="blue-caps-headline">Quick Links</h3>
-        <ul>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-          <li><a href="#">Fidelity Time</a></li>
-        </ul>
-      </div>
+      <?php include_once('inc_quicklinks.php'); ?>
     </div>
   </section>
 
   <div class="address-container">
     <div class="container">
-      <p>Lorem ipsum Aliqua ut laboris sit voluptate tempor deserunt. Lorem ipsum Aliqua ut laboris sit voluptate tempor deserunt.</p>
+      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+      <?php the_content(); ?>
+      <?php endwhile;// end of the loop. ?>
+      <?php
+      $terms = get_terms( array(
+        'taxonomy' => 'office',
+        'hide_empty' => false,
+      ) );
+      // $terms = get_field('office')
+      ?>
+      <?php
+        foreach($terms as $office) {
+      ?>
       <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
+        <p><?php the_field('address',$office) ?></p>
+        <a href="tel:<?php echo preg_replace("/[^0-9]/", "", get_field('phone',$office)); ?>"><?php the_field('phone',$office) ?></a>
+        <a href="<?php the_field('org_chart_file',$office) ?>" target="_blank"><?php echo $office->name ?> Organizational Chart</a>
       </div>
-
-      <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
-      </div>
-
-      <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
-      </div>
-
-      <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
-      </div>
-
-      <div class="address">
-        <p>100 St. Paul Street, Ste. 400 Denver, CO 80206</p>
-        <a href="tel:3033033030">303.300.3030</a>
-        <a href="#">Denver Organizational Chart</a>
-      </div>
+      <?php } ?>
     </div>
   </div>
 
@@ -68,11 +48,16 @@ global $theme;
         <h3>Choose Office:</h3>
         <ul>
           <li><a href="#" class="button btn-white active" data-office="all">All</a></li>
-          <li><a href="#" class="button btn-white" data-office="borger">Borger</a></li>
+          <?php
+            foreach($terms as $office) {
+          ?>
+            <li><a href="#" class="button btn-white" data-office="<?php echo $office->slug ?>"><?php echo $office->name ?></a></li>
+          <?php } ?>
+          <!-- <li><a href="#" class="button btn-white" data-office="borger">Borger</a></li>
           <li><a href="#" class="button btn-white" data-office="denver">Denver</a></li>
           <li><a href="#" class="button btn-white" data-office="elk-city">Elk City</a></li>
           <li><a href="#" class="button btn-white" data-office="shamrock">Shamrock</a></li>
-          <li><a href="#" class="button btn-white" data-office="woodward">Woodward</a></li>
+          <li><a href="#" class="button btn-white" data-office="woodward">Woodward</a></li> -->
         </ul>
       </div>
       <div class="name-sort">

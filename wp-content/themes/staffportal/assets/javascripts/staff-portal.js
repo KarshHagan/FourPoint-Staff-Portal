@@ -6,14 +6,54 @@ $(document).ready(function() {
   $flipTrigger.on('click', function(e) {
     e.preventDefault();
     $(this).closest('.employee-bio').toggleClass('flip');
-  }); 
+  });
+
+  //homepage carousel
+  $(".holiday-container").slick({
+  dots: false,
+  infinite: false,
+  cssEase: 'easeInCubic',
+  speed: 300,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+
 
   // alert Modal toggle
-  $('#alert-toggle').on('click', function() {
+  $("#alert-toggle").on('click',function(evt) {
     $('body').css('overflow-Y', 'hidden');
     $('.alert-modal').fadeToggle(200);
     $('.modal-panel').addClass('scale-in');
   });
+  // document.getElementById('alert-toggle').addEventListener('click', function() {
+  //
+  // });
 
   $('.close-modal').on('click', function() {
     $('.alert-modal').fadeToggle('fast', function() {
@@ -79,7 +119,7 @@ function EmployeeSort() {
 
   // item to hide/show
   this.$sortItem = $('.employee-bio-container');
-  
+
   this.sortByOffice();
   this.sortByName();
 }
@@ -165,7 +205,7 @@ EmployeeSort.prototype.sortByName = function() {
             // if selected name is all and office matches chosen office
             else if(selectedName == 'all' && officeItemActive == officeName) {
                 $(this).addClass('card-visible').removeClass('card-hidden');
-            } 
+            }
 
             // if nothing matches, fade out those items
             else {
