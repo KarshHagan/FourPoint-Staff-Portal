@@ -56,13 +56,13 @@ wp_get_current_user();
       <li><a href="/brand-center" class="btn-blue btn-wide button"><span class="sp-icon"></span>Brand Center</a></li>
     </ul>
   </div>
-  <div class="alert-modal">
-    <div class="container alert-list-panel">
-      <h1>My Alerts<span class="close-alert">XX</span></h1>
+  <div class="alert-modal shadow-border">
+    <div class="container modal-panel">
+      <h1>My Alerts<span class="close-modal"><img src="/wp-content/themes/staffportal/assets/images/icons/icon_close_blu.svg" /></span></h1>
       <ul>
         <li>
           <div>
-            <p>June 20, 2016 | <a href="#">Link to something(if necessary)</a></p>
+            <p>June 20, 2016 | <a href="#" class="modal-link">Link to something(if necessary)</a></p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua.</p>
             <a href="#">View it.</a>

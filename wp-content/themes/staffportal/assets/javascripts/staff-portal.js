@@ -9,18 +9,41 @@ $(document).ready(function() {
   }); 
 
   // alert Modal toggle
-  document.getElementById('alert-toggle').addEventListener('click', function() {
+  $('#alert-toggle').on('click', function() {
     $('body').css('overflow-Y', 'hidden');
     $('.alert-modal').fadeToggle(200);
-    $('.alert-list-panel').addClass('scale-in');
+    $('.modal-panel').addClass('scale-in');
   });
 
-  $('.close-alert').on('click', function() {
+  $('.close-modal').on('click', function() {
     $('.alert-modal').fadeToggle('fast', function() {
-      $('.alert-list-panel').removeClass('scale-in');
+      $('.modal-panel').removeClass('scale-in');
       $('body').css('overflow-Y', 'scroll');
     });
   });
+
+  // staff portal anchor links - set width
+  var $links = $('.anchor-links li');
+  var linksLength = $links.length;
+  var widthOfLink = 100 / linksLength;
+  
+  function linkWidth(windowWidth) {
+    if(windowWidth >= 1024) {
+      $links.each(function() {
+        $(this).width(widthOfLink + '%');
+      });
+    } else if(windowWidth <= 1023 && windowWidth >= 768) {
+      $links.each(function() {
+        $(this).width(50 + '%');
+      });
+    } else {
+      $links.each(function() {
+        $(this).width(100 + '%');
+      });
+    }
+  }
+
+  linkWidth(windowWidth);
 
 
 
@@ -37,6 +60,7 @@ $(document).ready(function() {
 
   $(window).on('resize', function(windowWidth) {
     accordionCollapse(windowWidth);
+    linkWidth(windowWidth);
   });
 
   var employeeSort = new EmployeeSort();
