@@ -10,7 +10,7 @@ get_header(); ?>
     <div class="search-left">
       <h1>Fourpoint energy employee resource center</h1>
       <h3>Search for a document or resource</h3>
-      <form>SEARCH BOX GOES HERE</form>
+      <?php get_search_form(); ?>
     </div>
     <?php include_once('inc_quicklinks.php'); ?>
   </div>

@@ -11,7 +11,7 @@ $(document).ready(function() {
   //homepage carousel
   $(".holiday-container").slick({
   dots: false,
-  infinite: false,
+  infinite: true,
   cssEase: 'easeInCubic',
   speed: 300,
   slidesToShow: 3,

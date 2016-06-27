@@ -2295,6 +2295,16 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
       .hero-main .container {
         margin-top: 60px; } }
 
+.latest-docs {
+  overflow: auto;
+  padding: 80px 60px; }
+  .latest-docs .recently-viewed {
+    float: left;
+    margin: 0; }
+  .latest-docs .most-popular {
+    float: right;
+    margin: 0; }
+
 .shadow-border {
   border-radius: 2px;
   box-shadow: 0px 0px 5px 2px rgba(182, 182, 182, 0.5); }
@@ -2955,3 +2965,30 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     color: #000000;
     width: 66%;
     float: right; }
+
+#searchform {
+  margin-top: 16px; }
+  #searchform input#s {
+    border: 1px solid #c7c7c7;
+    background: white;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    width: 100%;
+    max-width: 380px;
+    background: url("../images/icons/icon_magnifying_glass.svg") no-repeat calc(100% - 12px) 8px white;
+    background-size: 33px;
+    padding-left: 12px;
+    padding-right: 12px; }
+    #searchform input#s:-moz-placeholder {
+      color: #c7c7c7;
+      font-family: 'Montserrat', sans-serif; }
+    #searchform input#s::-moz-placeholder {
+      color: #c7c7c7;
+      font-family: 'Montserrat', sans-serif; }
+    #searchform input#s:-ms-input-placeholder {
+      color: #c7c7c7;
+      font-family: 'Montserrat', sans-serif; }
+    #searchform input#s::-webkit-input-placeholder {
+      color: #c7c7c7;
+      font-family: 'Montserrat', sans-serif; }
