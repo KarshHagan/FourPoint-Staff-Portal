@@ -57,6 +57,19 @@ wp_get_current_user();
     </ul>
   </div>
 
+  <section class="hero-main">
+    <div class="container">
+      <div class="search-left">
+        <h1><?php if(get_field('page_heading')) {
+          the_field('page_heading');
+        } else { the_title(); } ?></h1>
+        <h3>Search for a document or resource</h3>
+        <?php get_search_form(); ?>
+      </div>
+      <?php include_once('inc_quicklinks.php'); ?>
+    </div>
+  </section>
+
   <!-- alert modal -->
   <div class="alert-modal">
     <div class="container shadow-border modal-panel">
@@ -115,7 +128,7 @@ wp_get_current_user();
           <input type="file" id="profile-photo-upload">
         </form>
       </div>
-      
+
 
       <div class="container">
         <form>

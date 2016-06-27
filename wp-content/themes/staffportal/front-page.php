@@ -4,32 +4,27 @@
  */
 global $theme;
 get_header(); ?>
-<!-- section w/bg image, search, quick links box -->
-<section class="hero-main">
-  <div class="container">
-    <div class="search-left">
-      <h1>Fourpoint energy employee resource center</h1>
-      <h3>Search for a document or resource</h3>
-      <?php get_search_form(); ?>
-    </div>
-    <?php include_once('inc_quicklinks.php'); ?>
-  </div>
-</section>
-
 <section class="latest-docs">
   <div class="container">
     <div class="quick-links shadow-border recently-viewed">
       <h3 class="blue-caps-headline">Recently Viewed</h3>
       <ul>
-        <li><a href="#">Document Title Lorum.doc</li>
-        <li><a href="#">Document Title Lorum.doc</li>
-        <li><a href="#">Document Title Lorum.doc</li>
-        <li><a href="#">Document Title Lorum.doc</li>
-        <li><a href="#">Document Title Lorum.doc</li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
       </ul>
     </div>
     <div class="quick-links shadow-border most-popular">
       <h3 class="blue-caps-headline">Most Popular</h3>
+      <ul>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+        <li><a href="#">Document Title Lorum.doc</a></li>
+      </ul>
     </div>
   </div>
 </section>

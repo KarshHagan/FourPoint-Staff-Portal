@@ -2301,7 +2301,9 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
   .latest-docs .recently-viewed, .latest-docs .most-popular {
     padding-left: 6px;
     padding-right: 6px;
-    padding-bottom: 6px; }
+    padding-bottom: 6px;
+    width: 40%;
+    max-width: 100%; }
     .latest-docs .recently-viewed h3, .latest-docs .most-popular h3 {
       border-bottom: 0; }
     .latest-docs .recently-viewed ul, .latest-docs .most-popular ul {
@@ -2314,16 +2316,18 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
       .latest-docs .recently-viewed ul li a, .latest-docs .most-popular ul li a {
         background: none;
         background: url("../images/icons/icon_doc_grey-01.svg") no-repeat left center;
-        background-size: 15px;
-        padding-left: 25px;
-        margin-left: 15px;
+        background-size: 20px;
+        padding-left: 30px;
+        margin-left: 25px;
         font-size: 1em; }
   .latest-docs .recently-viewed {
     float: left;
-    margin: 0; }
+    margin: 0;
+    margin-left: 3%; }
   .latest-docs .most-popular {
     float: right;
-    margin: 0; }
+    margin: 0;
+    margin-right: 3%; }
 
 .shadow-border {
   border-radius: 2px;
@@ -3127,3 +3131,17 @@ a.modal-link {
   background-size: 30px;
   font-weight: normal;
   padding-right: 20px; }
+
+.copy_split .side-content aside p.ticket-details {
+  font-weight: normal;
+  font-size: 13px;
+  padding-left: 30px;
+  text-transform: none; }
+  .copy_split .side-content aside p.ticket-details:before {
+    background: none; }
+
+.single .hero-main {
+  display: none; }
+
+.back-link {
+  font-weight: bold; }

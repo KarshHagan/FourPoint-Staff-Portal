@@ -1,0 +1,353 @@
+# Copyright (C) 2015 Advanced Post Pagination
+# This file is distributed under the same license as the Advanced Post Pagination package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Post Pagination 1.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/advanced-content-"
+"pagination\n"
+"POT-Creation-Date: 2015-12-22 20:50:41+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: acp.php:84
+msgid "ACP Settings"
+msgstr ""
+
+#: acp.php:179
+msgid "Please insert your text here!"
+msgstr ""
+
+#: acp.php:180
+msgid "Add New Page - Advanced Content Pagination Shortcode"
+msgstr ""
+
+#: acp.php:237
+msgid "AP Pagination"
+msgstr ""
+
+#: acp.php:265 acp.php:633
+msgid "Title"
+msgstr ""
+
+#: acp.php:504
+msgid "No Content"
+msgstr ""
+
+#: acp.php:612 options/layouts/settings-general.php:40
+msgid "Reload Page"
+msgstr ""
+
+#: acp.php:613 options/layouts/settings-general.php:44
+msgid "Ajax"
+msgstr ""
+
+#: acp.php:619
+msgid "Page Loading Type"
+msgstr ""
+
+#: acp.php:634
+msgid "Title & Number"
+msgstr ""
+
+#: acp.php:635
+msgid "Prev & Next"
+msgstr ""
+
+#: acp.php:636
+msgid "Number"
+msgstr ""
+
+#: acp.php:642
+msgid "Pagination Button Layout"
+msgstr ""
+
+#: acp.php:654
+msgid "Settings"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (Advanced Post Pagination 1.5.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: acp.php:661
+msgid "Advanced Post Pagination"
+msgstr ""
+
+#: acp.php:663
+msgid "Splits long content to multiple pages"
+msgstr ""
+
+#: acp.php:667
+msgid "Content"
+msgstr ""
+
+#: acp.php:672
+msgid "Pagination button title"
+msgstr ""
+
+#: acp.php:675
+msgid "Enter your pagination button title."
+msgstr ""
+
+#: acp.php:680
+msgid "subPage content"
+msgstr ""
+
+#: assets/dialog.php:4
+msgid "Pagination Button Components"
+msgstr ""
+
+#: assets/dialog.php:8
+msgid "Button Title:"
+msgstr ""
+
+#: assets/dialog.php:12
+msgid "maximum characters"
+msgstr ""
+
+#: assets/dialog.php:17
+msgid "The title is required field!"
+msgstr ""
+
+#: assets/dialog.php:24
+msgid "Insert Page"
+msgstr ""
+
+#: assets/dialog.php:29
+msgid "Current button layout on website"
+msgstr ""
+
+#: buttons-layouts/ajax-load/button_layout_4_js.php:4
+#: buttons-layouts/ajax-load/button_layout_4_js.php:22
+#: buttons-layouts/page-reload/button_layout_4.php:26
+msgid "Next"
+msgstr ""
+
+#: buttons-layouts/ajax-load/button_layout_4_js.php:4
+#: buttons-layouts/ajax-load/button_layout_4_js.php:24
+#: buttons-layouts/page-reload/button_layout_4.php:20
+msgid "Prev"
+msgstr ""
+
+#: options/acp-options.php:21
+msgid "Hacker?"
+msgstr ""
+
+#: options/html-options.php:5
+msgid "Advanced Content Pagination Settings"
+msgstr ""
+
+#: options/html-options.php:17
+msgid "General settings"
+msgstr ""
+
+#: options/html-options.php:18
+msgid "Button Style"
+msgstr ""
+
+#: options/html-options.php:19
+msgid "Button Layouts"
+msgstr ""
+
+#: options/html-options.php:20
+msgid "Carousel Settings"
+msgstr ""
+
+#: options/html-options.php:21
+msgid "Custom Styles"
+msgstr ""
+
+#: options/html-options.php:38
+msgid "Save Changes"
+msgstr ""
+
+#: options/layouts/promo.php:17
+msgid ""
+"ACP Pro allows you to add subPage Title, Image and Description on pagination "
+"buttons."
+msgstr ""
+
+#: options/layouts/promo.php:38
+msgid "Like Advanced Post Pagination plugin?"
+msgstr ""
+
+#: options/layouts/settings-button-layouts.php:5
+msgid "Display Only Previous and Next Buttons"
+msgstr ""
+
+#: options/layouts/settings-button-layouts.php:6
+msgid ""
+"This option is only related to the first and second layouts. Allows to only "
+"show the previous and next titles in subPage buttons."
+msgstr ""
+
+#: options/layouts/settings-button-layouts.php:17
+msgid "Pagination Button Style"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:5
+msgid "Carousel Buttons Arrows Fixed Position"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:15
+msgid "Button Title Size"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:30
+msgid "Button Border CSS"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:33
+#: options/layouts/settings-button-style.php:82
+msgid "Example: 1px solid #ff0000"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:38
+msgid "Button Background Color"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:41
+#: options/layouts/settings-button-style.php:90
+#: options/layouts/settings-button-style.php:98
+msgid "Example: #0000ff"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:47
+msgid "Button Hover Background Color"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:50
+msgid "Example: #00ff00"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:55
+msgid "Button Hover Text Color"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:58
+msgid "Example: #000000"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:63
+msgid "Button Text Color"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:66
+msgid "Example: #f0000f"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:71
+msgid "Button Text Font"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:74
+msgid "Example: Times New Roman, Times, serif"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:79
+msgid "Active Button Border CSS"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:87
+msgid "Active Button Background Color"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:95
+msgid "Active Button Text Color"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:103
+msgid "Loading Background Color"
+msgstr ""
+
+#: options/layouts/settings-button-style.php:106
+msgid "Example: #cccccc"
+msgstr ""
+
+#: options/layouts/settings-custom-styles.php:5
+msgid "Custom CSS Code"
+msgstr ""
+
+#: options/layouts/settings-general.php:5
+msgid "Turn on/off Content Pagination"
+msgstr ""
+
+#: options/layouts/settings-general.php:14
+msgid "Pagnation Buttons Layout"
+msgstr ""
+
+#: options/layouts/settings-general.php:22
+msgid "Default"
+msgstr ""
+
+#: options/layouts/settings-general.php:26
+msgid "Tabbed"
+msgstr ""
+
+#: options/layouts/settings-general.php:32
+msgid "Pagnation Loading Type"
+msgstr ""
+
+#: options/layouts/settings-general.php:50
+msgid "Pagination Button Location"
+msgstr ""
+
+#: options/layouts/settings-general.php:58
+msgid "Top"
+msgstr ""
+
+#: options/layouts/settings-general.php:62
+msgid "Bottom"
+msgstr ""
+
+#: options/layouts/settings-general.php:66
+msgid "Both"
+msgstr ""
+
+#: options/layouts/settings-general.php:72
+msgid "Do Shortcodes In Excerpts"
+msgstr ""
+
+#: options/layouts/settings-general.php:85
+msgid "Excerpt Words Count"
+msgstr ""
+
+#: options/layouts/settings-jcarousel.php:4
+msgid "Carousel wrapping options"
+msgstr ""
+
+#: options/layouts/settings-jcarousel.php:19
+msgid "Carousel arrows background color"
+msgstr ""
+
+#: options/layouts/settings-jcarousel.php:27
+msgid "Carousel arrows hover background color"
+msgstr ""
+
+#: options/layouts/settings-jcarousel.php:35
+msgid "Carousel arrows color"
+msgstr ""
+
+#: options/layouts/settings-jcarousel.php:43
+msgid "Carousel arrows hover color"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.gvectors.com/advanced-content-pagination/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Creates fully customizable pagination buttons for post and page content with "
+"five different layouts"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "gVectors Team (A. Chakhoyan, G. Zakaryan, H. Martirosyan)"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.gvectors.com/"
+msgstr ""

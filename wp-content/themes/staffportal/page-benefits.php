@@ -4,39 +4,6 @@
  */
 global $theme;
 get_header(); ?>
-  <!-- section w/bg image, search, quick links box -->
-  <section class="hero-main">
-    <div class="container">
-      <div class="search-left">
-        <h1><?php the_title(); ?></h1>
-        <h3>Search for a document or resource</h3>
-        <form>SEARCH BOX GOES HERE</form>
-      </div>
-      <div class="quick-links shadow-border">
-        <h3 class="blue-caps-headline">Quick Links</h3>
-        <ul>
-          <?php
-          $quicklinks = get_posts(
-            array(
-              'post_type' => 'quick-link',
-              'post_status' => 'publish',
-              'tax_query' => array(
-                array(
-                  'taxonomy' => 'category',
-                  'terms' => 'benefit-quicklinks',
-                  'field' => 'slug'
-                )
-              )
-            )
-          );
-          foreach($quicklinks as $quicklink) { ?>
-              <li><a href="<?php the_field('url',$quicklink->ID) ?>"><?php echo $quicklink->post_title ?></a></li>
-          <?php } ?>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <div class="anchor-links">
     <ul>
       <?php $categories = get_terms(array(
