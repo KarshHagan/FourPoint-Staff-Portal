@@ -44,23 +44,18 @@ get_header();
 
   <div class="employees-wrapper">
     <div class="container">
-      <div class="office-sort">
+      <div class="office-sort" data-active-office="all">
         <h3>Choose Office:</h3>
         <ul>
-          <li><a href="#" class="button btn-white active" data-office="all">All</a></li>
+          <li><a href="#" class="button btn-white active office-btn" data-office-selected="all">All</a></li>
           <?php
             foreach($terms as $office) {
           ?>
-            <li><a href="#" class="button btn-white" data-office="<?php echo $office->slug ?>"><?php echo $office->name ?></a></li>
+            <li><a href="#" class="button btn-white" data-office-selected="<?php echo $office->slug ?>"><?php echo $office->name ?></a></li>
           <?php } ?>
-          <!-- <li><a href="#" class="button btn-white" data-office="borger">Borger</a></li>
-          <li><a href="#" class="button btn-white" data-office="denver">Denver</a></li>
-          <li><a href="#" class="button btn-white" data-office="elk-city">Elk City</a></li>
-          <li><a href="#" class="button btn-white" data-office="shamrock">Shamrock</a></li>
-          <li><a href="#" class="button btn-white" data-office="woodward">Woodward</a></li> -->
         </ul>
       </div>
-      <div class="name-sort">
+      <div class="name-sort" data-active-name="all">
         <h3>Filter by Last Name:</h3>
         <ul>
           <li><a href="#" class="button btn-white active name-btn" data-name-selected="all">All</a></li>
@@ -89,29 +84,29 @@ get_header();
           $offices = get_field('employee_office','user_'.$employee->ID);
           $office = $offices[0];
         ?>
-        <li class="employee-bio-container">
-          <div class="employee-bio" data-office="<?php echo $office->slug ?>" data-name="<?php echo $last_name_category ?>">
-            <div class="front">
+        <li class="employee-bio-container" data-office="<?php echo $office->slug ?>" data-name="<?php echo $last_name_category ?>">
+          <div class="employee-bio">
+            <div class="front shadow-border">
               <img src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
               <h2><?php echo $employee->display_name ?></h2>
               <h3><?php echo $user_title ?></h3>
               <p class="office"><?php echo $office->name ?></p>
               <ul class="contact-info">
-                <li>Email: <span><?php echo $employee->user_email ?></span></li>
+                <li class="email-addr">Email: <span><?php echo $employee->user_email ?></span></li>
                 <li>Outside Dial: <span><?php echo $outside_dial ?></span></li>
                 <li>Ext: <span><?php echo $extension ?></span></li>
                 <li>Conf Call ID: <span><?php echo $conf_call_id ?></span></li>
                 <li>Mobile: <span><?php echo $mobile_number ?></span></li>
               </ul>
-              <p href="#">More</p>
+              <a href="#" class="more-flip">More</a> 
             </div>
 
-            <div class="back">
-              <img src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
+            <div class="back shadow-border">
+              <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
               <div class="inner">
                 <p><?php echo $employee->description ?></p>
               </div>
-              <p href="#">Less</p>
+              <a href="#" class="more-flip">Less</a> 
             </div>
 
           </div>

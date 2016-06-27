@@ -46,21 +46,42 @@ $(document).ready(function() {
 
 
   // alert Modal toggle
-  $("#alert-toggle").on('click',function(evt) {
+  $(".alert-toggle").on('click',function(evt) {
+    var clickedId = this.id;
     $('body').css('overflow-Y', 'hidden');
-    $('.alert-modal').fadeToggle(200);
-    $('.alert-list-panel').addClass('scale-in');
+    $('.'+ clickedId + '-modal').fadeToggle().find('.modal-panel').addClass('scale-in');
   });
-  // document.getElementById('alert-toggle').addEventListener('click', function() {
-  //
-  // });
 
-  $('.close-alert').on('click', function() {
-    $('.alert-modal').fadeToggle('fast', function() {
-      $('.alert-list-panel').removeClass('scale-in');
+  $('.close-modal').on('click', function(evt) {
+    var clickedId = this.id;
+    $('.' + clickedId).fadeToggle('fast', function() {
+      $('.modal-panel').removeClass('scale-in');
       $('body').css('overflow-Y', 'scroll');
     });
   });
+
+  // staff portal anchor links - set width
+  var $links = $('.anchor-links li');
+  var linksLength = $links.length;
+  var widthOfLink = 100 / linksLength;
+  
+  function linkWidth(windowWidth) {
+    if(windowWidth >= 1024) {
+      $links.each(function() {
+        $(this).width(widthOfLink + '%');
+      });
+    } else if(windowWidth <= 1023 && windowWidth >= 768) {
+      $links.each(function() {
+        $(this).width(50 + '%');
+      });
+    } else {
+      $links.each(function() {
+        $(this).width(100 + '%');
+      });
+    }
+  }
+
+  linkWidth(windowWidth);
 
 
 
@@ -77,6 +98,7 @@ $(document).ready(function() {
 
   $(window).on('resize', function(windowWidth) {
     accordionCollapse(windowWidth);
+    linkWidth(windowWidth);
   });
 
   var employeeSort = new EmployeeSort();
