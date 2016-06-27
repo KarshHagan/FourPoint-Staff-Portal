@@ -5,22 +5,9 @@
 global $theme;
 get_header();
 if ( have_posts() ) while ( have_posts() ) : the_post();
-$quicklink_term = get_field('quicklink_term');
 $post_type = get_field('associated_post_type');
 $category_taxonomy = get_field('category_taxonomy');
 ?>
-  <!-- section w/bg image, search, quick links box -->
-  <section class="hero-main">
-    <div class="container">
-      <div class="search-left">
-        <h1><?php the_title(); ?></h1>
-        <h3>Search for a document or resource</h3>
-        <form>SEARCH BOX GOES HERE</form>
-      </div>
-      <?php include_once('inc_quicklinks.php'); ?>
-    </div>
-  </section>
-
   <div class="anchor-links">
     <ul>
       <?php $categories = get_terms(array(

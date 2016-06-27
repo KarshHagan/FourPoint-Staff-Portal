@@ -6,18 +6,6 @@
 global $theme;
 get_header();
 ?>
-  <!-- section w/bg image, search, quick links box -->
-  <section class="hero-main">
-    <div class="container">
-      <div class="search-left">
-        <h1>Fourpoint energy company directory</h1>
-        <h3>Search for a document or resource</h3>
-        <form>SEARCH BOX GOES HERE</form>
-      </div>
-      <?php include_once('inc_quicklinks.php'); ?>
-    </div>
-  </section>
-
   <div class="address-container">
     <div class="container">
       <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -98,7 +86,7 @@ get_header();
                 <li>Conf Call ID: <span><?php echo $conf_call_id ?></span></li>
                 <li>Mobile: <span><?php echo $mobile_number ?></span></li>
               </ul>
-              <a href="#" class="more-flip">More</a> 
+              <a href="#" class="more-flip">More</a>
             </div>
 
             <div class="back shadow-border">
@@ -106,7 +94,7 @@ get_header();
               <div class="inner">
                 <p><?php echo $employee->description ?></p>
               </div>
-              <a href="#" class="more-flip">Less</a> 
+              <a href="#" class="more-flip">Less</a>
             </div>
 
           </div>

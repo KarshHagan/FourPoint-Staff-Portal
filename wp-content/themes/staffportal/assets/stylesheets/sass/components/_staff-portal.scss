@@ -145,6 +145,8 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     padding-left: 6px;
     padding-right: 6px;
     padding-bottom: 6px;
+    width:40%;
+    max-width:100%;
     h3 {
       border-bottom: 0;
     }
@@ -159,11 +161,10 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         a {
           background:none;
           background:url('../images/icons/icon_doc_grey-01.svg') no-repeat left center;
-          background-size:15px;
-          padding-left: 25px;
-          margin-left: 15px;
+          background-size:20px;
+          padding-left: 30px;
+          margin-left: 25px;
           font-size:1em;
-
         }
       }
     }
@@ -171,10 +172,12 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
   .recently-viewed {
     float:left;
     margin:0;
+    margin-left: 3%;
   }
   .most-popular {
     float:right;
     margin:0;
+    margin-right: 3%;
   }
 }
 
@@ -1081,4 +1084,21 @@ a.modal-link {
         font-weight: normal;
         padding-right: 20px;
     }
+}
+.copy_split .side-content aside p.ticket-details {
+  font-weight: normal;
+  font-size:13px;
+  padding-left: 30px;
+  text-transform: none;
+  &:before {
+    background:none;
+  }
+}
+.single {
+  .hero-main {
+    display:none;
+  }
+}
+.back-link {
+  font-weight:bold;
 }

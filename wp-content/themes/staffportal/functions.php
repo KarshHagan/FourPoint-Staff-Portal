@@ -345,7 +345,7 @@ class Fourpoint {
 			'add_new_item' => 'Add Quick Link',
 			'edit_item' => 'Edit Quick Link',
 			'new_item' => 'New Quick Link',
-			'all_items' => 'All Quick Link',
+			'all_items' => 'All Quick Links',
 			'view_item' => 'View Quick Link',
 			'search_items' => 'Search Quick Links',
 			'not_found' =>  'No quick links found',
@@ -425,7 +425,7 @@ class Fourpoint {
 			'has_archive' => false,
 			'hierarchical' => false,
 			'menu_position' => 3,
-			'supports' => array('title')
+			'supports' => array('title','editor','excerpt')
 		);
 		register_post_type('ticket', $args);
 

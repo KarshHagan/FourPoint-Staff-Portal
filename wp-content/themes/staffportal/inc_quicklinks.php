@@ -1,3 +1,4 @@
+<?php $quicklink_term = get_field('quicklink_term'); ?>
 <div class="quick-links shadow-border">
   <h3 class="blue-caps-headline">Quick Links</h3>
   <ul>
