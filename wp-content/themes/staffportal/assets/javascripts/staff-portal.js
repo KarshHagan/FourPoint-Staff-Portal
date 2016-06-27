@@ -46,17 +46,15 @@ $(document).ready(function() {
 
 
   // alert Modal toggle
-  $("#alert-toggle").on('click',function(evt) {
+  $(".alert-toggle").on('click',function(evt) {
+    var clickedId = this.id;
     $('body').css('overflow-Y', 'hidden');
-    $('.alert-modal').fadeToggle(200);
-    $('.modal-panel').addClass('scale-in');
+    $('.'+ clickedId + '-modal').fadeToggle().find('.modal-panel').addClass('scale-in');
   });
-  // document.getElementById('alert-toggle').addEventListener('click', function() {
-  //
-  // });
 
-  $('.close-modal').on('click', function() {
-    $('.alert-modal').fadeToggle('fast', function() {
+  $('.close-modal').on('click', function(evt) {
+    var clickedId = this.id;
+    $('.' + clickedId).fadeToggle('fast', function() {
       $('.modal-panel').removeClass('scale-in');
       $('body').css('overflow-Y', 'scroll');
     });
