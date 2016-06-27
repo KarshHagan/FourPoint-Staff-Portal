@@ -20,6 +20,13 @@ get_header(); ?>
   <div class="container">
     <div class="quick-links shadow-border recently-viewed">
       <h3 class="blue-caps-headline">Recently Viewed</h3>
+      <ul>
+        <li><a href="#">Document Title Lorum.doc</li>
+        <li><a href="#">Document Title Lorum.doc</li>
+        <li><a href="#">Document Title Lorum.doc</li>
+        <li><a href="#">Document Title Lorum.doc</li>
+        <li><a href="#">Document Title Lorum.doc</li>
+      </ul>
     </div>
     <div class="quick-links shadow-border most-popular">
       <h3 class="blue-caps-headline">Most Popular</h3>

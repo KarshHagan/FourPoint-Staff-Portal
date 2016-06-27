@@ -141,6 +141,33 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 .latest-docs {
   overflow:auto;
   padding:80px 60px;
+  .recently-viewed, .most-popular {
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    h3 {
+      border-bottom: 0;
+    }
+    ul {
+      background:$sp-light-gray;
+      margin-top: 0;
+      margin-left: 0;
+      padding:15px 0;
+      margin-bottom: 0;
+      font-weight:normal;
+      li {
+        a {
+          background:none;
+          background:url('../images/icons/icon_doc_grey-01.svg') no-repeat left center;
+          background-size:15px;
+          padding-left: 25px;
+          margin-left: 15px;
+          font-size:1em;
+
+        }
+      }
+    }
+  }
   .recently-viewed {
     float:left;
     margin:0;
