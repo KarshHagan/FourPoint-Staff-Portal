@@ -7,7 +7,14 @@ get_header();
 
 $args = array(
   'post_type' => 'ticket',
-  'post_status' => 'publish'
+  'post_status' => 'publish',
+  'orderby'	=> 'meta_value_num',
+	'order'		=> 'DESC',
+  'meta_query' => array(
+				'key' => 'speaking_event_date',
+				'value' => date('Ymd'),
+				'type' => 'DATE',
+			)
 );
 $ticket_qry = new WP_Query( $args );
 ?>

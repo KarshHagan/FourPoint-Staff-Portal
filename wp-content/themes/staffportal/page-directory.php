@@ -75,7 +75,7 @@ get_header();
         <li class="employee-bio-container" data-office="<?php echo $office->slug ?>" data-name="<?php echo $last_name_category ?>">
           <div class="employee-bio">
             <div class="front shadow-border">
-              <img src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
+              <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
               <h2><?php echo $employee->display_name ?></h2>
               <h3><?php echo $user_title ?></h3>
               <p class="office"><?php echo $office->name ?></p>

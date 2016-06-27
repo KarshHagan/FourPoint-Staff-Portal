@@ -406,7 +406,7 @@ class Fourpoint {
 			'add_new_item' => 'Add Ticket',
 			'edit_item' => 'Edit Ticket',
 			'new_item' => 'New Ticket',
-			'all_items' => 'All Ticket',
+			'all_items' => 'All Tickets',
 			'view_item' => 'View Ticket',
 			'search_items' => 'Search Tickets',
 			'not_found' =>  'No tickets found',
@@ -472,12 +472,12 @@ class Fourpoint {
 			'name' => __( 'Office', 'office' ),
 			'singular_name' => __( 'Office', 'office' ),
 			'search_items' =>  __( 'Search Office' ),
-			'all_items' => __( 'All Office' ),
+			'all_items' => __( 'All Offices' ),
 			'edit_item' => __( 'Edit Office' ),
 			'update_item' => __( 'Update Office' ),
 			'add_new_item' => __( 'Add New Office' ),
 			'new_item_name' => __( 'New Office' ),
-			'menu_name' => __( 'Office' ),
+			'menu_name' => __( 'Offices' ),
 		);
 		$args = array(
 			'public' => true,
@@ -565,6 +565,29 @@ class Fourpoint {
 			'rewrite' => array('slug' => 'brand-categories'),
 		);
 		register_taxonomy('brand_category', array('brand_document'), $args);
+
+		/** IT Ticket Category **/
+		$labels = array(
+			'name' => __( 'Ticket Category', 'ticket category' ),
+			'singular_name' => __( 'Ticket Category', 'ticket category' ),
+			'search_items' =>  __( 'Search Ticket Category' ),
+			'all_items' => __( 'All Ticket Categories' ),
+			'edit_item' => __( 'Edit Ticket Category' ),
+			'update_item' => __( 'Update Ticket Category' ),
+			'add_new_item' => __( 'Add New Ticket Category' ),
+			'new_item_name' => __( 'New Ticket Category' ),
+			'menu_name' => __( 'Ticket Categories' ),
+		);
+		$args = array(
+			'hierarchical' => true,
+			'labels' => $labels,
+			'show_ui' => true,
+			'show_admin_column' => true,
+			'query_var' => true,
+			'supports' => array('title'),
+			'rewrite' => array('slug' => 'ticket-categories'),
+		);
+		register_taxonomy('ticket_category', array('ticket'), $args);
 	}
 
 	/**
