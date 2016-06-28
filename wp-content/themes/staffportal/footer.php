@@ -16,7 +16,7 @@
         }
       foreach($benefit_categories as $category) {
       ?>
-      <li><a href="/benefits#<?php echo $category->slug ?>"><?php echo $category->name ?></a></li>
+      <li><a href="/employee-benefits#<?php echo $category->slug ?>"><?php echo $category->name ?></a></li>
       <?php } ?>
       </ul>
     </div>
@@ -25,14 +25,14 @@
       <h4>Documents & Forms</h4>
       <ul>
         <?php
-          if(!isset($documents)) {
-            $documents = get_posts(array(
-              'post_type' => 'document',
-              'post_status' => 'publish'
+          if(!isset($document_categories)) {
+            $document_categories = get_terms(array(
+              'taxonomy' => 'document_category',
+              'hide_empty' => false
             ));
           }
-          foreach($documents as $document) { ?>
-          <li><a href="/documents-and-forms#<?php echo $document->slug ?>"><?php echo $document->post_title ?></a></li>
+          foreach($document_categories as $document_category) { ?>
+          <li><a href="/documents-and-forms#<?php echo $document_category->slug ?>"><?php echo $document_category->name ?></a></li>
         <?php
           }
         ?>
@@ -42,12 +42,17 @@
     <div class="link-container">
       <h4>Brand Center</h4>
       <ul>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
-        <li><a href="#">Open Enrollment</a></li>
+        <?php
+        if(!isset($brand_categories)) {
+          $brand_categories = get_terms(array(
+            'taxonomy' => 'brand_category',
+            'hide_empty' => false
+          ));
+        }
+        foreach($brand_categories as $brand_category) {
+        ?>
+        <li><a href="/brand-center/#<?php echo $brand_category->slug ?>"><?php echo $brand_category->name ?></a></li>
+        <?php } ?>
       </ul>
     </div>
 
@@ -65,7 +70,7 @@
         }
         foreach($quicklinks as $quicklink) { ?>
             <li><a href="<?php the_field('url',$quicklink->ID) ?>"><?php echo $quicklink->post_title ?></a></li>
-        <?php 
+        <?php
         }
 ?>
       </ul>
