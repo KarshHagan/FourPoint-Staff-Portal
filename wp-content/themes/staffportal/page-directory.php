@@ -38,7 +38,7 @@ get_header();
           <?php
             foreach($terms as $office) {
           ?>
-            <li><a href="#" class="button btn-white" data-office-selected="<?php echo $office->slug ?>"><?php echo $office->name ?></a></li>
+            <li><a href="#" class="button btn-white office-btn" data-office-selected="<?php echo $office->slug ?>"><?php echo $office->name ?></a></li>
           <?php } ?>
         </ul>
       </div>

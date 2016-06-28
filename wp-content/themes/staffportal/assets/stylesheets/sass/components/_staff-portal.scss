@@ -16,6 +16,9 @@
                 position: absolute;
                 @include transform(translateY(-50%));
             }
+            li {
+                margin: 8px auto;
+            }
             li a {
                text-align: left;
                padding: 12px 24px;
@@ -36,9 +39,47 @@
     }
 }
 
+.alert-icon, .mail-icon {
+    background: url("../images/icons/icon_alerts_blu-01.svg") no-repeat;
+    background-size: 36px;
+    position: absolute;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    &:hover {
+        background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
+        background-size: 35px;
+        top: 3px;
+        margin-left: 1px;
+    }
+}
+
+.mail-icon {
+    background: url("../images/icons/icon_email_blu-01.svg") no-repeat;
+    &:hover {
+        background: url("../images/icons/icon_email_white.svg") no-repeat;
+        background-size: 34px;
+        top: 6px;
+        margin-left: 1px;
+    }  
+}
+
+.sp-navlink {
+    .sp-icon {
+        text-indent: 9999px;
+    }
+}
+
 nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
-    margin: 0 20px;
-    // border-top: 1px solid $white;
+    max-width: 350px;
+    margin: 0 auto;
+    @media screen and (max-width: 1023px) and (min-width: 768px) {
+        max-width: 100%;
+        margin: 8px auto;
+    }
+    @include tablet-landscape-and-up {
+        margin: 8px 20px;
+    }
     a {
         margin: 0 auto;
         border-top: 1px solid;
@@ -67,63 +108,106 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         margin: 0 auto;
         text-align: center;
     }
-    li {
-        max-width: 350px;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        @include tablet-portrait-and-up {
-            width: 33%;
-            display: inline-block;
+}
+
+.nav-btn-big {
+    max-width: 350px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    @include tablet-portrait-and-up {
+        width: 33%;
+        display: inline-block;
+    }
+    &:first-child {
+      a {
+        padding-left: 38px;
+        .sp-icon:before {
+          background: url("../images/icons/icon_benefits_wht-01.svg") no-repeat;
+          background-size: 26px;
+          width: 36px;
+          height: 24px;
+          content: '';
+          display: inline-block;
+          position: absolute;
+          margin-left: -34px;
+          margin-top: -2px;
         }
-        &:first-child {
-          a {
-            padding-left: 38px;
-            .sp-icon:before {
-              background: url("../images/icons/icon_benefits_wht-01.svg") no-repeat;
-              background-size: 26px;
-              width: 36px;
-              height: 24px;
-              content: '';
-              display: inline-block;
-              position: absolute;
-              margin-left: -34px;
-              margin-top: -2px;
-            }
-          }
+        &:hover > .sp-icon::before {
+            background: url('../images/icons/icon_benefits_blue.svg') no-repeat;
+            height: 26px;
         }
-        &:nth-child(2) {
-          a {
-            padding-left: 33px;
-            .sp-icon:before {
-              background: url("../images/icons/icon_docs_forms_wht-01.svg") no-repeat;
-              background-size: 21px;
-              width: 21px;
-              height: 24px;
-              content: '';
-              display: inline-block;
-              position: absolute;
-              margin-left: -28px;
-              margin-top: -1px;
-            }
-          }
+      }
+    }
+    &:nth-child(2) {
+      a {
+        padding-left: 33px;
+        .sp-icon:before {
+          background: url("../images/icons/icon_docs_forms_wht-01.svg") no-repeat;
+          background-size: 21px;
+          width: 21px;
+          height: 24px;
+          content: '';
+          display: inline-block;
+          position: absolute;
+          margin-left: -28px;
+          margin-top: -1px;
         }
-        &:last-child {
-          a {
-            padding-left: 36px;
-            .sp-icon:before {
-              background: url("../images/icons/icon_brandcenter_wht-01.svg") no-repeat;
-              background-size: 26px;
-              width: 34px;
-              height: 24px;
-              content: '';
-              display: inline-block;
-              position: absolute;
-              margin-left: -32px;
-              margin-top: -2px;
-            }
-          }
+        &:hover > .sp-icon::before {
+            background: url('../images/icons/icon_docs_forms_blue.svg') no-repeat;
+            background-size: 16px 23px;
+            margin-left: -25px;
+            margin-top: -2px;
         }
+      }
+    }
+    &:last-child {
+      a {
+        padding-left: 36px;
+        .sp-icon:before {
+          background: url("../images/icons/icon_brandcenter_wht-01.svg") no-repeat;
+          background-size: 26px;
+          width: 34px;
+          height: 24px;
+          content: '';
+          display: inline-block;
+          position: absolute;
+          margin-left: -32px;
+          margin-top: -2px;
+        }
+        &:hover > .sp-icon::before {
+            background: url('../images/icons/icon_brandcenter_blue.svg') no-repeat;
+            background-size: 25px;
+            margin-left: -31px;
+        }
+      }
+    }
+}
+
+// these styles are to get the third mobile nav button to display the icon.
+// I have no idea why it's working, but I have to have it for some reason.
+.nav-btn-big-mobile {
+    margin: 0 auto;
+    a {
+      padding-left: 36px;
+      .sp-icon {
+        margin-left: 30px;
+        &:before {
+            background: url("../images/icons/icon_brandcenter_wht-01.svg") no-repeat;
+            background-size: 26px;
+            width: 34px;
+            height: 24px;
+            content: '';
+            position: absolute;
+            margin-left: -32px;
+            margin-top: -2px;
+        }
+      }
+      &:hover > .sp-icon::before {
+          background: url('../images/icons/icon_brandcenter_blue.svg') no-repeat;
+          background-size: 25px;
+          margin-left: -31px;
+      }
     }
 }
 
@@ -394,14 +478,17 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         }
     }
     .border {
-        position:absolute;
-        right:55%;
-        top:40px;
-        bottom:60px;
-        width:1px;
-        margin-right: -7px;
-        // padding-left: 40px;
-        border-left: 1px solid $medium_gray;
+        display: none;
+        @include tablet-portrait-and-up {
+            display: block;
+            position:absolute;
+            right:55%;
+            top:40px;
+            bottom:60px;
+            width:1px;
+            margin-right: -7px;
+            border-left: 1px solid $medium_gray;
+        }
     }
 }
 
@@ -460,7 +547,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     }
 
     li {
-        margin-bottom: 45px;
+        // margin-bottom: 45px;
         text-transform: capitalize;
         @include clearfix;
     }
@@ -520,6 +607,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         padding: 15px 0 15px 20px;
         @include tablet-portrait-and-up {
             padding: 15px 0 0 20px;
+            margin-bottom: 0;
         }
     }
     a {
