@@ -16,7 +16,6 @@ get_header();
         'taxonomy' => 'office',
         'hide_empty' => false,
       ) );
-      // $terms = get_field('office')
       ?>
       <?php
         foreach($terms as $office) {
@@ -69,16 +68,24 @@ get_header();
           $conf_call_id = get_field('conf_call_id','user_'.$employee->ID);
           $profile_photo = get_field('profile_photo','user_'.$employee->ID);
           $last_name_category = $theme->get_last_name_filer($employee->last_name);
-          $offices = get_field('employee_office','user_'.$employee->ID);
-          $office = $offices[0];
+          // $offices = get_field('employee_office','user_'.$employee->ID);
+          $offices = wp_get_object_terms( $employee->ID, 'office' );
+          if( count($offices) > 0 ) {
+            $office = $offices[0];
+            $office_name = $office->name;
+            $office_slug = $office->slug;
+          } else {
+            $office_name = '&nbsp;';
+            $office_slug = '';
+          }
         ?>
-        <li class="employee-bio-container" data-office="<?php echo $office->slug ?>" data-name="<?php echo $last_name_category ?>">
+        <li class="employee-bio-container" data-office="<?php echo $office_slug ?>" data-name="<?php echo $last_name_category ?>">
           <div class="employee-bio">
             <div class="front shadow-border">
               <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
               <h2><?php echo $employee->display_name ?></h2>
               <h3><?php echo $user_title ?></h3>
-              <p class="office"><?php echo $office->name ?></p>
+              <p class="office"><?php echo $office_name ?></p>
               <ul class="contact-info">
                 <li class="email-addr">Email: <span><?php echo $employee->user_email ?></span></li>
                 <li>Direct Line: <span><?php echo $outside_dial ?></span></li>
