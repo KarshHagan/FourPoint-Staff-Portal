@@ -30,19 +30,22 @@ $category_taxonomy = get_field('category_taxonomy');
     <div class="container shadow-border">
       <div class="box-left">
         <h2><?php echo $category->name ?></h2>
-        <?php the_field('description',$category); ?>
         <?php $links = get_field('links',$category); ?>
         <?php if($links && count($links) > 0) { ?>
         <div class="benefit-category-links">
         <?php foreach($links as $link) { ?>
           <div class="benefit-category-link">
-            <div class="logo"><img src="<?php echo $link['logo'] ?>"></div>
-            <a class="link" href="<?php echo $link['url'] ?>">Visit Site</a>
+            
+            <a class="link" target="_blank" href="<?php echo $link['url'] ?>">Visit Site
+              <div class="logo"><img src="<?php echo $link['logo'] ?>"></div>
+            </a>
           </div>
         <?php } ?>
         </div>
         <?php
         } ?>
+        <?php the_field('description',$category); ?>
+        
       </div>
       <div class="border"></div>
       <div class="box-right">
