@@ -1,6 +1,29 @@
 $(document).ready(function() {
   var windowWidth = $(window).width();
 
+
+
+  //nav js
+  var menu = $('#main_nav');
+  var menuToggle = $('#mobile_menu');
+
+  $(menuToggle).on('click', function(e) {
+    e.preventDefault();
+    menu.slideToggle(function(){
+      if(menu.is(':hidden')) {
+        menu.removeAttr('style');
+      } else {
+        menu.css('overflow', 'hidden');
+      }
+    });
+  });
+
+  $(window).on('resize', function() {
+    if($(this).width() >= 1024) {
+      menu.removeAttr('style');
+    }
+  });
+
   // staff portal bio cards = flip on click
   var $flipTrigger = $('.more-flip');
   $flipTrigger.on('click', function(e) {
@@ -65,12 +88,12 @@ $(document).ready(function() {
   var linksLength = $links.length;
   var widthOfLink = 100 / linksLength;
   
-  function linkWidth(windowWidth) {
-    if(windowWidth >= 1024) {
+  function linkWidth() {
+    if($(window).width() >= 1024) {
       $links.each(function() {
         $(this).width(widthOfLink + '%');
       });
-    } else if(windowWidth <= 1023 && windowWidth >= 768) {
+    } else if($(window).width() <= 1023 && $(window).width() >= 768) {
       $links.each(function() {
         $(this).width(50 + '%');
       });
@@ -81,7 +104,7 @@ $(document).ready(function() {
     }
   }
 
-  linkWidth(windowWidth);
+  linkWidth();
 
 
 
@@ -96,9 +119,8 @@ $(document).ready(function() {
 
   accordionCollapse(windowWidth);
 
-  $(window).on('resize', function(windowWidth) {
-    accordionCollapse(windowWidth);
-    linkWidth(windowWidth);
+  $(window).on('resize', function() {
+    linkWidth();
   });
 
   var employeeSort = new EmployeeSort();

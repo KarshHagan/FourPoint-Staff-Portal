@@ -29,6 +29,8 @@ $category_taxonomy = get_field('category_taxonomy');
   <section class="box <?php the_field('background_color',$category) ?>">
     <div class="container shadow-border">
       <div class="box-left">
+        <h2><?php echo $category->name ?></h2>
+        <?php the_field('description',$category); ?>
         <?php $links = get_field('links',$category); ?>
         <?php if($links && count($links) > 0) { ?>
         <div class="benefit-category-links">
@@ -41,8 +43,6 @@ $category_taxonomy = get_field('category_taxonomy');
         </div>
         <?php
         } ?>
-        <h2><?php echo $category->name ?></h2>
-        <?php the_field('description',$category); ?>
       </div>
       <div class="border"></div>
       <div class="box-right">

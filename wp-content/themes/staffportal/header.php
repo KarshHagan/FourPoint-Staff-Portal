@@ -34,11 +34,11 @@ wp_get_current_user();
         <div id="mobile_menu" class="mobile_nav_icon"><i class="fa fa-bars fa-2"></i></div>
         <div class="main_nav_wrap">
           <ul id="main_nav">
-            <li class="nav-buttons"><a href="/employee-benefits" class="btn-blue btn-wide button"><span class="sp-icon">%</span>Benefits</a></li>
-            <li class="nav-buttons"><a href="/documents-forms" class="btn-blue btn-wide button"><span class="sp-icon">%</span>Documents &amp; Forms</a></li>
-            <li class="nav-buttons"><a href="/brand-center" class="btn-blue btn-wide button"><span class="sp-icon">%</span>Brand Center</a></li>
-            <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon">%</span>Alerts</a>
-            <li class="sp-navlink"><a href="#"><span class="sp-icon">%</span>Mail</a>
+            <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/employee-benefits" class="btn-blue btn-wide button"><span class="sp-icon"></span>Benefits</a></li>
+            <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/documents-forms" class="btn-blue btn-wide button"><span class="sp-icon"></span>Documents &amp; Forms</a></li>
+            <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/brand-center" class="btn-blue btn-wide button"><span class="sp-icon"></span>Brand Center</a></li>
+            <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon alert-icon">Alerts</span></a>
+            <li class="sp-navlink"><a href="#"><span class="sp-icon mail-icon">Mail</span></a>
             </li>
             <li class="sp-navlink alert-toggle" id="profile"><a href="#"><span class="sp-icon">%</span>My Profile</a>
             </li>
@@ -51,9 +51,9 @@ wp_get_current_user();
   </nav>
   <div class="sp-subnav">
     <ul class="container">
-      <li><a href="/employee-benefits" class="btn-blue btn-wide button"><span class="sp-icon"></span>Benefits</a></li>
-      <li><a href="/documents-forms" class="btn-blue btn-wide button"><span class="sp-icon"></span>Documents &amp; Forms</a></li>
-      <li><a href="/brand-center" class="btn-blue btn-wide button"><span class="sp-icon"></span>Brand Center</a></li>
+      <li class="nav-btn-big"><a href="/employee-benefits" class="btn-blue btn-wide button"><span class="sp-icon"></span>Benefits</a></li>
+      <li class="nav-btn-big"><a href="/documents-forms" class="btn-blue btn-wide button"><span class="sp-icon"></span>Documents &amp; Forms</a></li>
+      <li class="nav-btn-big"><a href="/brand-center" class="btn-blue btn-wide button"><span class="sp-icon"></span>Brand Center</a></li>
     </ul>
   </div>
 
