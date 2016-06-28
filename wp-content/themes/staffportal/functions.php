@@ -902,9 +902,49 @@ function add_office_admin_page() {
 	);
 }
 
+/* Add section to the edit user page in the admin to select profession. */
+add_action( 'show_user_profile', 'edit_user_profession_section' );
+add_action( 'edit_user_profile', 'edit_user_profession_section' );
+function edit_user_profession_section( $user ) {
+
+	$tax = get_taxonomy( 'office' );
+
+	/* Make sure the user can assign terms of the profession taxonomy before proceeding. */
+	if ( !current_user_can( $tax->cap->assign_terms ) )
+		return;
+
+	/* Get the terms of the 'profession' taxonomy. */
+	$terms = get_terms( 'office', array( 'hide_empty' => false ) ); ?>
+
+	<h3><?php _e( 'Office' ); ?></h3>
+
+	<table class="form-table">
+
+		<tr>
+			<td><?php
+
+			/* If there are any profession terms, loop through them and display checkboxes. */
+			if ( !empty( $terms ) ) {
+
+				foreach ( $terms as $term ) { ?>
+					<input type="radio" name="office" id="office-<?php echo esc_attr( $term->slug ); ?>" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( true, is_object_in_term( $user->ID, 'office', $term ) ); ?> /> <label for="office-<?php echo esc_attr( $term->slug ); ?>"><?php echo $term->name; ?></label> <br />
+				<?php }
+			}
+
+			/* If there are no profession terms, display a message. */
+			else {
+				_e( 'There are no offices available.' );
+			}
+
+			?></td>
+		</tr>
+
+	</table>
+<?php }
+
 /* Update the profession terms when the edit user page is updated. */
-// add_action( 'personal_options_update', 'save_user_office_terms' );
-// add_action( 'edit_user_profile_update', 'save_user_office_terms' );
+add_action( 'personal_options_update', 'save_user_office_terms' );
+add_action( 'edit_user_profile_update', 'save_user_office_terms' );
 
 /**
  * Saves the term selected on the edit user/profile page in the admin. This function is triggered when the page
@@ -914,11 +954,8 @@ function add_office_admin_page() {
  */
 function save_user_office_terms( $user_id ) {
 	$tax = get_taxonomy( 'office' );
-	var_dump($_POST);
-	die();
 	$term = esc_attr( $_POST['office'] );
-	/* Sets the terms (we're just using a single term) for the user. */
-	wp_set_object_terms( $user_id, array( $term ), 'office', false);
+	wp_set_object_terms( $user_id, $term, 'office' );
 	clean_object_term_cache( $user_id, 'office' );
 }
 
