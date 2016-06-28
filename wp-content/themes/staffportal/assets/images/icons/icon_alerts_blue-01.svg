@@ -4,11 +4,11 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 45 45" enable-background="new 0 0 45 45" xml:space="preserve">
 <g>
-	<path fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+	<path fill="none" stroke="#0BA3DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
 		M3,39.9c-1.1,0-1.5-0.8-0.9-1.7L20.9,8.2c0.6-0.9,1.5-0.9,2.1,0l18.8,29.9c0.6,0.9,0.2,1.7-0.9,1.7H3z"/>
 </g>
 <g>
-	<path fill="#FFFFFF" d="M24.3,34c0,1.4-1,2.5-2.4,2.5c-1.4,0-2.4-1.1-2.4-2.5c0-1.5,1-2.5,2.4-2.5C23.3,31.5,24.3,32.5,24.3,34z
+	<path fill="#0BA3DD" d="M24.3,34c0,1.4-1,2.5-2.4,2.5c-1.4,0-2.4-1.1-2.4-2.5c0-1.5,1-2.5,2.4-2.5C23.3,31.5,24.3,32.5,24.3,34z
 		 M23.4,28.8h-2.9l-0.8-8.8v-5.6h4.6v5.6L23.4,28.8z"/>
 </g>
 </svg>

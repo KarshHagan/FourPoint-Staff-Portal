@@ -1,7 +1,17 @@
 .sp-nav {
     background-color: $dark_gray;
     background-image: none;
-    display: inline-block;
+    // display: inline-block;
+    padding: 0;
+    .logo {
+        width: 275px;
+        img {
+            @include tablet-landscape-and-up {
+                top: 50%;
+                @include transform(translateY(-50%));
+            }
+        }
+    }
 
     nav .nav_wrap .mobile_nav_icon, .nav-buttons {
         display: block;
@@ -10,7 +20,11 @@
         }
     }
     .nav_wrap .main_nav_wrap {
+        @include tablet-landscape-and-up {
+            height: 80px;
+        }
         #main_nav {
+            background-color: $black;
             @include tablet-landscape-and-up {
                 top: 50%;
                 position: absolute;
@@ -39,35 +53,33 @@
     }
 }
 
-.alert-icon, .mail-icon {
-    background: url("../images/icons/icon_alerts_blu-01.svg") no-repeat;
+.alert-icon, .mail-icon, .profile-icon {
+    background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
     background-size: 36px;
     position: absolute;
     top: 0;
     width: 36px;
     height: 36px;
+    text-indent: -99999px;
+    @include transition(0.2s ease);
     &:hover {
         background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
-        background-size: 35px;
-        top: 3px;
-        margin-left: 1px;
+        @include transition(0.2s ease);
     }
 }
 
 .mail-icon {
     background: url("../images/icons/icon_email_blu-01.svg") no-repeat;
     &:hover {
-        background: url("../images/icons/icon_email_white.svg") no-repeat;
-        background-size: 34px;
-        top: 6px;
-        margin-left: 1px;
+        background: url("../images/icons/icon_email_white-01.svg") no-repeat;
     }  
 }
 
-.sp-navlink {
-    .sp-icon {
-        text-indent: 9999px;
-    }
+.profile-icon {
+    background: url("../images/icons/icon_profile_blue-01.svg") no-repeat;
+    &:hover {
+        background: url("../images/icons/icon_profile_white.svg") no-repeat;
+    }  
 }
 
 nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
@@ -78,7 +90,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         margin: 8px auto;
     }
     @include tablet-landscape-and-up {
-        margin: 8px 20px;
+        margin: 8px 28px;
     }
     a {
         margin: 0 auto;

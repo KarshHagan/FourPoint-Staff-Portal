@@ -81,9 +81,8 @@ get_header();
               <p class="office"><?php echo $office->name ?></p>
               <ul class="contact-info">
                 <li class="email-addr">Email: <span><?php echo $employee->user_email ?></span></li>
-                <li>Outside Dial: <span><?php echo $outside_dial ?></span></li>
+                <li>Direct Line: <span><?php echo $outside_dial ?></span></li>
                 <li>Ext: <span><?php echo $extension ?></span></li>
-                <li>Conf Call ID: <span><?php echo $conf_call_id ?></span></li>
                 <li>Mobile: <span><?php echo $mobile_number ?></span></li>
               </ul>
               <a href="#" class="more-flip">More</a>

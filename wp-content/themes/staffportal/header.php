@@ -28,7 +28,7 @@ wp_get_current_user();
 	<nav class="sp-nav">
     <section>
       <a class="logo" href="/">
-        <img src="<?php $theme->images_path() ?>/FourPoint_Logo.svg" alt="FourPoint Energy Logo">
+        <img src="<?php $theme->images_path() ?>/fp-logo.svg" alt="FourPoint Energy Logo">
       </a>
 			<div class="nav_wrap">
         <div id="mobile_menu" class="mobile_nav_icon"><i class="fa fa-bars fa-2"></i></div>
@@ -40,7 +40,7 @@ wp_get_current_user();
             <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon alert-icon">Alerts</span></a>
             <li class="sp-navlink"><a href="https://mail.fourpointenergy.com" target="_blank"><span class="sp-icon mail-icon">Mail</span></a>
             </li>
-            <li class="sp-navlink alert-toggle" id="profile"><a href="#"><span class="sp-icon">%</span>My Profile</a>
+            <li class="sp-navlink alert-toggle" id="profile"><a href="#"><span class="sp-icon profile-icon">My Profile</span></a>
             </li>
             <li class="sp-navlink"><a href="#">Logout</a>
             </li>
