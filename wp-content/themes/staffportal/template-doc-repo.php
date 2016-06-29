@@ -35,7 +35,6 @@ $category_taxonomy = get_field('category_taxonomy');
         <div class="benefit-category-links">
         <?php foreach($links as $link) { ?>
           <div class="benefit-category-link">
-            
             <a class="link" target="_blank" href="<?php echo $link['url'] ?>">Visit Site
               <div class="logo"><img src="<?php echo $link['logo'] ?>"></div>
             </a>
@@ -45,7 +44,7 @@ $category_taxonomy = get_field('category_taxonomy');
         <?php
         } ?>
         <?php the_field('description',$category); ?>
-        
+
       </div>
       <div class="border"></div>
       <div class="box-right">
@@ -68,7 +67,7 @@ $category_taxonomy = get_field('category_taxonomy');
                 if($document_files) { ?>
                   <ul class="collapsible-content">
                   <?php foreach($document_files as $document_file) { ?>
-                      <li><a href="<?php the_field('file_path',$document_file->ID) ?>" target="_blank"><?php echo $document_file->post_title ?></a></li>
+                      <li><a href="<?php the_field('file_path',$document_file->ID) ?>" class="document-file" data-documentid="<?php echo $document_file->ID ?>" data-userid="<?php echo $current_user->ID ?>" target="_blank"><?php echo $document_file->post_title ?></a></li>
                   <?php }
                 }  ?>
                   </ul>

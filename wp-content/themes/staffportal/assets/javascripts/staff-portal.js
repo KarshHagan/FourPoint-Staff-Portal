@@ -1,7 +1,19 @@
 $(document).ready(function() {
   var windowWidth = $(window).width();
 
-
+  $(".document-file").on('click',function() {
+    tracker_url = '/wp-content/themes/staffportal/record_post_view.php';
+    post_data = {
+      document_id: $(this).data('documentid'),
+      user_id: $(this).data('userid')
+    }
+    $.post(tracker_url,post_data,function(data) {
+      console.log('tracked document view');
+      if(data) {
+        console.log(data);
+      }
+    })
+  });
 
   //nav js
   var menu = $('#main_nav');
@@ -87,7 +99,7 @@ $(document).ready(function() {
   var $links = $('.anchor-links li');
   var linksLength = $links.length;
   var widthOfLink = 100 / linksLength;
-  
+
   function linkWidth() {
     if($(window).width() >= 1024) {
       $links.each(function() {
