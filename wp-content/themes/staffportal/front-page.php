@@ -20,7 +20,6 @@ get_header(); ?>
           $args['post__in'] = $most_recent_ids;
           $args['orderby'] = 'post__in';
         }
-        // var_dump($args);
           $document_files = get_posts($args);
           foreach($document_files as $document_file) {
             $file_parts = explode("/",get_field('file_path',$document_file->ID));
@@ -35,8 +34,12 @@ get_header(); ?>
       <ul>
         <?php
           $args = array(
-            'post_type' => 'document-file',
+            'post_type'   => 'document-file',
             'post_status' => 'publish',
+            'meta_key'		=> 'views',
+            'orderby'			=> 'meta_value_num',
+	          'order'				=> 'DESC',
+            'posts_per_page' => 5
           );
           $document_files = get_posts($args);
           foreach($document_files as $document_file) {
