@@ -24,7 +24,6 @@
             height: 80px;
         }
         #main_nav {
-            background-color: $black;
             @include tablet-landscape-and-up {
                 top: 50%;
                 position: absolute;
@@ -56,11 +55,16 @@
 .alert-icon, .mail-icon, .profile-icon {
     background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
     background-size: 36px;
-    position: absolute;
-    top: 0;
+
     width: 36px;
     height: 36px;
-    text-indent: -99999px;
+    padding: 8px 20px 12px 50px;
+    @include tablet-landscape-and-up {
+        position: absolute;
+        top: 0;
+        text-indent: -99999px;
+        padding-left: 30px; 
+    }
     @include transition(0.2s ease);
     &:hover {
         background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
@@ -95,7 +99,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     a {
         margin: 0 auto;
         border-top: 1px solid;
-        text-indent: 12px;
+        
         padding: 15px 0;
         width: 95%;
         @include tablet-landscape-and-up {
@@ -225,7 +229,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 
 .hero-main {
   background:$sp-light-gray;
-  padding:60px;
+  padding:60px 0;
     .container {
         margin-top: 0;
         @include tablet-portrait-and-up {
@@ -658,11 +662,31 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     font-weight: bold;
     text-align: center;
     display: block;
+    position: relative;
+    &:hover {
+        color: $yellow;
+    }
+    &:hover:after {
+        background: url('../images/icons/icon_arrow dot_yellow-01.svg') no-repeat center center;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        background: url('../images/icons/icon_arrow dot_blu-01.svg') no-repeat center center;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        @include transform(rotate(-90deg));
+    }
 }
 
-.box-blue {
+.box-blue, .box-gray {
     .to-top {
         color: $white;
+        &:after {
+            background: url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat center center;
+        }
     }
 }
 
