@@ -1025,7 +1025,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .alert-modal, .profile-modal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
@@ -1035,6 +1035,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     z-index: 9999;
     display: none;
     background-color: rgba(0,0,0,0.75);
+    overflow-y: scroll;
 }
 
 .alert-date {
@@ -1047,10 +1048,10 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 .modal-panel {
     background-color: $white;
     position: relative;
-    top: 50%;
-    height: 80%;
-    margin: 0 auto;
-    transform: translateY(-50%) scale(0.7);
+    top: 5%;
+    height: 100%;
+    margin: 0 auto 50px;
+    @include transform(scale(0.7));
 
     ul.container {
         margin: 10px auto;
@@ -1096,6 +1097,13 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     a:first-child {
         margin-right: 26%;
     }
+    .btn-blue {
+      width: 47%;
+      margin-right: 5%;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
 }
 
 a.modal-link {
@@ -1132,8 +1140,11 @@ a.modal-link {
 }
 
 .scale-in {
-    transform: translateY(-50%) scale(1);
-    transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+  @include transform(scale(1));
+  @include tablet-landscape-and-up {
+    @include transform(scale(1));
+  }
 }
 
 .card-hidden {
@@ -1215,8 +1226,9 @@ a.modal-link {
   }
 }
 .photo-edit {
+  text-align: center;
     input {
-        visibility: hidden;
+        display: none;
     }
     label {
         color: $fourpoint_blue;
@@ -1224,7 +1236,8 @@ a.modal-link {
         background: url("../images/icons/icon_arrow dot_wht-01.svg") no-repeat center right;
         background-size: 30px;
         font-weight: normal;
-        padding-right: 20px;
+        padding-right: 30px;
+        padding-bottom: 2px;
     }
 }
 .copy_split .side-content aside p.ticket-details {
@@ -1243,4 +1256,33 @@ a.modal-link {
 }
 .back-link {
   font-weight:bold;
+}
+
+.form-group {
+  width: 100%;
+  display: inline-block;
+  margin: 10px 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  @include tablet-portrait-and-up {
+    width: 50%;
+  }
+  label {
+    width: 100%;
+    float: left;
+    color: $sp_gray;
+
+  }
+  input, textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $sp-gray;
+    padding: 5px 0 5px 5px;
+    font-size: 15px;
+  }
+  textarea {
+    border: 1px solid $sp-gray;
+  }
+  &:last-of-type {
+    margin-bottom: 40px;
+  }
 }

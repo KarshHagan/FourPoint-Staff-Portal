@@ -14,14 +14,39 @@
     <div class="container">
       <form>
         <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          <label for="name">Name</label>
+          <input type="name" class="form-control" id="name" placeholder="Name">
         </div>
         <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <label for="title">Title</label>
+          <input type="title" class="form-control" id="title" placeholder="Title">
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Email">
+        </div>
+
+        <div class="form-group">
+          <label for="outside-dial">Outside Dial</label>
+          <input type="outside-dial" class="form-control" id="outside-dial" placeholder="Outside Dial">
+        </div>
+
+        <div class="form-group">
+          <label for="mobile">Mobile</label>
+          <input type="mobile" class="form-control" id="mobile" placeholder="Mobile">
+        </div>
+
+        <div class="form-group">
+          <label for="conf-call">Conf. Call ID</label>
+          <input type="conf-call" class="form-control" id="conf-call" placeholder="Conf. Call ID">
+        </div>
+
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea rows="6" cols="50" class="form-control" id="bio" placeholder="Enter your bio"></textarea>
+        </div>
+        <button type="submit" class="button btn-blue">Save Changes</button>
+        <button type="button" class="button btn-blue">Cancel</button>
       </form>
     </div>
   </div>
