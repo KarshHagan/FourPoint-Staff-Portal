@@ -1,9 +1,11 @@
 <!-- profile modal -->
 <div class="profile-modal">
   <div class="container shadow-border modal-panel">
+  <div class="intro-wrap">
     <h1 class="container">profile modal<span class="close-modal" id="profile-modal"><img src="/wp-content/themes/staffportal/assets/images/icons/icon_close_blu.svg" /></span></h1>
     <p>Instructions Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
     <div class="photo-edit">
       <img class="profile-img" src="/wp-content/themes/fourpoint/assets/images/frenchy.jpg">
       <form>
@@ -11,7 +13,7 @@
         <input type="file" id="profile-photo-upload">
       </form>
     </div>
-    <div class="container">
+    <div class="container form-container">
       <form>
         <div class="form-group">
           <label for="name">Name</label>
@@ -46,7 +48,6 @@
           <textarea rows="6" cols="50" class="form-control" id="bio" placeholder="Enter your bio"></textarea>
         </div>
         <button type="submit" class="button btn-blue">Save Changes</button>
-        <button type="button" class="button btn-blue">Cancel</button>
       </form>
     </div>
   </div>

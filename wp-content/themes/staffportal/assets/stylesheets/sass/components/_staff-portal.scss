@@ -1018,10 +1018,9 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     border: 6px solid white;
     margin: 20px auto 15px;
     max-width: 140px;
-}
-
-.close-alert {
-
+    @include tablet-portrait-and-up {
+      width: 100%;
+    }
 }
 
 .alert-modal, .profile-modal {
@@ -1049,7 +1048,8 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     background-color: $white;
     position: relative;
     top: 5%;
-    height: 100%;
+    height: 90%;
+    width: 94%;
     margin: 0 auto 50px;
     @include transform(scale(0.7));
 
@@ -1100,9 +1100,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     .btn-blue {
       width: 47%;
       margin-right: 5%;
-      &:last-child {
-        margin-right: 0;
-      }
+      max-width: 200px;
     }
 }
 
@@ -1227,6 +1225,11 @@ a.modal-link {
 }
 .photo-edit {
   text-align: center;
+  @include tablet-portrait-and-up {
+    float: left;
+    width: 18%;
+    margin-right: 4%;
+  }
     input {
         display: none;
     }
@@ -1264,12 +1267,18 @@ a.modal-link {
   margin: 10px 0;
   font-family: 'Source Sans Pro', sans-serif;
   @include tablet-portrait-and-up {
-    width: 50%;
+    width: 48%;
+    margin-right: 3%;
+    &:nth-child(even) {
+      margin-right: 0;
+    }
   }
   label {
     width: 100%;
     float: left;
-    color: $sp_gray;
+    margin-left: 5px;
+    color: $light_gray;
+    margin-bottom: 8px;
 
   }
   input, textarea {
@@ -1278,11 +1287,36 @@ a.modal-link {
     border-bottom: 1px solid $sp-gray;
     padding: 5px 0 5px 5px;
     font-size: 15px;
+    color: $light_gray;
   }
+
+  input:focus {
+      color: $black;
+  }
+
   textarea {
     border: 1px solid $sp-gray;
   }
   &:last-of-type {
     margin-bottom: 40px;
+    width: 100%;
+  }
+}
+
+.form-container {
+  margin-top: 10px;
+  @include tablet-portrait-and-up {
+    float: left;
+    width: 70%;
+  }
+}
+
+.intro-wrap {
+  p {
+    width: 96%;
+    max-width: 500px;
+    @include tablet-portrait-and-up {
+      margin: 20px 20px 30px;
+    }
   }
 }

@@ -135,7 +135,7 @@ $(document).ready(function() {
     linkWidth();
   });
 
-  var employeeSort = new EmployeeSort();
+  var employeeSort = new EmployeeSort();  
 
 });
 
