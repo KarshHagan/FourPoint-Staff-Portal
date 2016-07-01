@@ -125,6 +125,7 @@ $(document).ready(function() {
     if(windowWidth <= 768) {
       $('.collapse-item-click').on('click', function() {
         $(this).next().slideToggle(250);
+        $(this).find('.plus-minus').toggleClass('minus');
       });
     }
   }

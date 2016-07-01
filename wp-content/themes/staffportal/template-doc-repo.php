@@ -65,7 +65,7 @@ $category_taxonomy = get_field('category_taxonomy');
             )
           );
           foreach($documents as $document) { ?>
-            <h4 class="collapse-item-click"><?php echo $document->post_title ?><span>+</span></h4>
+            <h4 class="collapse-item-click"><?php echo $document->post_title ?><span class="plus-minus"></span></h4>
                 <?php $document_files = get_field('document_files',$document->ID);
                 if($document_files) { ?>
                   <ul class="collapsible-content">

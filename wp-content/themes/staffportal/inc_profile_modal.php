@@ -29,6 +29,11 @@
         </div>
 
         <div class="form-group">
+          <label for="location">Office Location</label>
+          <input type="location" class="form-control" id="location" placeholder="Office Location">
+        </div>
+
+        <div class="form-group">
           <label for="direct-line">Direct Line</label>
           <input type="direct-line" class="form-control" id="direct-line" placeholder="Direct Line">
         </div>
