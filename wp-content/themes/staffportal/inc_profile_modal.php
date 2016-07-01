@@ -29,8 +29,8 @@
         </div>
 
         <div class="form-group">
-          <label for="outside-dial">Outside Dial</label>
-          <input type="outside-dial" class="form-control" id="outside-dial" placeholder="Outside Dial">
+          <label for="direct-line">Direct Line</label>
+          <input type="direct-line" class="form-control" id="direct-line" placeholder="Direct Line">
         </div>
 
         <div class="form-group">

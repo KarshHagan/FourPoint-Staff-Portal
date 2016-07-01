@@ -25,6 +25,16 @@ wp_get_current_user();
   <?php wp_head(); ?>
 </head>
 <body <?php body_class();?>>
+
+<!--   <script>
+       var password = prompt("Please enter your password", "");
+       if (password !== 'paNda$' || password == null) {
+           var e = document.body;
+           e.parentNode.removeChild(e);
+           window.location = "http://google.com"
+       }
+   </script> -->
+   
 	<nav class="sp-nav">
     <section>
       <a class="logo" href="/">
