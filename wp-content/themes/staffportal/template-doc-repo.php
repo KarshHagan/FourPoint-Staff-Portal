@@ -53,6 +53,8 @@ $category_taxonomy = get_field('category_taxonomy');
             array(
               'post_type' => $post_type,
               'post_status' => 'publish',
+              'orderby' => 'menu_order',
+              'order' => 'ASC',
               'tax_query' => array(
                 array(
                   'taxonomy' => $category_taxonomy,
