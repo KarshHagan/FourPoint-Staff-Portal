@@ -16,5 +16,5 @@ get_header(); ?>
   	</div>
   </div>
 <?php endwhile;// end of the loop. ?>
-<p><a href="/it-help-center">Back to Tickets</a></p>
+<p><a href="/it-help-center">Back to IT Help Center</a></p>
 <?php get_footer(); ?>

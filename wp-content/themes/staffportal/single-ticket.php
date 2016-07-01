@@ -13,7 +13,7 @@ get_header(); ?>
   <div class="container general-content">
   	<div class="wrapper">
       <?php the_content(); ?>
-      <p><a href="/it-help-center" class="back-link">Back to Tickets</a></p>
+      <p><a href="/it-help-center" class="back-link">Back to IT Help Center</a></p>
   	</div>
   </div>
 <?php endwhile;// end of the loop. ?>

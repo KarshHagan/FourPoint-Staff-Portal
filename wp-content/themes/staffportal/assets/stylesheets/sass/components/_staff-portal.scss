@@ -1,10 +1,10 @@
 .sp-nav {
     background-color: $dark_gray;
     background-image: none;
-    // display: inline-block;
     padding: 0;
     .logo {
-        width: 275px;
+        max-width: 275px;
+        width: 50%;
         img {
             @include tablet-landscape-and-up {
                 top: 50%;
@@ -539,50 +539,83 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .box-left {
-    width: 100%;
+  width: 100%;
+  @include tablet-portrait-and-up {
+    width: 43%;
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 3%;
+  }
+  h2 {
+      text-transform: uppercase;
+  }
+}
+
+.benefit-category-links {
+  @include clearfix;
+  text-align:left;
+  margin: 25px 0 20px;
+}
+
+.benefit-category-link {
+  @include clearfix;
+  margin-bottom:25px;
+  width: 100%;
+  float: left;
+  @media (min-width: 480px) {
+    height: 83px;
+    vertical-align: bottom;
+    display: table-cell;
+    float: none;
+    width: 33%;
+    padding-right: 12px;
+  }
+  @include tablet-portrait-and-up {
+    display: block;
+    width: 50%;
+  }
+  @include tablet-landscape-and-up {
+    display: table-cell;
+    width: 33%;
+  }
+}
+
+a.link {
+  display: inline-block;
+  width: 100%;
+  color:$fourpoint_blue;
+  font-size:14px;
+  @media (min-width: 990px) {
+    max-width: 100%;
+    margin-right: 14px;
+  }
+  img {
+    margin: 0;
+    max-width: 100px;
+    @media (min-width: 480px) {
+      margin-right: 35px;
+    }
     @include tablet-portrait-and-up {
-      width: 43%;
-      // float: left;
-      display: table-cell;
-      vertical-align: middle;
-      padding-right: 3%;
+      margin-right: 0;
     }
-    .benefit-category-links {
-      @include clearfix;
-      text-align:left;
-      margin: 25px 0;
-      .benefit-category-link {
-        @include clearfix;
-        margin-bottom:20px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-        .logo {
-          float:left;
-          max-width: 120px;
-          height: auto;
-        }
-        a.link {
-          display: inline-block;
-          width: 100%;
-          max-width: 300px;
-          text-align: right;
-          color:$fourpoint_blue;
-          font-size:14px;
-          height:70px;
-          line-height:70px;
-          background:url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat right 21px;
-          background-size:28px;
-          padding-right:28px;
-          @include tablet-portrait-and-up {
-            max-width: 100%;
-          }
-        }
-      }
+    @media (min-width: 1110px) {
+      margin-right: 10px;
     }
-    h2 {
-        text-transform: uppercase;
-    }
+  }
+}
+
+.visit {
+  position: relative;
+  position: relative;
+  margin-top: 10px;
+  display: block;
+  &:after {
+    content: '';
+    background:url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat 25px;
+    background-position: center;
+    background-size:28px;
+    padding-right:28px;
+  }
 }
 .box-right {
 
@@ -679,26 +712,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .to-top {
-    color: $fourpoint_blue;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-align: center;
-    display: block;
-    position: relative;
-    &:hover {
-        color: $yellow;
-    }
-    &:hover:after {
-        background: url('../images/icons/icon_arrow dot_yellow-01.svg') no-repeat center center;
-    }
     &:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        background: url('../images/icons/icon_arrow dot_blu-01.svg') no-repeat center center;
-        width: 20px;
-        height: 20px;
-        margin-left: 10px;
         @include transform(rotate(-90deg));
     }
 }
@@ -1149,14 +1163,43 @@ a.modal-link {
 .close-modal, .remove-alert {
     float: right;
     cursor: pointer;
-    display: inline;
-    width: 23px;
-    height: 23px;
+    position: relative;
     img {
         display: inline;
         width: 23px;
         height: 23px;
     }
+}
+
+.remove-alert {
+  padding-right: 30px;
+}
+
+.text-arrow-link {
+  color: $fourpoint_blue;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  position: relative;
+
+  &:hover {
+      color: $yellow;
+  }
+  &:hover:after {
+      background: url('../images/icons/icon_arrow dot_yellow-01.svg') no-repeat center center;
+  }
+  &:after {
+    background: url('../images/icons/icon_arrow dot_blu-01.svg');
+    content: '';
+    background-repeat: no-repeat;
+    background-size: 20px;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    position: absolute;
+    top: 0;
+  }  
 }
 
 .scale-in {

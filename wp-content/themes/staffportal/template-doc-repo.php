@@ -35,8 +35,9 @@ $category_taxonomy = get_field('category_taxonomy');
         <div class="benefit-category-links">
         <?php foreach($links as $link) { ?>
           <div class="benefit-category-link">
-            <a class="link" target="_blank" href="<?php echo $link['url'] ?>">Visit Site
-              <div class="logo"><img src="<?php echo $link['logo'] ?>"></div>
+            <a class="link" target="_blank" href="<?php echo $link['url'] ?>">
+              <img src="<?php echo $link['logo'] ?>">
+              <span class="visit">Visit Site</span>
             </a>
           </div>
         <?php } ?>
@@ -74,7 +75,7 @@ $category_taxonomy = get_field('category_taxonomy');
           <?php } ?>
       </div>
     </div>
-    <a href="#top" class="to-top">Back to top</a>
+    <a href="#top" class="to-top text-arrow-link">Back to top</a>
   </section>
   <?php } ?>
 <?php endwhile;// end of the loop. ?>

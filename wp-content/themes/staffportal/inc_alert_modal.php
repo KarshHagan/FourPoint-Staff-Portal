@@ -19,7 +19,7 @@ $alerts = get_posts(
             <?php echo $alert->content ?></p>
             <div class="document-files">
                 <a href="<?php the_field('external_link'); ?>" target="_blank"><?php the_field('external_link_name'); ?></a>
-                <img src="/wp-content/themes/staffportal/assets/images/icons/icon_minus_blu-01-01.svg" class="remove-alert"/>
+                <span class="remove-alert text-arrow-link">Remove</span>
             </div>
           <?php } elseif( get_field('linked_page',$alert->ID) ) {
             $linked_page = get_field('linked_page',$alert->ID);
@@ -28,7 +28,7 @@ $alerts = get_posts(
             <?php echo $alert->post_content ?></p>
             <div class="document-files">
                 <a href="<?php echo get_permalink($linked_page->ID); ?>" class="go-to-page">view</a>
-                <img src="/wp-content/themes/staffportal/assets/images/icons/icon_minus_blu-01-01.svg" class="remove-alert"/>
+                <span class="remove-alert text-arrow-link">Remove</span>
             </div>
           <?php } elseif( get_field('linked_document') ) {
             $document_file = get_field('linked_document'); ?>
@@ -36,13 +36,13 @@ $alerts = get_posts(
           <?php echo $alert->post_content ?></p>
           <div class="document-files">
             <a href="<?php the_field('file_path',$document_file->ID) ?>" target="_blank"><?php echo $document_file->post_title ?></a>
-            <img src="/wp-content/themes/staffportal/assets/images/icons/icon_minus_blu-01-01.svg" class="remove-alert"/>
+            <span class="remove-alert text-arrow-link">Remove</span>
           </div>
           <?php } else { ?>
             <p><span class="alert-date"><?php the_field('alert_date',$alert->ID) ?>  |</span>
             <?php echo $alert->post_content ?></p>
             <div class="document-files">
-              <img src="/wp-content/themes/staffportal/assets/images/icons/icon_minus_blu-01-01.svg" class="remove-alert"/>
+              <span class="remove-alert text-arrow-link">Remove</span>
             </div>
           <?php } ?>
         </div>

@@ -29,8 +29,8 @@ get_header(); ?>
         <?php if(count($links) > 0) { ?>
         <div class="benefit_category_link">
         <?php foreach($links as $link) { ?>
-          <div class="logo"><img src="<?php the_field('logo',$link->ID) ?>"></div>
-          <a class="link" href="<?php the_field('url',$link->ID) ?>">Visit Site &rdquo;</a>
+          <a class="link" href="<?php the_field('url',$link->ID) ?>">
+          <img src="<?php the_field('logo',$link->ID) ?>">Visit Site &rdquo;</a>
         <?php } ?>
         </div>
         <?php
