@@ -119,6 +119,22 @@ $(document).ready(function() {
   linkWidth();
 
 
+  // back to top buttons
+  $('.to-top').on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: $('#top').offset().top
+    }, 250);
+  });
+
+  // secondary nav items
+  $('.second-link').on('click', function(e) {
+    e.preventDefault();
+    var href = $(this).attr('href');
+    $('html, body').animate({
+      scrollTop: $(href).offset().top
+    }, 250);
+  });
 
   // STAFF PORTAL ACCORDIONS
   function accordionCollapse(windowWidth) {

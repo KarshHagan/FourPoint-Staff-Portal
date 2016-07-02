@@ -35,7 +35,7 @@ wp_get_current_user();
        }
    </script> -->
    
-	<nav class="sp-nav">
+	<nav class="sp-nav" id="top">
     <section>
       <a class="logo" href="/">
         <img src="<?php $theme->images_path() ?>/fp-logo.svg" alt="FourPoint Energy Logo">

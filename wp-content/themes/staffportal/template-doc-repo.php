@@ -16,7 +16,7 @@ $category_taxonomy = get_field('category_taxonomy');
       ));
       foreach($categories as $category) {
       ?>
-      <li><a href="#<?php echo $category->slug ?>"><?php echo $category->name ?></a></li>
+      <li><a class="second-link" href="#<?php echo $category->slug ?>"><?php echo $category->name ?></a></li>
       <?php } ?>
     </ul>
   </div>
@@ -25,8 +25,10 @@ $category_taxonomy = get_field('category_taxonomy');
   <?php
   foreach($categories as $category) {
   ?>
+
+  <!-- pete do you need this "<a name" tag below? if not please delete. -->
   <a name="<?php echo $category->slug ?>"></a>
-  <section class="box <?php the_field('background_color',$category) ?>">
+  <section class="box <?php the_field('background_color',$category) ?>" id="<?php echo $category->slug ?>">
     <div class="container shadow-border">
       <div class="box-left">
         <h2><?php echo $category->name ?></h2>
