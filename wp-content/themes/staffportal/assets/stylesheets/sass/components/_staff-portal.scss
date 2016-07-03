@@ -59,9 +59,9 @@
 .alert-icon, .mail-icon, .profile-icon {
     background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
     background-size: 36px;
-
     width: 36px;
     height: 36px;
+    position: relative;
     padding: 8px 20px 12px 50px;
     @include tablet-landscape-and-up {
         position: absolute;
@@ -1139,6 +1139,21 @@ a.link {
     font-weight: bold;
     float: left;
     margin-right: 5px;
+}
+
+.alert-notification {
+  position: absolute;
+  top: -1px;
+  left: 25px;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  padding-left: 5px;
+  background-color: $yellow;
+  color: $black;
+  border-radius: 50%;
+  text-indent: 0;
+  line-height: 15px;
 }
 
 .modal-panel {
