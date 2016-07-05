@@ -67,7 +67,7 @@
         position: absolute;
         top: 0;
         text-indent: -99999px;
-        padding-left: 30px; 
+        padding-left: 30px;
     }
     @include transition(0.2s ease);
     &:hover {
@@ -80,14 +80,14 @@
     background: url("../images/icons/icon_email_blu-01.svg") no-repeat;
     &:hover {
         background: url("../images/icons/icon_email_white-01.svg") no-repeat;
-    }  
+    }
 }
 
 .profile-icon {
     background: url("../images/icons/icon_profile_blue-01.svg") no-repeat;
     &:hover {
         background: url("../images/icons/icon_profile_white.svg") no-repeat;
-    }  
+    }
 }
 
 nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
@@ -103,7 +103,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     a {
         margin: 0 auto;
         border-top: 1px solid;
-        
+
         padding: 15px 0;
         width: 95%;
         @include tablet-landscape-and-up {
@@ -1275,7 +1275,7 @@ a.modal-link {
     margin-left: 10px;
     position: absolute;
     top: 0;
-  }  
+  }
 }
 
 .scale-in {
@@ -1311,13 +1311,14 @@ a.modal-link {
 }
 
 .contact-info {
-    padding: 0 20px;
+    margin-left: 0;
+    padding: 0 10px;
     overflow: hidden;
     @media screen and (min-width: 560px) {
         padding: 0;
     }
     @media screen and (min-width: 710px) {
-        padding: 0 20px;
+        padding: 0 10px;
     }
 
     li {
@@ -1325,10 +1326,12 @@ a.modal-link {
         text-align: left;
         color: $medium_gray;
         margin-bottom: 6px;
+        font-size:0.825em;
     }
     span {
         color: $black;
-        width: 66%;
+        // width: 66%;
+        width: 72%;
         float: right;
     }
 }
@@ -1500,4 +1503,35 @@ a.modal-link {
 
 .it-items {
   margin-top: 0;
+}
+// Search Results
+h6 {
+    font-weight:normal;
+    font-size:1.2em;
+}
+.search_results {
+    .result {
+        overflow:hidden;
+        border-bottom:1px solid black;
+        padding:40px 60px;
+        .search-result-files {
+            margin-top: 10px;
+            margin-left: 0;
+            li {
+                background: url("../images/icons/icon_doc_grey-01.svg") no-repeat;
+                background-size: 20px 25px;
+                // padding-left: 30px;
+                padding:0 0 4px 30px;
+                a {
+                    color:$fourpoint_blue;
+                }
+            }
+        }
+    }
+    .employee-results {
+        text-align:center;
+        h3 {
+            color:#000;
+        }
+    }
 }

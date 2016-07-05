@@ -34,7 +34,7 @@ wp_get_current_user();
            window.location = "http://google.com"
        }
    </script> -->
-   
+
 	<nav class="sp-nav" id="top">
     <section>
       <a class="logo" href="/">
@@ -72,7 +72,7 @@ wp_get_current_user();
       <div class="search-left">
         <h1><?php if(get_field('page_heading')) {
           the_field('page_heading');
-        } else { the_title(); } ?></h1>
+        } elseif(is_search()) { echo('Search Results'); } else { the_title(); } ?></h1>
         <h3>Search for a document or resource</h3>
         <?php get_search_form(); ?>
       </div>
