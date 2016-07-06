@@ -23,11 +23,9 @@ $ticket_qry = new WP_Query( $args );
 
 
 <div class="container it-top">
-  <p class="it-copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco</p>
+  <p class="it-copy"><?php the_content(); ?></p>
   <a href="#" class="button btn-blue it-sys-btn">IT Ticketing System</a>
-  <p class="it-tel">Help Line: <a href="tel:#####">303.303.0303</a></p>
+  <p class="it-tel">Help Line: <a href="tel:<?php the_field('help_line_phone_number') ?>"><?php the_field('help_line_phone_number') ?></a></p>
   <hr>
   <div class="it-sort" data-active-btn="all">
     <ul>

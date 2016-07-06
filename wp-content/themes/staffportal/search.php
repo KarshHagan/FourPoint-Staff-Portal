@@ -41,7 +41,6 @@ $employees = get_users( $args );
             array_push($offices,$post);
             break;
      }
-     var_dump($post->post_type);
    endwhile;
    ?>
   <div class="search_results container">

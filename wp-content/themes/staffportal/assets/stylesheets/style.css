@@ -1356,10 +1356,13 @@ a.button {
     transition: background 0.3s ease; }
 
 .btn-blue {
-  border: 1px solid #00a8e2; }
+  background-color: #00a8e2;
+  border: 1px solid #00a8e2;
+  color: #ffffff; }
   .btn-blue:hover {
     background: #ffffff;
     color: #00a8e2;
+    border: 1px solid #00a8e2;
     -webkit-transition: background 0.3s ease;
     -moz-transition: background 0.3s ease;
     transition: background 0.3s ease; }
@@ -3191,6 +3194,13 @@ a.link {
     .profile-img {
       width: 100%; } }
 
+.profile-img-wrapper {
+  width: 150px;
+  height: 150px;
+  overflow: hidden; }
+  .profile-img-wrapper img {
+    width: 150px; }
+
 .alert-modal, .profile-modal {
   position: fixed;
   top: 0;
@@ -3224,6 +3234,17 @@ a.link {
   text-indent: 0;
   line-height: 15px; }
 
+.alert-modal ul.container {
+  margin: 10px auto;
+  padding: 0; }
+.alert-modal li {
+  display: table;
+  vertical-align: middle;
+  border-bottom: 2px solid #ededed;
+  margin: 10px 0;
+  padding: 10px 10px 20px;
+  width: 100%; }
+
 .modal-panel {
   background-color: #ffffff;
   position: relative;
@@ -3236,16 +3257,6 @@ a.link {
   -ms-transform: scale(0.7);
   -o-transform: scale(0.7);
   transform: scale(0.7); }
-  .modal-panel ul.container {
-    margin: 10px auto;
-    padding: 0; }
-  .modal-panel li {
-    display: table;
-    vertical-align: middle;
-    border-bottom: 2px solid #ededed;
-    margin: 10px 0;
-    padding: 10px 10px 20px;
-    width: 100%; }
   .modal-panel h1 {
     text-align: center;
     width: 96%;
@@ -3425,8 +3436,15 @@ a.modal-link {
       float: left;
       width: 18%;
       margin-right: 4%; } }
+  .photo-edit .gform_footer {
+    margin-top: 15px; }
+    .photo-edit .gform_footer input {
+      margin-left: 1.5em;
+      margin-right: 0; }
+  .photo-edit .gfield_description {
+    color: #B6B6B6; }
   .photo-edit input {
-    display: none; }
+    display: none !important; }
   .photo-edit label {
     color: #00a8e2;
     cursor: pointer;
@@ -3450,44 +3468,43 @@ a.modal-link {
 .back-link {
   font-weight: bold; }
 
-.form-group {
-  width: 100%;
-  display: inline-block;
-  margin: 10px 0;
-  font-family: 'Source Sans Pro', sans-serif; }
-  @media (min-width: 768px) {
-    .form-group {
-      width: 48%;
-      margin-right: 3%; }
-      .form-group:nth-child(even) {
-        margin-right: 0; } }
-  .form-group label {
-    width: 100%;
-    float: left;
-    margin-left: 5px;
-    color: #B6B6B6;
-    margin-bottom: 8px; }
-  .form-group input, .form-group textarea {
-    width: 100%;
-    border: none;
-    border-bottom: 1px solid #d4d4d4;
-    padding: 5px 0 5px 5px;
-    font-size: 15px;
-    color: #B6B6B6; }
-  .form-group input:focus {
-    color: #000000; }
-  .form-group textarea {
-    border: 1px solid #d4d4d4; }
-  .form-group:last-of-type {
-    margin-bottom: 40px;
-    width: 100%; }
-
 .form-container {
   margin-top: 10px; }
   @media (min-width: 768px) {
     .form-container {
       float: left;
       width: 70%; } }
+  .form-container .form-group, .form-container .gfield {
+    width: 100%;
+    display: inline-block;
+    margin: 10px 0;
+    font-family: 'Source Sans Pro', sans-serif; }
+    @media (min-width: 768px) {
+      .form-container .form-group, .form-container .gfield {
+        width: 48%;
+        margin-right: 3%; }
+        .form-container .form-group:nth-child(even), .form-container .gfield:nth-child(even) {
+          margin-right: 0; } }
+    .form-container .form-group label, .form-container .gfield label {
+      width: 100%;
+      float: left;
+      margin-left: 5px;
+      color: #B6B6B6;
+      margin-bottom: 8px; }
+    .form-container .form-group input, .form-container .form-group textarea, .form-container .gfield input, .form-container .gfield textarea {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #d4d4d4;
+      padding: 5px 0 5px 5px;
+      font-size: 15px;
+      color: #B6B6B6; }
+    .form-container .form-group input:focus, .form-container .gfield input:focus {
+      color: #000000; }
+    .form-container .form-group textarea, .form-container .gfield textarea {
+      border: 1px solid #d4d4d4; }
+    .form-container .form-group:last-of-type, .form-container .gfield:last-of-type {
+      margin-bottom: 40px;
+      width: 100%; }
 
 .intro-wrap p {
   width: 96%;
@@ -3545,3 +3562,14 @@ h6 {
   text-align: center; }
   .search_results .employee-results h3 {
     color: #000; }
+
+.login p {
+  text-align: left; }
+.login .form_wrap div label {
+  max-width: 100%;
+  width: 100%; }
+.login .form_wrap div input[type="text"], .login .form_wrap div input[type="password"], .login .form_wrap div #user_pass, .login .form_wrap div textarea {
+  margin-left: 0; }
+
+.login-username {
+  margin-top: 0; }
