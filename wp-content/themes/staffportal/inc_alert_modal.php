@@ -8,6 +8,8 @@ if( !isset( $alerts ) ) {
     )
   );
 }
+$removed_alert_ids = get_field('removed_alert_ids', $current_user->data->ID);
+$removed_alerts = explode(",",$removed_alert_ids);
 ?>
 <div class="alert-modal" data-userid="<?php echo $current_user->data->ID ?>" data-last-id="<?php if( count($alerts)>0 ) { echo $alerts[0]->ID; } ?>">
   <div class="container shadow-border modal-panel">
@@ -15,6 +17,7 @@ if( !isset( $alerts ) ) {
     <?php if( $alerts && count($alerts) > 0 ) { ?>
     <ul class="container">
       <?php foreach( $alerts as $alert ) { ?>
+        <?php if( !array_search($alert->ID,$removed_alerts) ) { ?>
       <li class="alert-<?php echo $alert->ID ?>">
         <div class="modal-left">
           <?php if(get_field('external_link')) { ?>
@@ -50,6 +53,7 @@ if( !isset( $alerts ) ) {
           <?php } ?>
         </div>
       </li>
+      <?php } ?>
       <?php } ?>
     </ul>
     <?php } else { ?>
