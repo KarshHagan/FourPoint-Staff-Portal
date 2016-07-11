@@ -7,13 +7,24 @@
     tempor incididunt ut labore et dolore magna aliqua.</p>
   </div>
     <div class="photo-edit">
-      <img class="profile-img" src="/wp-content/themes/fourpoint/assets/images/frenchy.jpg">
-      <form>
+      <?php
+        $profile_photo = get_field('profile_photo','user_'.$current_user->data->ID);
+      ?>
+      <div class="profile-img-wrapper">
+        <img class="profile-img" src="<?php echo get_field('profile_photo','user_'.$current_user->data->ID); ?>">
+      </div>
+      <!-- <img class="profile-img" src="/wp-content/themes/fourpoint/assets/images/frenchy.jpg"> -->
+      <?php //gravity_form( 'Edit Profile Photo', false, false, false, null, true); ?>
+      <!-- <form>
         <label for="profile-photo-upload">Edit Photo</label>
         <input type="file" id="profile-photo-upload">
-      </form>
+
+      </form> -->
     </div>
-    <div class="container form-container">
+    <div class="form-container">
+      <?php gravity_form( 'Edit Profile', false, false, false, null, true); ?>
+    </div>
+    <!-- <div class="container form-container">
       <form>
         <div class="form-group">
           <label for="name">Name</label>
@@ -54,6 +65,6 @@
         </div>
         <button type="submit" class="button btn-blue">Save Changes</button>
       </form>
-    </div>
+    </div> -->
   </div>
 </div>

@@ -12,7 +12,7 @@ $(document).ready(function() {
       if(data) {
         console.log(data);
       }
-    })
+    });
   });
 
   //nav js
@@ -85,6 +85,36 @@ $(document).ready(function() {
     var clickedId = this.id;
     $('body').css('overflow-Y', 'hidden');
     $('.'+ clickedId + '-modal').fadeToggle().find('.modal-panel').addClass('scale-in');
+    last_id = $('.'+ clickedId + '-modal').data('last-id');
+    tracker_url = '/wp-content/themes/staffportal/record_alert_view.php';
+    post_data = {
+      alert_id: last_id,
+      user_id: $('.'+ clickedId + '-modal').data('userid')
+    }
+    $.post(tracker_url,post_data,function(data) {
+      console.log('tracked alert view');
+      if(data) {
+        console.log(data);
+      }
+    });
+    $(".alert-notification").hide();
+  });
+
+  $(".remove-alert").on('click',function() {
+    alert_id = $(this).data('alertid');
+    console.log("alert id"+alert_id);
+    tracker_url = '/wp-content/themes/staffportal/record_alert_removed.php';
+    post_data = {
+      alert_id: alert_id,
+      user_id: $(this).data('userid')
+    }
+    $.post(tracker_url,post_data,function(data) {
+      console.log('tracked alert removed');
+      if(data) {
+        console.log(data);
+      }
+    });
+    $(".alert-"+alert_id).hide();
   });
 
   $('.close-modal').on('click', function(evt) {
@@ -152,7 +182,7 @@ $(document).ready(function() {
     linkWidth();
   });
 
-  var employeeSort = new EmployeeSort();  
+  var employeeSort = new EmployeeSort();
 
 });
 

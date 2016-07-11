@@ -5,6 +5,19 @@
 global $theme;
 global $current_user;
 wp_get_current_user();
+$alerts = get_posts(
+  array(
+    'post_type' => 'alert',
+    'post_status' => 'publish',
+  )
+);
+$last_alert_id = '';
+$unread_alerts = false;
+if( count($alerts)>0 ) { $last_alert_id = $alerts[0]->ID; }
+$last_alert_viewed = get_field('last_alert_viewed',$current_user->data->ID);
+if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
+  $unread_alerts = true;
+}
 ?><!DOCTYPE html>
 <html <?php language_attributes();?>>
 <head>
@@ -17,15 +30,12 @@ wp_get_current_user();
   ?>
   <meta name="description" content="<?php echo $pageDescription; ?>">
   <meta name="author" content="Karsh Hagan">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
+  <link rel="icon"
+      type="image/png"
+      href="/wp-content/themes/staffportal/assets/images/fourpoint_favicon.png">
   <?php wp_head(); ?>
 </head>
 <body <?php body_class();?>>
-
 <!--   <script>
        var password = prompt("Please enter your password", "");
        if (password !== 'paNda$' || password == null) {
@@ -47,12 +57,14 @@ wp_get_current_user();
             <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/employee-benefits" class="btn-blue btn-wide button"><span class="sp-icon"></span>Benefits</a></li>
             <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/documents-forms" class="btn-blue btn-wide button"><span class="sp-icon"></span>Documents &amp; Forms</a></li>
             <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/brand-center" class="btn-blue btn-wide button"><span class="sp-icon"></span>Brand Center</a></li>
-            <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon alert-icon">Alerts<span class="alert-notification"></span></span></a>
+            <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon alert-icon">Alerts<?php if($unread_alerts) { ?><span class="alert-notification"></span><?php } ?></span></a>
             <li class="sp-navlink"><a href="https://mail.fourpointenergy.com" target="_blank"><span class="sp-icon mail-icon">Mail</span></a>
             </li>
             <li class="sp-navlink alert-toggle" id="profile"><a href="#"><span class="sp-icon profile-icon">My Profile</span></a>
             </li>
-            <li class="sp-navlink"><a href="#">Logout</a>
+            <?php if( $current_user ) { ?>
+            <li class="sp-navlink"><a href="<?php echo wp_logout_url( "/" ); ?> ">Logout</a>
+            <?php } ?>
             </li>
           </ul>
         </div>

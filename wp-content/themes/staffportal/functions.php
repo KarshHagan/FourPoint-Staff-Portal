@@ -995,4 +995,92 @@ function db_filter_authors_search( $posts_search ) {
 	return $posts_search;
 }
 
+// Hook Gravity Forms user registration -> Map taxomomy
+add_action("gform_user_updated", "map_taxonomy", 10, 4);
+function map_taxonomy($user_id, $config, $entry, $user_pass) {
+	global $wpdb;
+	if($entry['id'] == 1) {
+	// Get all taxonomies
+		$taxs = get_taxonomies();
+
+	// Get all user meta
+		$all_meta_for_user = get_user_meta($user_id);
+
+	// Loop through meta data and map to taxonomies with same name as user meta key
+		foreach ($all_meta_for_user as $taxonomy => $value ) {
+
+			if (in_array ($taxonomy, $taxs) ) {			// Check if there is a Taxonomy with the same name as the Custom user meta key
+
+			// Get term id
+				$term_id = get_user_meta($user_id, $taxonomy, true);
+				If (is_numeric($term_id)) {				// Check if Custom user meta is an ID
+
+					// Echo $taxonomy.'='.$term_id.'<br>';
+
+				// Add user to taxomomy term
+					$term = get_term( $term_id, $taxonomy );
+					$termslug = $term->slug;
+					wp_set_object_terms( $user_id, array( $termslug ), $taxonomy, false);
+
+				}
+			}
+		}
+	}
+	if($entry['id'] == 2) {
+
+	}
+}
+
+// $gravity_form_id = 1; // gravity form id, or replace {$gravity_form_id} below with this number
+// add_filter( "gform_after_submission_{$gravity_form_id}", 'jdn_set_post_acf_gallery_field', 10, 2 );
+function set_post_acf_gallery_field( $entry ) {
+
+	$gf_images_field_id = 1; // the upload field id
+	$acf_field_id = 'field_546d0ad42e7f0'; // the acf gallery field id
+
+	// get post
+	if( isset( $entry['post_id'] ) ) {
+		$post = get_post( $entry['post_id'] );
+		if( is_null( $post ) )
+			return;
+	} else {
+		return;
+	}
+
+	// Clean up images upload and create array for gallery field
+	if( isset( $entry[ $gf_images_field_id ] ) ) {
+		$images = stripslashes( $entry[ $gf_images_field_id ] );
+		$images = json_decode( $images, true );
+		if( !empty( $images ) && is_array( $images ) ) {
+			$gallery = array();
+			foreach( $images as $key => $value ) {
+				// NOTE: this is the other function you need: https://gist.github.com/joshuadavidnelson/164a0a0744f0693d5746
+				if( function_exists( 'jdn_create_image_id' ) )
+					$image_id = jdn_create_image_id( $value, $post->ID );
+
+				if( $image_id ) {
+					$gallery[] = $image_id;
+				}
+			}
+		}
+	}
+
+	// Update gallery field with array
+	if( ! empty( $gallery ) ) {
+		update_field( $acf_field_id, $gallery, $post->ID );
+
+		// Updating post
+		wp_update_post( $post );
+	}
+}
+
+add_action( 'template_redirect', 'redirect_to_login' );
+
+function redirect_to_login() {
+	if ( !is_page('login') && ! is_user_logged_in() ) {
+		wp_redirect( '/login', 301 );
+	  exit;
+	}
+}
+
 show_admin_bar(false);

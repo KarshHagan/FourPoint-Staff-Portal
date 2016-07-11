@@ -32,14 +32,19 @@ a.button {
 }
 
 .btn-blue {
-  border: 1px solid $fourpoint_blue;
+  background-color: $fourpoint_blue;
+  border:1px solid $fourpoint_blue;
+  color:$white;
   &:hover {
     background: $white;
     color: $fourpoint_blue;
+    border:1px solid $fourpoint_blue;
     @include transition(background 0.3s ease);
   }
 }
+input.btn-blue {
 
+}
 .btn-wide {
   width: 95%;
   padding: 24px 12px;
