@@ -23,7 +23,7 @@ get_header();
       <div class="address">
         <p><?php the_field('address',$office) ?></p>
         <a href="tel:<?php echo preg_replace("/[^0-9]/", "", get_field('phone',$office)); ?>"><?php the_field('phone',$office) ?></a>
-        <a href="<?php the_field('org_chart_file',$office) ?>" target="_blank"><?php echo $office->name ?> Organizational Chart</a>
+        <!-- <a href="<?php the_field('org_chart_file',$office) ?>" target="_blank"><?php echo $office->name ?> Organizational Chart</a> --> 
       </div>
       <?php } ?>
     </div>
