@@ -10,7 +10,7 @@
       )
     );
     foreach($quicklinks as $quicklink) { ?>
-        <li><a href="<?php the_field('url',$quicklink->ID) ?>"><?php echo $quicklink->post_title ?></a></li>
+        <li><a href="<?php the_field('url',$quicklink->ID) ?>"<?php if( get_field('open_in_external_window') ) { ?> target="_blank"<?php } ?>><?php echo $quicklink->post_title ?></a></li>
     <?php } ?>
   </ul>
 </div>
