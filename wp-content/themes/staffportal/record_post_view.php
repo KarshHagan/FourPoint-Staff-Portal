@@ -1,8 +1,8 @@
 <?php
 require_once("../../../wp-load.php");
 if( $_POST['document_id'] && $_POST['user_id'] ) {
-  $count++;
-  update_field('views', $count);
+  // $count++;
+  // update_field('views', $count);
   /* track personal post view */
   // get the recently viewed list
   if( get_field('recently_viewed_ids',$_POST['user_id']) ) {
@@ -34,7 +34,7 @@ if( $_POST['document_id'] && $_POST['user_id'] ) {
   } else {
     $count = 0;
   }
-  echo($count);
+
   $count++;
   update_field('views', $count, $_POST['document_id']);
 }
