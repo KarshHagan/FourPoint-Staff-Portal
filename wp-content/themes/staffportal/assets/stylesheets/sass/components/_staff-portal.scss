@@ -871,15 +871,15 @@ a.link {
 }
 
 .address {
-    width: 45%;
+    width: 47%;
     float: left;
     padding: 0 10px 10px 0;
-    margin: 15px 5% 30px 0;
-    min-height: 240px;
+    margin: 15px 3% 30px 0;
+    min-height: 145px;
     @include clearfix;
     @include tablet-portrait-and-up {
         width: 28%;
-        min-height: 150px;
+        min-height: 151px;
     }
     p {
         width: 75%;
@@ -893,6 +893,10 @@ a.link {
         &:hover {
             color: $yellow;
         }
+    }
+    h3 {
+      color: $black;
+      font-size: 16px;
     }
 }
 
@@ -925,7 +929,7 @@ a.link {
         width: 30%;
         float: left;
         @include tablet-portrait-and-up {
-            margin: 0 5px;
+            margin: 0 5px 30px;
             float: none;
             width: auto;
         }
@@ -934,6 +938,7 @@ a.link {
         width: 100%;
         text-align: center;
         padding: 15px 0;
+        line-height: 1.25;
         @include tablet-portrait-and-up {
             padding: 15px 30px;
         }
@@ -943,6 +948,15 @@ a.link {
 .office-sort {
     @include tablet-portrait-and-up {
         margin: 40px 0 10px;
+    }
+    a.button {
+      padding: 15px 10px;
+      @include tablet-portrait-and-up {
+        padding: 15px 30px;
+      }
+      @include tablet-landscape-and-up {
+        padding: 15px 20px;
+      }
     }
 }
 
@@ -1570,6 +1584,27 @@ h6 {
         margin-left: 0;
     }
 }
+.loginform {
+  #wp-submit {
+    text-align: center;
+  }
+  p {
+      margin-top: 0;
+      input {
+        width: 100%;
+        max-width: 450px;
+      }
+  }
+  .btn-blue {
+    margin: 30px auto 0;
+  }
+}
+
 .login-username {
-    margin-top: 0;
+  #user_login {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
 }

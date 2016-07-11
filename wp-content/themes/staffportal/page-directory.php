@@ -20,7 +20,8 @@ get_header();
       <?php
         foreach($terms as $office) {
       ?>
-      <div class="address stuff">
+      <div class="address">
+        <h3><?php echo $office->name ?></h3>
         <p><?php the_field('address',$office) ?></p>
         <a href="tel:<?php echo preg_replace("/[^0-9]/", "", get_field('phone',$office)); ?>"><?php the_field('phone',$office) ?></a>
         <!-- <a href="<?php the_field('org_chart_file',$office) ?>" target="_blank"><?php echo $office->name ?> Organizational Chart</a> --> 
