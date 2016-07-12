@@ -10,7 +10,7 @@ get_header();
   <div class="it-copy"><?php the_content(); ?></div>
   <a href="#" class="button btn-blue it-sys-btn">IT Ticketing System</a>
   <hr>
-  <div class="it-sort" data-active-btn="all">
+  <div class="it-sort">
     <ul>
       <li><a href="#" class="button btn-white active it-btn" data-it-selected="all">All</a></li>
       <?php
@@ -57,8 +57,7 @@ $ticket_qry = new WP_Query( $args );
     }
 
     ?>
-       <div class="side-content" data-it-selected="<?php echo $category_slug ?>">
-       <!-- the other type will be data-type="guide"-->
+       <div class="side-content ticket" data-it-category="<?php echo $category_slug ?>">
          <aside>
            <p><?php the_title(); ?>
            <p class="ticket-details">
