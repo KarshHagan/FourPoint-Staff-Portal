@@ -30,9 +30,9 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
   ?>
   <meta name="description" content="<?php echo $pageDescription; ?>">
   <meta name="author" content="Karsh Hagan">
-  <link rel="icon"
+  <!-- <link rel="icon"
       type="image/png"
-      href="/wp-content/themes/staffportal/assets/images/fourpoint_favicon.png">
+      href="/wp-content/themes/staffportal/assets/images/fourpoint_favicon.png"> -->
   <?php wp_head(); ?>
 </head>
 <body <?php body_class();?>>
@@ -70,7 +70,7 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
     </ul>
   </div>
 
-  <section class="hero-main">
+  <section class="hero-main"<?php if(get_field('page_heading_bg')) { ?> style="background:url('<?php ethe_field('page_heading_bg'); ?>')"<?php } ?>>
     <div class="container">
       <div class="search-left">
         <h1><?php if(get_field('page_heading')) {
