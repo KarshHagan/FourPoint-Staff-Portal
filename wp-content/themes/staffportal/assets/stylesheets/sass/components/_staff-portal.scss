@@ -341,6 +341,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     h3 {
         color: $black;
         margin-bottom: 10px;
+        font-size: 19px;
     }
 }
 
@@ -871,15 +872,15 @@ a.link {
 }
 
 .address {
-    width: 45%;
+    width: 47%;
     float: left;
     padding: 0 10px 10px 0;
-    margin: 15px 5% 30px 0;
-    min-height: 240px;
+    margin: 15px 3% 30px 0;
+    min-height: 145px;
     @include clearfix;
     @include tablet-portrait-and-up {
         width: 28%;
-        min-height: 150px;
+        min-height: 151px;
     }
     p {
         width: 75%;
@@ -893,6 +894,10 @@ a.link {
         &:hover {
             color: $yellow;
         }
+    }
+    h3 {
+      color: $black;
+      font-size: 16px;
     }
 }
 
@@ -922,18 +927,25 @@ a.link {
     margin: 10px 0;
     li {
         margin: 1.5%;
-        width: 30%;
+        width: 47%;
         float: left;
+        display: table;
+        vertical-align: middle;
+        min-height: 65px;
         @include tablet-portrait-and-up {
-            margin: 0 5px;
+            margin: 0 5px 30px;
             float: none;
             width: auto;
+            display: inline-block;
         }
     }
     a.button {
         width: 100%;
         text-align: center;
         padding: 15px 0;
+        line-height: 1.25;
+        vertical-align: middle;
+        display: table-cell;
         @include tablet-portrait-and-up {
             padding: 15px 30px;
         }
@@ -943,6 +955,15 @@ a.link {
 .office-sort {
     @include tablet-portrait-and-up {
         margin: 40px 0 10px;
+    }
+    a.button {
+      padding: 15px 10px;
+      @include tablet-portrait-and-up {
+        padding: 15px 30px;
+      }
+      @include tablet-landscape-and-up {
+        padding: 15px 20px;
+      }
     }
 }
 
@@ -1358,8 +1379,8 @@ a.modal-link {
     line-height:50px;
     width:100%;
     max-width:380px;
-    background:url('../images/icons/icon_magnifying_glass.svg') no-repeat calc(100% - 12px) 8px white;
-    background-size:33px;
+    background:url('../images/icons/icon_magnifying_glass.svg') no-repeat calc(100% - 12px) 14px white;
+    background-size: 22px;
     padding-left:12px;
     padding-right: 12px;
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -1570,6 +1591,27 @@ h6 {
         margin-left: 0;
     }
 }
+.loginform {
+  #wp-submit {
+    text-align: center;
+  }
+  p {
+      margin-top: 0;
+      input {
+        width: 100%;
+        max-width: 450px;
+      }
+  }
+  .btn-blue {
+    margin: 30px auto 0;
+  }
+}
+
 .login-username {
-    margin-top: 0;
+  #user_login {
+    width: 100%;
+  }
+  input {
+    width: 100%;
+  }
 }

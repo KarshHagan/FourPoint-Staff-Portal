@@ -64,4 +64,3 @@ if(array_key_exists('login',$_REQUEST) && $_REQUEST['login']=='failed' && array_
       </aside>
   </div>
 <?php endwhile;// end of the loop. ?>
-<?php get_footer(); ?>
