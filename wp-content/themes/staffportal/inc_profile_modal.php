@@ -9,6 +9,7 @@
     <div class="photo-edit">
       <?php
         $profile_photo = get_field('profile_photo','user_'.$current_user->data->ID);
+        var_dump($profile_photo);
       ?>
       <div class="profile-img-wrapper">
         <img class="profile-img" src="<?php echo get_field('profile_photo','user_'.$current_user->data->ID); ?>">

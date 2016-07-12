@@ -79,7 +79,7 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
     </ul>
   </div>
 
-  <section class="hero-main">
+  <section class="hero-main"<?php if(get_field('page_heading_bg')) { the_field('page_heading_bg'); } ?>>
     <div class="container">
       <div class="search-left">
         <h1><?php if(get_field('page_heading')) {
