@@ -235,7 +235,9 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .hero-main {
-  background: url('../images/sp-bg-1.jpg') center center / cover no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: $sp-light-gray;
   padding:60px 0;
   position: relative;
@@ -1111,7 +1113,7 @@ a.link {
             background: $dark_gray;
             margin-top: -46px;
             z-index: -1;
-
+            padding-top: 2px;
             p {
                 padding: 20px 10px 20px 15px;
                 text-align: left;
@@ -1614,4 +1616,12 @@ h6 {
   input {
     width: 100%;
   }
+}
+
+.gform_wrapper .top_label .gfield_label {
+  padding-left: 8px;
+}
+
+.gform_fields {
+  margin-left: 0;
 }

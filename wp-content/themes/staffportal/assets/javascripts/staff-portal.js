@@ -73,9 +73,6 @@ $(document).ready(function() {
         slidesToScroll: 1
       }
     }
-    // You can unslick at a given breakpoint now by adding:
-    // settings: "unslick"
-    // instead of a settings object
   ]
 });
 
@@ -183,7 +180,7 @@ $(document).ready(function() {
   });
 
   var employeeSort = new EmployeeSort();
-
+  var ticketSort = new TicketSort();
 });
 
 
@@ -297,3 +294,42 @@ EmployeeSort.prototype.sortByName = function() {
 
     });
 };
+
+// IT Ticket sorting
+function TicketSort() {
+
+  // All, Helpful, A/V guides buttons
+  this.$ticketSelect = $('.it-btn');
+
+  // Item to sort
+  this.$ticket = $('.ticket');
+
+  this.sortTickets();
+}
+
+TicketSort.prototype.sortTickets = function() {
+  var _this = this;
+
+  //attach event listener to buttons
+  this.$ticketSelect.on('click', function(e) {
+    e.preventDefault();
+
+    // add active class to button
+    _this.$ticketSelect.removeClass('active');
+    $(this).addClass('active');
+
+    var selectedItemCategory = $(this).data('it-selected');
+
+    _this.$ticket.each(function() {
+
+      var ticketCategoryToDisplay = $(this).data('it-category');
+      
+      if(selectedItemCategory === 'all' || selectedItemCategory === ticketCategoryToDisplay) {
+        $(this).fadeIn(250);
+      } else {
+        $(this).fadeOut(250);
+      }
+    });
+
+  });
+}
