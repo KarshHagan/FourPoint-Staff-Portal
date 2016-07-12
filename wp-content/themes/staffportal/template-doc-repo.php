@@ -16,7 +16,7 @@ $category_taxonomy = get_field('category_taxonomy');
       ));
       foreach($categories as $category) {
       ?>
-      <li><a class="second-link" href="#<?php echo $category->slug ?>"><?php echo $category->name ?></a></li>
+      <li><a class="second-link text-arrow-link" href="#<?php echo $category->slug ?>"><?php echo $category->name ?></a></li>
       <?php } ?>
     </ul>
   </div>

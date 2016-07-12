@@ -235,9 +235,10 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .hero-main {
-  background-position: center top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url("../images/sp-bg-1.jpg") center top/cover no-repeat;
+  // background-position: center top;
+  // background-size: cover;
+  // background-repeat: no-repeat;
   background-color: $sp-light-gray;
   padding:60px 0;
   position: relative;
@@ -796,9 +797,13 @@ a.link {
 }
 
 .anchor-links {
-    margin: 60px auto 0;
-    width: 90%;
+    margin: 0 auto;
+    background-color: $sp-light-gray;
+    display: table;
+    width: 100%;
     ul {
+        width: 96%;
+        max-width: 1100px;
         margin-left: 0;
         border-top: 1px solid #DADADA;
         @include tablet-portrait-and-up {
@@ -807,8 +812,8 @@ a.link {
         }
     }
     li {
-        // padding: 20px 0;
         float: left;
+        vertical-align: middle;
         width: 100%;
         text-align: left;
         border-bottom: 1px solid #DADADA;
@@ -819,19 +824,30 @@ a.link {
         }
         @include tablet-landscape-and-up {
             width: auto;
+            display: table-cell;
+            float: none;
         }
     }
     a {
-        color: $black;
+        color: $fourpoint_blue;
         text-transform: uppercase;
         font-size: 1.25em;
+        font-weight: bold;
         padding: 15px;
         width: 100%;
         display: block;
+        position: relative;
         @include transition(0.25s ease);
         &:hover {
-            color: $fourpoint_blue;
+            color: $yellow;
             @include transition(0.25s ease);
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          margin-top: -7px;
+
         }
     }
 }
@@ -1535,7 +1551,7 @@ a.modal-link {
 
 .it-copy {
   max-width: 700px;
-  margin:auto;
+  margin: 0 auto 60px;
 }
 .it-tel {
   font-size: 18px;
