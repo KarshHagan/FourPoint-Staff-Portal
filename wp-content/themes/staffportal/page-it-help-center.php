@@ -9,7 +9,6 @@ get_header();
 <div class="container it-top">
   <div class="it-copy"><?php the_content(); ?></div>
   <a href="#" class="button btn-blue it-sys-btn">IT Ticketing System</a>
-  <p class="it-tel">Help Line: <a href="tel:<?php the_field('help_line_phone_number') ?>"><?php the_field('help_line_phone_number') ?></a></p>
   <hr>
   <div class="it-sort" data-active-btn="all">
     <ul>
