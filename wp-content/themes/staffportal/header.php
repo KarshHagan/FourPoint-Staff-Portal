@@ -36,6 +36,15 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
   <?php wp_head(); ?>
 </head>
 <body <?php body_class();?>>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46816205-2', 'auto');
+  ga('send', 'pageview');
+  </script>
 	<nav class="sp-nav" id="top">
     <section>
       <a class="logo" href="/">
