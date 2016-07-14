@@ -45,8 +45,8 @@ $employees = get_users( $args );
    ?>
   <div class="search_results container">
      <div class="result">
-        <h6>Results for:</h6>
-        <?php the_search_query(); ?>
+        <h2>Results for:</h2>
+        <p><?php the_search_query(); ?></p>
      </div>
      <?php if(count($benefits) > 0) { ?>
      <!-- Benefit Results -->
