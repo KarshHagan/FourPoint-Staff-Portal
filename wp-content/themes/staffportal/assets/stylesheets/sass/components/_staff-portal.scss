@@ -56,13 +56,24 @@
     }
 }
 
-.alert-icon, .mail-icon, .profile-icon {
-    background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
-    background-size: 36px 36px;
-    width: 36px;
-    height: 36px;
+.alert-icon, .mail-icon {
     position: relative;
     padding: 8px 20px 12px 50px;
+    @include transition(0.2s ease);
+    &:after {
+      content: '';
+      background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: 36px 36px;
+      width: 36px;
+      height: 36px;
+    }
+    &:hover:after {
+        background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
+        @include transition(0.2s ease);
+    }
     @include tablet-landscape-and-up {
         position: absolute;
         top: 0;
@@ -70,26 +81,14 @@
         padding: 0 0 0 30px;
         margin-top: 8px;
     }
-    @include transition(0.2s ease);
-    &:hover {
-        background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
-        background-size: 36px 36px;
-        @include transition(0.2s ease);
-    }
 }
 
 .mail-icon {
-    // margin-top: 2px;
-    background: url("../images/icons/icon_email_blu-01.svg") no-repeat;
-    &:hover {
-        background: url("../images/icons/icon_email_white-01.svg") no-repeat;
+    &:after {
+      background: url("../images/icons/icon_email_blu-01.svg") no-repeat;
     }
-}
-
-.profile-icon {
-    background: url("../images/icons/icon_profile_blue-01.svg") no-repeat;
-    &:hover {
-        background: url("../images/icons/icon_profile_white.svg") no-repeat;
+    &:hover:after {
+        background: url("../images/icons/icon_email_white-01.svg") no-repeat;
     }
 }
 
@@ -220,19 +219,21 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         width: 33%;
         display: inline-block;
     }
+    .sp-icon:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      margin-top: -2px;
+    }
     &:first-child {
       a {
         padding-left: 38px;
         .sp-icon:before {
           background: url("../images/icons/icon_benefits_wht-01.svg") no-repeat;
           background-size: 26px 26px;
-          width: 36px;
-          height: 24px;
-          content: '';
-          display: inline-block;
-          position: absolute;
+          width: 26px;
+          height: 26px;
           margin-left: -34px;
-          margin-top: -2px;
         }
         &:hover > .sp-icon::before {
             background: url('../images/icons/icon_benefits_blue.svg') no-repeat;
@@ -248,20 +249,16 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         }
         .sp-icon:before {
           background: url("../images/icons/icon_docs_forms_wht-01.svg") no-repeat;
-          background-size: 21px 21px;
-          width: 21px;
-          height: 24px;
-          content: '';
-          display: inline-block;
-          position: absolute;
+          background-size: 22px 22px;
+          width: 22px;
+          height: 22px;
           margin-left: -28px;
-          margin-top: -1px;
         }
         &:hover > .sp-icon::before {
             background: url('../images/icons/icon_docs_forms_blue.svg') no-repeat;
-            background-size: 16px 23px;
+            background-size: 18px 25px;
             margin-left: -25px;
-            margin-top: -2px;
+            height: 25px;
         }
       }
     }
@@ -271,17 +268,13 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         .sp-icon:before {
           background: url("../images/icons/icon_brandcenter_wht-01.svg") no-repeat;
           background-size: 26px 26px;
-          width: 34px;
-          height: 24px;
-          content: '';
-          display: inline-block;
-          position: absolute;
+          width: 26px;
+          height: 26px;
           margin-left: -32px;
-          margin-top: -2px;
         }
         &:hover > .sp-icon::before {
             background: url('../images/icons/icon_brandcenter_blue.svg') no-repeat;
-            background-size: 25px 25px;
+            background-size: 26px 26px;
             margin-left: -31px;
         }
       }
@@ -293,7 +286,8 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     a {
       padding-left: 36px;
       .sp-icon {
-        margin-left: 30px;
+        // margin-left: 30px;
+        padding-left: 25px;
         &:before {
             background: url("../images/icons/icon_brandcenter_wht-01.svg") no-repeat;
             background-size: 26px 26px;
@@ -314,9 +308,6 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 
 .hero-main {
   background: url("../images/sp-bg-1.jpg") center top/cover no-repeat;
-  // background-position: center top;
-  // background-size: cover;
-  // background-repeat: no-repeat;
   background-color: $sp-light-gray;
   padding:60px 0;
   position: relative;
@@ -1054,7 +1045,7 @@ a.link {
         flex-direction: column;
         -ms-flex-direction: column;
         justify-content: center;
-        min-height: 60px;
+        min-height: 50px;
         overflow: auto;
         @include tablet-portrait-and-up {
             margin: 0 5px 30px;
@@ -1071,14 +1062,14 @@ a.link {
         line-height: 1.25;
         display: flex;
         display: -ms-flexbox;
-        min-height: 60px;
+        min-height: 50px;
         flex-direction: column;
         -ms-flex-direction: column;
         justify-content: center;
         overflow: auto;
-        @include tablet-portrait-and-up {
-            padding: 15px 30px;
-        }
+        // @include tablet-portrait-and-up {
+        //     padding: 15px 30px;
+        // }
     }
 }
 
@@ -1087,7 +1078,6 @@ a.link {
         margin: 40px 0 10px;
     }
     a.button {
-      padding: 15px 10px;
       @include tablet-portrait-and-up {
         padding: 15px 30px;
       }
@@ -1803,6 +1793,7 @@ h6 {
         margin-left: 0;
     }
 }
+
 .loginform {
   #wp-submit {
     text-align: center;
