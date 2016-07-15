@@ -288,8 +288,6 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     }
 }
 
-// these styles are to get the third mobile nav button to display the icon.
-// I have no idea why it's working, but I have to have it for some reason.
 .nav-btn-big-mobile {
     margin: 0 auto;
     a {
@@ -304,7 +302,6 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
             content: '';
             position: absolute;
             margin-left: -32px;
-            margin-top: -2px;
         }
       }
       &:hover > .sp-icon::before {
@@ -376,11 +373,20 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
       li {
         a {
           background:none;
-          background:url('../images/icons/icon_doc_grey-01.svg') no-repeat left center;
-          background-size:20px 20px;
+          font-size:1em;
+          position: relative;
           padding-left: 30px;
           margin-left: 25px;
-          font-size:1em;
+          &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background:url('../images/icons/icon_doc_grey-01.svg') no-repeat left center;
+            background-size:20px 20px;
+            width: 20px;
+            height: 20px;
+          }
         }
       }
     }
@@ -430,6 +436,23 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     }
 }
 
+.quicklink-box {
+  a {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      background:url('../images/icons/icon_arrows_blu-01.svg') no-repeat center right;
+      background-size:15px 15px;
+      padding-right:20px;
+      right: 0;
+      top: 2px;
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
 .quick-links {
     width: 100%;
     margin: 0 auto;
@@ -445,10 +468,6 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         font-size: 1.25em;
         color: $dark_gray;
         display:block;
-        background:url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat center right;
-        background-size:30px 30px;
-        font-weight:normal;
-        padding-right:20px;
         &:hover {
             color: $yellow;
         }
@@ -636,7 +655,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     .to-top {
         color: $white;
         &:after {
-            background: url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat center center;
+            background: url('../images/icons/icon_arrows_blu-01.svg') no-repeat center center;
         }
         &:hover {
           color: $yellow;
@@ -727,7 +746,7 @@ a.link {
   display: block;
   &:after {
     content: '';
-    background:url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat 25px;
+    background:url('../images/icons/icon_arrows_blu-01.svg') no-repeat 25px;
     background-position: center;
     background-size:28px 28px;
     padding-right:28px;
@@ -1086,6 +1105,7 @@ a.link {
 .employee-bio-container {
     perspective: 1000px;
     -webkit-perspective: 1000px;
+    -ms-perspective: 1000px;
     width: 100%;
     height: 500px;
     padding: 0 1.5%;
@@ -1112,7 +1132,17 @@ a.link {
 }
 
 .flip {
-    @include transform(rotateY(180deg));
+  .front {
+    -webkit-transform:perspective(1000px) rotateY(180deg) !important;
+    -moz-transform:perspective(1000px) rotateY(180deg) !important;
+    transform:perspective(1000px) rotateY(180deg) !important;
+  }
+
+  .back {
+    -moz-transform:perspective(1000px) rotateY(0deg) !important;
+    -webkit-transform:perspective(1000px) rotateY(0deg) !important;
+    transform:perspective(1000px) rotateY(0deg) !important;
+  }
 }
 
 .more-flip {
@@ -1177,8 +1207,9 @@ a.link {
 
 .employee-bio {
     position: relative;
-    transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     width: 100%;
     height: 100%;
     @include transition(0.4s ease);
@@ -1187,6 +1218,7 @@ a.link {
     }
     .front, .back {
         -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
         backface-visibility: hidden;
         position: absolute;
         top: 0;
@@ -1196,6 +1228,7 @@ a.link {
         height: 100%;
         z-index: -1;
         background-color: $white;
+        @include transition(0.25s ease);
 
         &:after {
             content: ' ';
@@ -1211,13 +1244,17 @@ a.link {
     .front {
         z-index: 2;
         padding: 6px;
-        @include transform(rotateY(0));
+        -moz-transform:perspective(1000px) rotateY(0deg);
+        -webkit-transform:perspective(1000px) rotateY(0deg);
+        transform:perspective(1000px) rotateY(0deg);
         h3 {
             margin: 0;
         }
     }
     .back {
-        @include transform(rotateY(180deg));
+        -moz-transform:perspective(1000px) rotateY(-180deg);
+        -webkit-transform:perspective(1000px) rotateY(-180deg);
+        transform:perspective(1000px) rotateY(-180deg);
         .inner {
             background: $dark_gray;
             margin-top: -46px;
@@ -1482,8 +1519,27 @@ a.modal-link {
         float: right;
     }
 }
+.search-form-wrap {
+  position: relative;
+  &:after {
+    content: '';
+    background:url('../images/icons/icon_magnifying_glass.svg') no-repeat 14px white;
+    background-size: 22px 22px;
+    padding-left: 12px;
+    padding-right: 12px;
+    position: absolute;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    right: 10px;
+    background-position: center top;
+    margin-top: -11px;
+  }
+}
 #searchform {
   margin-top: 16px;
+  position: relative;
+  max-width: 380px;
   input#s {
     border:1px solid $sp-med_light-gray;
     background:white;
@@ -1492,11 +1548,9 @@ a.modal-link {
     line-height:50px;
     width:100%;
     max-width:380px;
-    background:url('../images/icons/icon_magnifying_glass.svg') no-repeat 14px white;
-    background-size: 22px 22px;
-    background-position: calc(100% - 12px);
-    padding-left:12px;
-    padding-right: 12px;
+    padding-left: 10px;
+    
+
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: $sp-med_light-gray;
       font-family: 'Montserrat', sans-serif;
@@ -1538,12 +1592,42 @@ a.modal-link {
     label {
         color: $fourpoint_blue;
         cursor: pointer;
-        background: url("../images/icons/icon_arrow dot_wht-01.svg") no-repeat center right;
-        background-size: 30px 30px;
+        background: url("../images/icons/icon_arrows_blu-01.svg") no-repeat center right;
+        background-size: 15px 15px;
         font-weight: normal;
         padding-right: 30px;
         padding-bottom: 2px;
     }
+}
+
+.gfield_description, .ginput_counter {
+  padding-left: 7px;
+  margin-top: 5px;
+  color: $light_gray;
+}
+.gravity-fileupload {
+  input[type="file"] {
+    line-height: 0;
+    border: 0;
+    padding-top: 15px;
+    cursor: pointer;
+    position: relative;
+    &:after {
+      content: 'Choose a File';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding-top: 13px;
+      padding-left: 5px;
+      background-color: $white;
+    }
+    &:hover:after, &:active, &:focus {
+      color: $fourpoint_blue !important;
+      outline: 0;
+    }
+  }
 }
 .copy_split .side-content aside p.ticket-details {
   font-weight: normal;
@@ -1577,6 +1661,7 @@ a.modal-link {
     @include tablet-portrait-and-up {
       width: 48%;
       margin-right: 3%;
+      vertical-align: top;
       &:nth-child(even) {
         margin-right: 0;
       }
@@ -1608,6 +1693,7 @@ a.modal-link {
     &:last-of-type {
       margin-bottom: 40px;
       vertical-align: top;
+      width: 100%;
     }
   }
 }
@@ -1640,9 +1726,6 @@ a.modal-link {
     text-align: center;
     margin-left: 0;
   }
-  // li {
-    // display: inline-block;
-  // }
 }
 
 .it-copy {
