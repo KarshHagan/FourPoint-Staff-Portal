@@ -24,6 +24,7 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
   <title>Fourpoint Energy<?php wp_title( '|', true, 'left' ); ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <?php
   if(!isset($pageDescription)) {
     $pageDescription = 'FourPoint Energy is a private exploration and production company founded by the leadership team of Cordillera Energy Partners following the sale to Apache Corporation in 2012.'; }

@@ -56,13 +56,24 @@
     }
 }
 
-.alert-icon, .mail-icon, .profile-icon {
-    background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
-    background-size: 36px 36px;
-    width: 36px;
-    height: 36px;
+.alert-icon, .mail-icon {
     position: relative;
     padding: 8px 20px 12px 50px;
+    @include transition(0.2s ease);
+    &:after {
+      content: '';
+      background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: 36px 36px;
+      width: 36px;
+      height: 36px;
+    }
+    &:hover:after {
+        background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
+        @include transition(0.2s ease);
+    }
     @include tablet-landscape-and-up {
         position: absolute;
         top: 0;
@@ -70,26 +81,14 @@
         padding: 0 0 0 30px;
         margin-top: 8px;
     }
-    @include transition(0.2s ease);
-    &:hover {
-        background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
-        background-size: 36px 36px;
-        @include transition(0.2s ease);
-    }
 }
 
 .mail-icon {
-    // margin-top: 2px;
-    background: url("../images/icons/icon_email_blu-01.svg") no-repeat;
-    &:hover {
-        background: url("../images/icons/icon_email_white-01.svg") no-repeat;
+    &:after {
+      background: url("../images/icons/icon_email_blu-01.svg") no-repeat;
     }
-}
-
-.profile-icon {
-    background: url("../images/icons/icon_profile_blue-01.svg") no-repeat;
-    &:hover {
-        background: url("../images/icons/icon_profile_white.svg") no-repeat;
+    &:hover:after {
+        background: url("../images/icons/icon_email_white-01.svg") no-repeat;
     }
 }
 
@@ -220,19 +219,21 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         width: 33%;
         display: inline-block;
     }
+    .sp-icon:before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      margin-top: -2px;
+    }
     &:first-child {
       a {
         padding-left: 38px;
         .sp-icon:before {
           background: url("../images/icons/icon_benefits_wht-01.svg") no-repeat;
           background-size: 26px 26px;
-          width: 36px;
-          height: 24px;
-          content: '';
-          display: inline-block;
-          position: absolute;
+          width: 26px;
+          height: 26px;
           margin-left: -34px;
-          margin-top: -2px;
         }
         &:hover > .sp-icon::before {
             background: url('../images/icons/icon_benefits_blue.svg') no-repeat;
@@ -248,20 +249,16 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         }
         .sp-icon:before {
           background: url("../images/icons/icon_docs_forms_wht-01.svg") no-repeat;
-          background-size: 21px 21px;
-          width: 21px;
-          height: 24px;
-          content: '';
-          display: inline-block;
-          position: absolute;
+          background-size: 22px 22px;
+          width: 22px;
+          height: 22px;
           margin-left: -28px;
-          margin-top: -1px;
         }
         &:hover > .sp-icon::before {
             background: url('../images/icons/icon_docs_forms_blue.svg') no-repeat;
-            background-size: 16px 23px;
+            background-size: 18px 25px;
             margin-left: -25px;
-            margin-top: -2px;
+            height: 25px;
         }
       }
     }
@@ -271,31 +268,26 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         .sp-icon:before {
           background: url("../images/icons/icon_brandcenter_wht-01.svg") no-repeat;
           background-size: 26px 26px;
-          width: 34px;
-          height: 24px;
-          content: '';
-          display: inline-block;
-          position: absolute;
+          width: 26px;
+          height: 26px;
           margin-left: -32px;
-          margin-top: -2px;
         }
         &:hover > .sp-icon::before {
             background: url('../images/icons/icon_brandcenter_blue.svg') no-repeat;
-            background-size: 25px 25px;
+            background-size: 26px 26px;
             margin-left: -31px;
         }
       }
     }
 }
 
-// these styles are to get the third mobile nav button to display the icon.
-// I have no idea why it's working, but I have to have it for some reason.
 .nav-btn-big-mobile {
     margin: 0 auto;
     a {
       padding-left: 36px;
       .sp-icon {
-        margin-left: 30px;
+        // margin-left: 30px;
+        padding-left: 25px;
         &:before {
             background: url("../images/icons/icon_brandcenter_wht-01.svg") no-repeat;
             background-size: 26px 26px;
@@ -304,7 +296,6 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
             content: '';
             position: absolute;
             margin-left: -32px;
-            margin-top: -2px;
         }
       }
       &:hover > .sp-icon::before {
@@ -317,9 +308,6 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 
 .hero-main {
   background: url("../images/sp-bg-1.jpg") center top/cover no-repeat;
-  // background-position: center top;
-  // background-size: cover;
-  // background-repeat: no-repeat;
   background-color: $sp-light-gray;
   padding:60px 0;
   position: relative;
@@ -376,11 +364,20 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
       li {
         a {
           background:none;
-          background:url('../images/icons/icon_doc_grey-01.svg') no-repeat left center;
-          background-size:20px 20px;
+          font-size:1em;
+          position: relative;
           padding-left: 30px;
           margin-left: 25px;
-          font-size:1em;
+          &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            background:url('../images/icons/icon_doc_grey-01.svg') no-repeat left center;
+            background-size:20px 20px;
+            width: 20px;
+            height: 20px;
+          }
         }
       }
     }
@@ -430,6 +427,23 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     }
 }
 
+.quicklink-box {
+  a {
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      background:url('../images/icons/icon_arrows_blu-01.svg') no-repeat center right;
+      background-size:15px 15px;
+      padding-right:20px;
+      right: 0;
+      top: 2px;
+      width: 15px;
+      height: 15px;
+    }
+  }
+}
+
 .quick-links {
     width: 100%;
     margin: 0 auto;
@@ -445,10 +459,6 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
         font-size: 1.25em;
         color: $dark_gray;
         display:block;
-        background:url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat center right;
-        background-size:30px 30px;
-        font-weight:normal;
-        padding-right:20px;
         &:hover {
             color: $yellow;
         }
@@ -636,7 +646,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     .to-top {
         color: $white;
         &:after {
-            background: url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat center center;
+            background: url('../images/icons/icon_arrows_blu-01.svg') no-repeat center center;
         }
         &:hover {
           color: $yellow;
@@ -727,7 +737,7 @@ a.link {
   display: block;
   &:after {
     content: '';
-    background:url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat 25px;
+    background:url('../images/icons/icon_arrows_blu-01.svg') no-repeat 25px;
     background-position: center;
     background-size:28px 28px;
     padding-right:28px;
@@ -1035,7 +1045,7 @@ a.link {
         flex-direction: column;
         -ms-flex-direction: column;
         justify-content: center;
-        min-height: 60px;
+        min-height: 50px;
         overflow: auto;
         @include tablet-portrait-and-up {
             margin: 0 5px 30px;
@@ -1052,14 +1062,14 @@ a.link {
         line-height: 1.25;
         display: flex;
         display: -ms-flexbox;
-        min-height: 60px;
+        min-height: 50px;
         flex-direction: column;
         -ms-flex-direction: column;
         justify-content: center;
         overflow: auto;
-        @include tablet-portrait-and-up {
-            padding: 15px 30px;
-        }
+        // @include tablet-portrait-and-up {
+        //     padding: 15px 30px;
+        // }
     }
 }
 
@@ -1068,7 +1078,6 @@ a.link {
         margin: 40px 0 10px;
     }
     a.button {
-      padding: 15px 10px;
       @include tablet-portrait-and-up {
         padding: 15px 30px;
       }
@@ -1086,6 +1095,7 @@ a.link {
 .employee-bio-container {
     perspective: 1000px;
     -webkit-perspective: 1000px;
+    -ms-perspective: 1000px;
     width: 100%;
     height: 500px;
     padding: 0 1.5%;
@@ -1112,7 +1122,17 @@ a.link {
 }
 
 .flip {
-    @include transform(rotateY(180deg));
+  .front {
+    -webkit-transform:perspective(1000px) rotateY(180deg) !important;
+    -moz-transform:perspective(1000px) rotateY(180deg) !important;
+    transform:perspective(1000px) rotateY(180deg) !important;
+  }
+
+  .back {
+    -moz-transform:perspective(1000px) rotateY(0deg) !important;
+    -webkit-transform:perspective(1000px) rotateY(0deg) !important;
+    transform:perspective(1000px) rotateY(0deg) !important;
+  }
 }
 
 .more-flip {
@@ -1177,8 +1197,9 @@ a.link {
 
 .employee-bio {
     position: relative;
-    transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     width: 100%;
     height: 100%;
     @include transition(0.4s ease);
@@ -1187,6 +1208,7 @@ a.link {
     }
     .front, .back {
         -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
         backface-visibility: hidden;
         position: absolute;
         top: 0;
@@ -1196,6 +1218,7 @@ a.link {
         height: 100%;
         z-index: -1;
         background-color: $white;
+        @include transition(0.25s ease);
 
         &:after {
             content: ' ';
@@ -1211,13 +1234,17 @@ a.link {
     .front {
         z-index: 2;
         padding: 6px;
-        @include transform(rotateY(0));
+        -moz-transform:perspective(1000px) rotateY(0deg);
+        -webkit-transform:perspective(1000px) rotateY(0deg);
+        transform:perspective(1000px) rotateY(0deg);
         h3 {
             margin: 0;
         }
     }
     .back {
-        @include transform(rotateY(180deg));
+        -moz-transform:perspective(1000px) rotateY(-180deg);
+        -webkit-transform:perspective(1000px) rotateY(-180deg);
+        transform:perspective(1000px) rotateY(-180deg);
         .inner {
             background: $dark_gray;
             margin-top: -46px;
@@ -1482,8 +1509,27 @@ a.modal-link {
         float: right;
     }
 }
+.search-form-wrap {
+  position: relative;
+  &:after {
+    content: '';
+    background:url('../images/icons/icon_magnifying_glass.svg') no-repeat 14px white;
+    background-size: 22px 22px;
+    padding-left: 12px;
+    padding-right: 12px;
+    position: absolute;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    right: 10px;
+    background-position: center top;
+    margin-top: -11px;
+  }
+}
 #searchform {
   margin-top: 16px;
+  position: relative;
+  max-width: 380px;
   input#s {
     border:1px solid $sp-med_light-gray;
     background:white;
@@ -1492,11 +1538,9 @@ a.modal-link {
     line-height:50px;
     width:100%;
     max-width:380px;
-    background:url('../images/icons/icon_magnifying_glass.svg') no-repeat 14px white;
-    background-size: 22px 22px;
-    background-position: calc(100% - 12px);
-    padding-left:12px;
-    padding-right: 12px;
+    padding-left: 10px;
+    
+
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: $sp-med_light-gray;
       font-family: 'Montserrat', sans-serif;
@@ -1538,12 +1582,42 @@ a.modal-link {
     label {
         color: $fourpoint_blue;
         cursor: pointer;
-        background: url("../images/icons/icon_arrow dot_wht-01.svg") no-repeat center right;
-        background-size: 30px 30px;
+        background: url("../images/icons/icon_arrows_blu-01.svg") no-repeat center right;
+        background-size: 15px 15px;
         font-weight: normal;
         padding-right: 30px;
         padding-bottom: 2px;
     }
+}
+
+.gfield_description, .ginput_counter {
+  padding-left: 7px;
+  margin-top: 5px;
+  color: $light_gray;
+}
+.gravity-fileupload {
+  input[type="file"] {
+    line-height: 0;
+    border: 0;
+    padding-top: 15px;
+    cursor: pointer;
+    position: relative;
+    &:after {
+      content: 'Choose a File';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding-top: 13px;
+      padding-left: 5px;
+      background-color: $white;
+    }
+    &:hover:after, &:active, &:focus {
+      color: $fourpoint_blue !important;
+      outline: 0;
+    }
+  }
 }
 .copy_split .side-content aside p.ticket-details {
   font-weight: normal;
@@ -1577,6 +1651,7 @@ a.modal-link {
     @include tablet-portrait-and-up {
       width: 48%;
       margin-right: 3%;
+      vertical-align: top;
       &:nth-child(even) {
         margin-right: 0;
       }
@@ -1608,6 +1683,7 @@ a.modal-link {
     &:last-of-type {
       margin-bottom: 40px;
       vertical-align: top;
+      width: 100%;
     }
   }
 }
@@ -1640,9 +1716,6 @@ a.modal-link {
     text-align: center;
     margin-left: 0;
   }
-  // li {
-    // display: inline-block;
-  // }
 }
 
 .it-copy {
@@ -1720,6 +1793,7 @@ h6 {
         margin-left: 0;
     }
 }
+
 .loginform {
   #wp-submit {
     text-align: center;

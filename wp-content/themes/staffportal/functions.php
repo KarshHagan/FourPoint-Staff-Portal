@@ -1071,3 +1071,26 @@ function redirect_to_login() {
 }
 
 show_admin_bar(false);
+
+// change wp-admin page logo
+function my_login_logo() { ?>
+    <style type="text/css">
+        #login h1 a, .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/FourPoint_Logo_blk.png);
+            width: 200px;
+            height: 100px;
+            background-size: 200px 100px;
+        }
+    </style>
+<?php }
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+
+function my_login_logo_url() {
+    return 'http://staff.fourpointenergy.com';
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+    return 'FourPoint Energy';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
