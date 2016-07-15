@@ -7,13 +7,12 @@
     <div class="photo-edit">
       <?php
         $profile_photo = get_field('profile_photo','user_'.$current_user->data->ID);
-        var_dump($profile_photo);
       ?>
       <div class="profile-img-wrapper">
-        <img class="profile-img" src="<?php echo get_field('profile_photo','user_'.$current_user->data->ID); ?>">
+        <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
       </div>
       <!-- <img class="profile-img" src="/wp-content/themes/fourpoint/assets/images/frenchy.jpg"> -->
-      <?php //gravity_form( 'Edit Profile Photo', false, false, false, null, true); ?>
+      <?php gravity_form( 'Edit Profile Photo', false, false, false, null, true); ?>
       <!-- <form>
         <label for="profile-photo-upload">Edit Photo</label>
         <input type="file" id="profile-photo-upload">

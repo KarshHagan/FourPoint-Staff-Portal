@@ -52,7 +52,7 @@ if(array_key_exists('login',$_REQUEST) && $_REQUEST['login']=='failed' && array_
                  <label for="user_pass">Password</label>
                  <input type="password" name="pwd" id="user_pass" class="input" value="" size="20">
                </p>
-               <!-- <p><a href="/wp-login.php?action=lostpassword">Forgot Password?</a></p> -->
+               <p><a href="/wp-login.php?action=lostpassword">Forgot Password?</a></p>
                <p class="login-submit">
                  <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-blue" value="Log In">
                  <input type="hidden" name="redirect_to" value="<?php echo site_url('/') ?>">

@@ -77,6 +77,10 @@ When populating a Drop Down field with a post type, you may wish to set the sele
 
 == Changelog ==
 
+= 3.1.4 =
+
+* Updated plugin header information.
+
 = 3.1.3 =
 
 * Fixed compatibility issue with Gravity Forms: Post Updates plugin; custom taxonomies were not being saved.
