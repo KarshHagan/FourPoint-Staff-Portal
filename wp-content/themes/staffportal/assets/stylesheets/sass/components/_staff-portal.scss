@@ -890,6 +890,8 @@ a.link {
         @include tablet-portrait-and-up {
             border-top: none;
             margin: 0 auto;
+            display: block;
+            text-align: center;
         }
     }
     li {
@@ -900,9 +902,19 @@ a.link {
         padding: 20px 0 15px;
         border-bottom: 1px solid #DADADA;
         @include tablet-portrait-and-up {
-            width: 50%;
+            // width: 50%;
             text-align: center;
+            float: none;
             border-bottom: none;
+            max-width: 325px;
+            margin-right: 25px;
+            display: inline-block;
+        }
+        @include tablet-landscape-and-up {
+          max-width: 210px;
+        }
+        @media (min-width: 1100px) {
+          max-width: 245px;
         }
     }
     a {
@@ -910,7 +922,8 @@ a.link {
         padding: 0 15px 0;
         text-align: left;
         @include tablet-landscape-and-up {
-          padding: 0 15px 0 0;
+          padding: 0;
+          text-align: center;
         }
         &:after {
           top: auto;
@@ -1594,7 +1607,7 @@ a.modal-link {
     }
     &:last-of-type {
       margin-bottom: 40px;
-      width: 100%;
+      vertical-align: top;
     }
   }
 }
@@ -1734,6 +1747,21 @@ h6 {
 
 .gform_wrapper .top_label .gfield_label {
   padding-left: 8px;
+}
+.gform_wrapper .top_label select.medium {
+  background:none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 30px;
+  padding-left: 5px;
+  border: none;
+  border-bottom: 1px solid #d4d4d4;
+  font-size: 15px;
+  color: #B6B6B6;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 
 .gform_fields {

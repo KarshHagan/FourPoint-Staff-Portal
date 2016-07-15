@@ -128,30 +128,6 @@ $(document).ready(function() {
     });
   });
 
-  // staff portal anchor links - set width
-  var $links = $('.anchor-links li');
-  var linksLength = $links.length;
-  var widthOfLink = 100 / linksLength;
-
-  function linkWidth() {
-    if($(window).width() >= 1024) {
-      $links.each(function() {
-        $(this).width(widthOfLink + '%');
-      });
-    } else if($(window).width() <= 1023 && $(window).width() >= 768) {
-      $links.each(function() {
-        $(this).width(50 + '%');
-      });
-    } else {
-      $links.each(function() {
-        $(this).width(100 + '%');
-      });
-    }
-  }
-
-  linkWidth();
-
-
   // back to top buttons
   $('.to-top').on('click', function(e) {
     e.preventDefault();
@@ -180,10 +156,6 @@ $(document).ready(function() {
   }
 
   accordionCollapse(windowWidth);
-
-  $(window).on('resize', function() {
-    linkWidth();
-  });
 
   var employeeSort = new EmployeeSort();
   var ticketSort = new TicketSort();
