@@ -46,7 +46,7 @@ get_header();
    ?>
   <div class="search_results container">
      <div class="result">
-        <h6>Results for:</h6>
+        <h2>Results for:</h2>
         <?php the_search_query(); ?>
      </div>
      <?php if(count($benefits) > 0) { ?>

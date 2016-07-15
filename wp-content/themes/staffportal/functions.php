@@ -1025,46 +1025,15 @@ function map_taxonomy($user_id, $config, $entry, $user_pass) {
 	}
 }
 
-$gravity_form_id = 2; // gravity form id, or replace {$gravity_form_id} below with this number
-add_filter( "gform_after_submission_{$gravity_form_id}", 'set_post_acf_gallery_field', 10, 2 );
+$gravity_form_id = 1; // gravity form id, or replace {$gravity_form_id} below with this number
+add_filter( "gform_after_submission_1", 'set_post_acf_gallery_field', 10, 2 );
 function set_post_acf_gallery_field( $entry ) {
+	global $current_user;
+	wp_get_current_user();
 	$gf_images_field_id = 11; // the upload field id
 	$acf_field_id = 'field_576d3b096e8ef'; // the acf gallery field id
-
-	// get post
-	if( isset( $entry['post_id'] ) ) {
-		$post = get_post( $entry['post_id'] );
-		if( is_null( $post ) )
-			return;
-	} else {
-		return;
-	}
-
-	// Clean up images upload and create array for gallery field
-	if( isset( $entry[ $gf_images_field_id ] ) ) {
-		$images = stripslashes( $entry[ $gf_images_field_id ] );
-		$images = json_decode( $images, true );
-		if( !empty( $images ) && is_array( $images ) ) {
-			$gallery = array();
-			foreach( $images as $key => $value ) {
-				// NOTE: this is the other function you need: https://gist.github.com/joshuadavidnelson/164a0a0744f0693d5746
-				if( function_exists( 'jdn_create_image_id' ) )
-					$image_id = jdn_create_image_id( $value, $post->ID );
-
-				if( $image_id ) {
-					$gallery[] = $image_id;
-				}
-			}
-		}
-	}
-
-	// Update gallery field with array
-	if( ! empty( $gallery ) ) {
-		update_field( $acf_field_id, $gallery, $post->ID );
-
-		// Updating post
-		wp_update_post( $post );
-	}
+	$attach_id = convert_upload_field_url_to_attachment( $current_user->ID, $entry[11]);
+	update_field('profile_photo', $attach_id, 'user_'.$current_user->ID);
 }
 
 function convert_upload_field_url_to_attachment( $post_id, $field_value) {
@@ -1087,107 +1056,11 @@ function convert_upload_field_url_to_attachment( $post_id, $field_value) {
 		    $actual_file = str_replace(site_url(),$abs_path,$filename);
 		    $attach_id = wp_insert_attachment( $attachment, $actual_file, $post_id );
 
-		    if($attach_id) {
-		    	update_post_meta($post_id, $field, $attach_id);
-		    	$success = true;
-		    }
-
 		}
 
 		return $attach_id;
 
 	}
-
-	/**
-	 * Create the image attachment and return the new media upload id.
-	 *
-	 * @author Joshua David Nelson, josh@joshuadnelson.com
-	 *
-	 * @see http://codex.wordpress.org/Function_Reference/wp_insert_attachment#Example
-	 *
-	 * @link https://joshuadnelson.com/programmatically-add-images-to-media-library/
-	 *
-	 * @param string $image_url The url to the image you're adding to the Media library.
-	 * @param int $parent_post_id Optional. Use to attach the media file to a specific post.
-	 */
-	function jdn_create_image_id( $image_url, $parent_post_id = null ) {
-
-		// Bail if the image url isn't valid
-		if( empty( $image_url ) || ! esc_url( $image_url ) )
-			return false;
-
-		// Escape the url, just to be save
-		$image_url = esc_url( $image_url );
-
-		// Cache info on the wp uploads dir
-		$wp_upload_dir = wp_upload_dir();
-
-		// get the file path
-		$path = parse_url( $image_url, PHP_URL_PATH );
-
-		// File base name, e.g. image.jpg
-		$file_base_name = basename( $image_url );
-
-		// Full path, set up to work with a WP in a subdirectory or default location
-		if( site_url() != home_url() ) {
-			$home_path = dirname( dirname( dirname( dirname( dirname( __FILE__ ) ) ) ) );
-		} else {
-			$home_path = dirname( dirname( dirname( dirname( __FILE__ ) ) ) );
-		}
-
-		// Remove the trailing slash on the home path
-		$home_path = untrailingslashit( $home_path );
-
-		// Combine the two to get the uploaded file path
-		$uploaded_file_path = $home_path . $path;
-
-		// Check the type of file. We'll use this as the 'post_mime_type'.
-		$filetype = wp_check_filetype( $file_base_name, null );
-
-		// error check
-		if( !empty( $filetype ) && is_array( $filetype ) ) {
-
-			// Create attachment title - basically, pull out the text
-			$post_title = preg_replace( '/\.[^.]+$/', '', $file_base_name );
-
-			// Prepare an array of post data for the attachment.
-			$attachment = array(
-				'guid'           => $wp_upload_dir['url'] . '/' . basename( $uploaded_file_path ),
-				'post_mime_type' => $filetype['type'],
-				'post_title'     => esc_attr( $post_title ),
-				'post_content'   => '',
-				'post_status'    => 'inherit'
-			);
-
-			// Set the post parent id if there is one
-			if( ! is_null( $parent_post_id ) && absint( $parent_post_id ) )
-				$attachment['post_parent'] = absint( $parent_post_id );
-
-			// Insert the attachment.
-			$attach_id = wp_insert_attachment( $attachment, $uploaded_file_path );
-
-			//Error check
-			if( !is_wp_error( $attach_id ) ) {
-
-				//Generate wp attachment meta data
-				if( file_exists( ABSPATH . 'wp-admin/includes/image.php') && file_exists( ABSPATH . 'wp-admin/includes/media.php') ) {
-					require_once( ABSPATH . 'wp-admin/includes/image.php' );
-					require_once( ABSPATH . 'wp-admin/includes/media.php' );
-					$attach_data = wp_generate_attachment_metadata( $attach_id, $uploaded_file_path );
-					wp_update_attachment_metadata( $attach_id, $attach_data );
-				} // end if file exists check
-
-			} // end if error check
-
-			return $attach_id;
-
-		} else {
-			return false;
-		} // end if $filetype
-
-	} // end function jdn_create_image_id
-
-
 add_action( 'template_redirect', 'redirect_to_login' );
 
 function redirect_to_login() {

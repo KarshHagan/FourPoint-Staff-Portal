@@ -60,14 +60,14 @@ $(document).ready(function() {
       }
     },
     {
-      breakpoint: 600,
+      breakpoint: 768,
       settings: {
         slidesToShow: 2,
         slidesToScroll: 2
       }
     },
     {
-      breakpoint: 480,
+      breakpoint: 600,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1
@@ -80,7 +80,10 @@ $(document).ready(function() {
   // alert Modal toggle
   $(".alert-toggle").on('click',function(evt) {
     var clickedId = this.id;
-    $('body').css('overflow-Y', 'hidden');
+    $('body').css({
+      'overflow': 'hidden',
+      'position': 'fixed'
+    });
     $('.'+ clickedId + '-modal').fadeToggle().find('.modal-panel').addClass('scale-in');
     last_id = $('.'+ clickedId + '-modal').data('last-id');
     tracker_url = '/wp-content/themes/staffportal/record_alert_view.php';
@@ -118,33 +121,12 @@ $(document).ready(function() {
     var clickedId = this.id;
     $('.' + clickedId).fadeToggle('fast', function() {
       $('.modal-panel').removeClass('scale-in');
-      $('body').css('overflow-Y', 'scroll');
+      $('body').css({
+        'overflow': 'scroll',
+        'position': 'static'
+      });
     });
   });
-
-  // staff portal anchor links - set width
-  var $links = $('.anchor-links li');
-  var linksLength = $links.length;
-  var widthOfLink = 100 / linksLength;
-
-  function linkWidth() {
-    if($(window).width() >= 1024) {
-      $links.each(function() {
-        $(this).width(widthOfLink + '%');
-      });
-    } else if($(window).width() <= 1023 && $(window).width() >= 768) {
-      $links.each(function() {
-        $(this).width(50 + '%');
-      });
-    } else {
-      $links.each(function() {
-        $(this).width(100 + '%');
-      });
-    }
-  }
-
-  linkWidth();
-
 
   // back to top buttons
   $('.to-top').on('click', function(e) {
@@ -174,10 +156,6 @@ $(document).ready(function() {
   }
 
   accordionCollapse(windowWidth);
-
-  $(window).on('resize', function() {
-    linkWidth();
-  });
 
   var employeeSort = new EmployeeSort();
   var ticketSort = new TicketSort();
@@ -315,7 +293,7 @@ TicketSort.prototype.sortTickets = function() {
     e.preventDefault();
 
     // add active class to button
-    _this.$ticketSelect.removeClass('active');
+    $('.it-btn').removeClass('active');
     $(this).addClass('active');
 
     var selectedItemCategory = $(this).data('it-selected');

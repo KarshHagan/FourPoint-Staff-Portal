@@ -5,6 +5,7 @@ Search Page
 global $theme;
 get_header();
 $search = get_search_query();
+$results_found = false;
 //  Searching Employees
 $args = array(
  'count_total' => false,
@@ -18,6 +19,7 @@ $args = array(
 $employees = get_users( $args );
 ?>
 <?php if ( have_posts() || count($employees) > 0) :
+  $results_found = true;
    $benefits = [];
    $documents = [];
    $brand_documents = [];
@@ -45,8 +47,8 @@ $employees = get_users( $args );
    ?>
   <div class="search_results container">
      <div class="result">
-        <h6>Results for:</h6>
-        <?php the_search_query(); ?>
+        <h2>Results for:</h2>
+        <p><?php the_search_query(); ?></p>
      </div>
      <?php if(count($benefits) > 0) { ?>
      <!-- Benefit Results -->
@@ -69,6 +71,7 @@ $employees = get_users( $args );
      <?php } ?>
 
      <?php if(count($documents) > 0) { ?>
+       <?php $results_found = true; ?>
      <!-- Benefit Results -->
      <div class="document-results">
         <?php foreach($documents as $document) { ?>
@@ -89,6 +92,7 @@ $employees = get_users( $args );
      <?php } ?>
 
      <?php if(count($brand_documents) > 0) { ?>
+       <?php $results_found = true; ?>
      <!-- Benefit Results -->
      <div class="brand_documents-results">
         <?php foreach($brand_documents as $document) { ?>
@@ -109,6 +113,7 @@ $employees = get_users( $args );
      <?php } ?>
 
      <?php if(count($tickets) > 0) { ?>
+       <?php $results_found = true; ?>
        <div class="copy_split it-items">
        <?php foreach($tickets as $ticket) { ?>
          <div class="side-content result">
@@ -126,6 +131,7 @@ $employees = get_users( $args );
      </div>
      <?php }
      if(count($employees) > 0) {
+       $results_found = true;
      ?>
     <ul class="employee-results">
       <?php

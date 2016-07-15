@@ -8,7 +8,7 @@ get_header();
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 <div class="container it-top">
   <div class="it-copy"><?php the_content(); ?></div>
-  <a href="#" class="button btn-blue it-sys-btn">IT Ticketing System</a>
+  <!-- <a href="#" class="button btn-blue it-sys-btn">IT Ticketing System</a> -->
   <hr>
   <div class="it-sort">
     <ul>
@@ -22,8 +22,6 @@ get_header();
       foreach($terms as $term) { ?>
       <li><a href="#" class="button btn-white it-btn" data-it-selected="<?php echo $term->slug ?>"><?php echo $term->name ?></a></li>
       <?php } ?>
-      <!-- <li><a href="#" class="button btn-white it-btn" data-it-selected="tool">Helpful Tools</a></li> -->
-      <!-- <li><a href="#" class="button btn-white it-btn" data-it-selected="guide">A/V User Guides</a></li> -->
     </ul>
   </div>
 </div>

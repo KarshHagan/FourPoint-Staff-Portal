@@ -30,12 +30,18 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
   ?>
   <meta name="description" content="<?php echo $pageDescription; ?>">
   <meta name="author" content="Karsh Hagan">
-  <!-- <link rel="icon"
-      type="image/png"
-      href="/wp-content/themes/staffportal/assets/images/fourpoint_favicon.png"> -->
   <?php wp_head(); ?>
 </head>
 <body <?php body_class();?>>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46816205-2', 'auto');
+  ga('send', 'pageview');
+  </script>
 	<nav class="sp-nav" id="top">
     <section>
       <a class="logo" href="/">
@@ -51,10 +57,14 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
             <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon alert-icon">Alerts<?php if($unread_alerts) { ?><span class="alert-notification"></span><?php } ?></span></a>
             <li class="sp-navlink"><a href="https://mail.fourpointenergy.com" target="_blank"><span class="sp-icon mail-icon">Mail</span></a>
             </li>
-            <li class="sp-navlink alert-toggle" id="profile"><a href="#"><span class="sp-icon profile-icon">My Profile</span></a>
+            <li class="sp-navlink alert-toggle" id="profile">
+              <a href="#">
+                <img src="<?php $theme->images_path() ?>/icons/icon_profile_blue-01.svg" class="profile-img-nav" />
+                <span class="sp-icon">My Profile</span>
+              </a>
             </li>
             <?php if( $current_user ) { ?>
-            <li class="sp-navlink"><a href="<?php echo wp_logout_url( "/" ); ?> ">Logout</a>
+            <li class="sp-navlink current-user"><span class="welcome-text">Welcome back <?php echo $current_user->first_name ?></span><a href="<?php echo wp_logout_url( "/" ); ?> ">Logout</a>
             <?php } ?>
             </li>
           </ul>
