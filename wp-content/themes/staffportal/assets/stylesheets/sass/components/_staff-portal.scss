@@ -59,7 +59,6 @@
 .alert-icon, .mail-icon {
     position: relative;
     padding: 8px 20px 12px 50px;
-    @include transition(0.2s ease);
     &:after {
       content: '';
       background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
@@ -72,7 +71,6 @@
     }
     &:hover:after {
         background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
-        @include transition(0.2s ease);
     }
     @include tablet-landscape-and-up {
         position: absolute;
@@ -307,8 +305,11 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .hero-main {
-  background: url("../images/sp-bg-1.jpg") center top/cover no-repeat;
+  background-image: url("../images/sp-bg-1.jpg");
   background-color: $sp-light-gray;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   padding:60px 0;
   position: relative;
   &:after {
@@ -1284,7 +1285,6 @@ a.link {
 }
 .profile-img-wrapper {
     width:150px;
-    height:150px;
     overflow:hidden;
     img {
         width:150px;
@@ -1564,7 +1564,7 @@ a.modal-link {
   @include tablet-portrait-and-up {
     float: left;
     width: 18%;
-    margin-right: 4%;
+    margin: 0 4% 0 2%;
   }
   .gform_footer {
       margin-top:15px;
@@ -1817,6 +1817,10 @@ h6 {
   input {
     width: 100%;
   }
+}
+
+.gform_wrapper input[type="text"] {
+  border-radius: 0;
 }
 
 .gform_wrapper .top_label .gfield_label {
