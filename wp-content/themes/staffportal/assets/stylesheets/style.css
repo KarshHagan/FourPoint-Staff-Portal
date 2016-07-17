@@ -3774,6 +3774,8 @@ h6 {
     max-width: 450px; }
 .loginform .btn-blue {
   margin: 30px auto 0; }
+.loginform a {
+  color: #00a8e2; }
 
 .login-username #user_login {
   width: 100%; }

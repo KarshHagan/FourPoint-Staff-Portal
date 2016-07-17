@@ -56,7 +56,7 @@ class Fourpoint {
 	function restrict_dashboard() {
 		// die("restrict dashboard");
 		if ( ! defined( 'DOING_AJAX' ) && ! current_user_can( 'manage_options' ) ) {
-			wp_redirect( "/" ); //add this url here to where someone logged in on the front end
+			wp_redirect( "/login" ); //add this url here to where someone logged in on the front end
 		}
 	}
 
