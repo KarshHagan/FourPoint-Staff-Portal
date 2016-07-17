@@ -7,7 +7,8 @@ function acui_import_users( $file, $form_data, $attach_id = 0, $is_cron = false 
 		<h2>Importing users</h2>	
 		<?php
 			set_time_limit(0);
-			add_filter( 'send_password_change_email', '__return_false');
+			
+			do_action( 'before_acui_import_users' );
 
 			global $wpdb;
 			global $wp_users_fields;
@@ -48,6 +49,11 @@ function acui_import_users( $file, $form_data, $attach_id = 0, $is_cron = false 
 				$allow_multiple_accounts = "not_allowed";
 			else
 				$allow_multiple_accounts = $form_data["allow_multiple_accounts"];
+
+			if( empty( $form_data["approve_users_new_user_appove"] ) )
+				$approve_users_new_user_appove = "no_approve";
+			else
+				$approve_users_new_user_appove = $form_data["approve_users_new_user_appove"];
 	
 			echo "<h3>Ready to registers</h3>";
 			echo "<p>First row represents the form of sheet</p>";
@@ -83,6 +89,7 @@ function acui_import_users( $file, $form_data, $attach_id = 0, $is_cron = false 
 
 					$i = 0;
 					$password_position = false;
+					$id_position = false;
 					
 					foreach ( $wp_users_fields as $wp_users_field ) {
 						$positions[ $wp_users_field ] = false;
@@ -115,12 +122,21 @@ function acui_import_users( $file, $form_data, $attach_id = 0, $is_cron = false 
 						continue;
 					endif;
 
+					do_action('pre_acui_import_single_user', $headers, $data );
+
 					$username = $data[0];
 					$email = $data[1];
 					$user_id = 0;
 					$problematic_row = false;
 					$password_position = $positions["password"];
 					$password = "";
+					$id_position = $positions["id"];
+					
+					if ( !empty( $id_position ) )
+						$id = $data[ $id_position ];
+					else
+						$id = "";
+
 					$created = true;
 
 					if( $password_position === false )
@@ -128,7 +144,48 @@ function acui_import_users( $file, $form_data, $attach_id = 0, $is_cron = false 
 					else
 						$password = $data[ $password_position ];
 
-					if( username_exists($username) ){ // if user exists, we take his ID by login, we will update his mail if it has changed
+					if( !empty( $id ) ){ // if user have used id
+						if( acui_user_id_exists( $id ) ){
+							// we check if username is the same than in row
+							$user = get_user_by( 'ID', $id );
+
+							if( $user->user_login == $username ){
+								$user_id = $id;
+								
+								if( !empty( $password ) )
+									wp_set_password( $password, $user_id );
+
+								$updateEmailArgs = array(
+									'ID'         => $user_id,
+									'user_email' => $email
+								);
+								wp_update_user( $updateEmailArgs );
+
+								$created = false;
+							}
+							else{
+								echo '<script>alert("Problems with ID: ' . $id . ', username is not the same in the CSV and in database, we are going to skip.");</script>';
+								continue;
+							}
+
+						}
+						else{
+							if( empty($password) ) // if user not exist and password is empty but the column is set, it will be generated
+								$password = wp_generate_password();
+
+							$userdata = array(
+								'ID'		  =>  $id,
+							    'user_login'  =>  $username,
+							    'user_email'  =>  $email,
+							    'user_pass'   =>  $password
+							);
+
+							$user_id = wp_insert_user( $userdata );
+
+							$created = true;
+						}
+					}
+					elseif( username_exists($username) ){ // if user exists, we take his ID by login, we will update his mail if it has changed
 						$user_object = get_user_by( "login", $username );
 						$user_id = $user_object->ID;
 
@@ -200,51 +257,57 @@ function acui_import_users( $file, $form_data, $attach_id = 0, $is_cron = false 
 					// WP Members activation
 					if( $activate_users_wp_members == "activate" )
 						update_user_meta( $user_id, "active", true );
+
+					// New User Approve
+					if( $approve_users_new_user_appove == "approve" )
+						update_user_meta( $user_id, "approved", true );
+					else
+						update_user_meta( $user_id, "pending", true );
 						
 					if($columns > 2){
 						for( $i=2 ; $i<$columns; $i++ ):
 							if( !empty( $data ) ){
-								if( strtolower( $headers[$i] ) == "password" ){ // passwords -> continue
+								if( strtolower( $headers[ $i ] ) == "password" ){ // passwords -> continue
 									continue;
 								}
-								else{
-									if( in_array( $headers[ $i ], $wp_users_fields ) ){ // wp_user data
-										
-										if( empty( $data[ $i ] ) && $empty_cell_action == "leave" )
-											continue;
-										else
-											wp_update_user( array( 'ID' => $user_id, $headers[ $i ] => $data[ $i ] ) );
-										
-									}
-									elseif( strtolower( $headers[ $i ] ) == "wp-access-areas" && is_plugin_active( 'wp-access-areas/wp-access-areas.php' ) ){ // wp-access-areas
-										$active_labels = array_map( 'trim', explode( "#", $data[ $i ] ) );
+								elseif( strtolower( $headers[ $i ] ) == "user_pass" ){ // hashed pass
+							        $wpdb->update( $wpdb->users, array( 'user_pass' => $data[ $i ] ), array( 'ID' => $user_id ) );
+								}
+								elseif( in_array( $headers[ $i ], $wp_users_fields ) ){ // wp_user data									
+									if( empty( $data[ $i ] ) && $empty_cell_action == "leave" )
+										continue;
+									else
+										wp_update_user( array( 'ID' => $user_id, $headers[ $i ] => $data[ $i ] ) );									
+								}
+								elseif( strtolower( $headers[ $i ] ) == "wp-access-areas" && is_plugin_active( 'wp-access-areas/wp-access-areas.php' ) ){ // wp-access-areas
+									$active_labels = array_map( 'trim', explode( "#", $data[ $i ] ) );
 
-										foreach( $wpaa_labels as $wpa_label ){
-											if( in_array( $wpa_label->cap_title , $active_labels )){
-												acui_set_cap_for_user( $wpa_label->capability , $user_object , true );
-											}
-											else{
-												acui_set_cap_for_user( $wpa_label->capability , $user_object , false );
-											}
+									foreach( $wpaa_labels as $wpa_label ){
+										if( in_array( $wpa_label->cap_title , $active_labels )){
+											acui_set_cap_for_user( $wpa_label->capability , $user_object , true );
 										}
-									}
-									elseif( in_array( $headers[ $i ], $buddypress_fields ) ){ // buddypress
-										xprofile_set_field_data( $headers[ $i ], $user_id, $data[ $i ] );
-									} 
-									else{ // wp_usermeta data
-										
-										if( empty( $data[ $i ] ) ){
-											if( $empty_cell_action == "delete" )
-												delete_user_meta( $user_id, $headers[ $i ] );
-											else
-												continue;	
+										else{
+											acui_set_cap_for_user( $wpa_label->capability , $user_object , false );
 										}
-										else
-											update_user_meta( $user_id, $headers[ $i ], $data[ $i ] );
-
-
 									}
 								}
+								elseif( in_array( $headers[ $i ], $buddypress_fields ) ){ // buddypress
+									xprofile_set_field_data( $headers[ $i ], $user_id, $data[ $i ] );
+								} 
+								else{ // wp_usermeta data
+									
+									if( empty( $data[ $i ] ) ){
+										if( $empty_cell_action == "delete" )
+											delete_user_meta( $user_id, $headers[ $i ] );
+										else
+											continue;	
+									}
+									else
+										update_user_meta( $user_id, $headers[ $i ], $data[ $i ] );
+
+
+								}
+
 							}
 						endfor;
 					}
@@ -302,6 +365,7 @@ function acui_import_users( $file, $form_data, $attach_id = 0, $is_cron = false 
 							add_filter( 'send_password_change_email', '__return_false' );
 						}
 						
+						$body_mail = wpautop( $body_mail );
 
 						add_filter( 'wp_mail_content_type', 'set_html_content_type' );
 
@@ -353,7 +417,8 @@ function acui_import_users( $file, $form_data, $attach_id = 0, $is_cron = false 
 			<p>Process finished you can go <a href="<?php echo get_admin_url() . '/users.php'; ?>">here to see results</a></p>
 			<?php
 			ini_set('auto_detect_line_endings',FALSE);
-			add_filter( 'send_password_change_email', '__return_true');
+			
+			do_action( 'after_acui_import_users' );
 		?>
 	</div>
 <?php
@@ -726,6 +791,15 @@ function acui_options()
 				</td>
 			</tr>
 			<tr valign="top">
+				<th scope="row">id</th>
+				<td>You can use a column called id in order to make inserts or updates of an user using the ID used by WordPress in the wp_users table. We have two different cases:
+					<ul style="list-style:disc outside none; margin-left:2em;">
+						<li>If id <strong>doesn't exist in your users table</strong>: user will be inserted</li>
+						<li>If id <strong>exists</strong>: plugin check if username is the same, if yes, it will update the data, if not, it ignores the cell to avoid problems</li>					
+					</ul>
+				</td>
+			</tr>
+			<tr valign="top">
 				<th scope="row">Passwords</th>
 				<td>A string that contains user passwords. We have different options for this case:
 					<ul style="list-style:disc outside none; margin-left:2em;">
@@ -867,6 +941,8 @@ function acui_options()
 	$path_to_file = get_option( "acui_cron_path_to_file");
 	$period = get_option( "acui_cron_period");
 	$role = get_option( "acui_cron_role");
+	$move_file_cron = get_option( "acui_move_file_cron");
+	$path_to_move = get_option( "acui_cron_path_to_move");
 	$log = get_option( "acui_cron_log");
 
 	if( empty( $cron_activated ) )
@@ -890,6 +966,12 @@ function acui_options()
 	if( empty( $role ) )
 		$role = "subscriber";
 
+	if( empty( $move_file_cron ) )
+		$move_file_cron = false;
+
+	if( empty( $path_to_move ) )
+		$path_to_move = dirname( __FILE__ ) . '/move.csv';
+
 	if( empty( $log ) )
 		$log = "No tasks done yet.";
 
@@ -908,7 +990,7 @@ function acui_options()
 				</tr>
 				<tr class="form-field form-required">
 					<th scope="row"><label for="period">Period</label></th>
-					<td>
+					<td>	
 						<select id="period" name="period">
 							<option <?php if( $period == 'hourly' ) echo "selected='selected'"; ?> value="hourly">Hourly</option>
 							<option <?php if( $period == 'twicedaily' ) echo "selected='selected'"; ?> value="twicedaily">Twicedaily</option>
@@ -960,6 +1042,19 @@ function acui_options()
 					</td>
 				</tr>
 				<tr class="form-field form-required">
+					<th scope="row"><label for="move-file-cron">Move file after import?</label></th>
+					<td>
+						<div style="float:left;">
+							<input type="checkbox" name="move-file-cron" value="yes" <?php if( $move_file_cron == true ) echo "checked='checked'"; ?>/>
+						</div>
+
+						<div id="move-file-cron-cell" style="margin-left:25px;">
+							<input placeholder="Insert complete path to the file" type="text" name="path_to_move" id="path_to_move" value="<?php echo $path_to_move; ?>" style="width:70%;" />
+							<p class="description">You have to introduce the path to file, i.e.: <?php $upload_dir = wp_upload_dir(); echo $upload_dir["path"]; ?>/move.csv</p>
+						</div>
+					</td>
+				</tr>				
+				<tr class="form-field form-required">
 					<th scope="row"><label for="log">Last actions of schedule task</label></th>
 					<td>
 						<pre><?php echo $log; ?></pre>
@@ -983,6 +1078,17 @@ function acui_options()
 		        }
 		        
 		    });
+
+		    $( "[name='move-file-cron']" ).change(function() {
+		        if( $(this).is( ":checked" ) )
+		        	$( '#move-file-cron-cell' ).show();
+		        else
+		        	$( '#move-file-cron-cell' ).hide();
+		    });
+
+		    <?php if( !$move_file_cron ): ?>
+		    $( '#move-file-cron-cell' ).hide();
+		    <?php endif; ?>
 		});
 		</script>
 	<?php break; ?>

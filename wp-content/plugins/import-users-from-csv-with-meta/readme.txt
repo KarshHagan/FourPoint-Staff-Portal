@@ -3,8 +3,8 @@ Contributors: hornero, carazo
 Donate link: http://paypal.me/codection
 Tags: csv, import, importer, meta data, meta, user, users, user meta,  editor, profile, custom, fields, delimiter, update, insert
 Requires at least: 3.4
-Tested up to: 4.5.2
-Stable tag: 1.8.9
+Tested up to: 4.5.3
+Stable tag: 1.9.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,26 @@ Plugin will automatically detect:
 
 
 == Changelog ==
+
+= 1.9.4.1 =
+*	wpautop added again
+
+= 1.9.4 =
+*	user_pass can be imported directly hashed thanks to Bad Yogi
+
+= 1.9.3 =
+*	Now you can move file after cron, thanks to Yme Brugts for supporting this new feature
+
+= 1.9.2 =
+*	New hook added, thanks to borkenkaefer
+
+= 1.9.1 =
+*	Fix new feature thanks to bixul ( https://wordpress.org/support/topic/problems-with-user-xxx-error-invalid-user-id?replies=3#post-8572766 )
+
+= 1.9 =
+*	New feature thanks to Ken Hagen - V3 Insurance Partners LLC, now you can import users directly with his ID or update it using his user ID, please read documentation tab for more information about it
+*	New hooks added thank to the idea of borkenkaefer, in the future we will include more and better hooks (actions and filters)
+*	Compatibility with New User Approve fixed
 
 = 1.8.9 =
 *	Lost password link included in the mail template thanks to alex@marckdesign.net

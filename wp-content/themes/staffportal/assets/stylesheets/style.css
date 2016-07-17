@@ -2237,10 +2237,7 @@ Add .login-error to .login-modal section
 
 .alert-icon, .mail-icon {
   position: relative;
-  padding: 8px 20px 12px 50px;
-  -webkit-transition: 0.2s ease;
-  -moz-transition: 0.2s ease;
-  transition: 0.2s ease; }
+  padding: 8px 20px 12px 50px; }
   .alert-icon:after, .mail-icon:after {
     content: '';
     background: url("../images/icons/icon_alerts_blue-01.svg") no-repeat;
@@ -2251,10 +2248,7 @@ Add .login-error to .login-modal section
     width: 36px;
     height: 36px; }
   .alert-icon:hover:after, .mail-icon:hover:after {
-    background: url("../images/icons/icon_alerts_white-01.svg") no-repeat;
-    -webkit-transition: 0.2s ease;
-    -moz-transition: 0.2s ease;
-    transition: 0.2s ease; }
+    background: url("../images/icons/icon_alerts_white-01.svg") no-repeat; }
   @media (min-width: 1024px) {
     .alert-icon, .mail-icon {
       position: absolute;
@@ -2446,8 +2440,11 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
       margin-left: -31px; }
 
 .hero-main {
-  background: url("../images/sp-bg-1.jpg") center top/cover no-repeat;
+  background-image: url("../images/sp-bg-1.jpg");
   background-color: #ededed;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   padding: 60px 0;
   position: relative; }
   .hero-main:after {
@@ -3339,7 +3336,6 @@ a.link {
 
 .profile-img-wrapper {
   width: 150px;
-  height: 150px;
   overflow: hidden; }
   .profile-img-wrapper img {
     width: 130px; }
@@ -3597,7 +3593,7 @@ a.modal-link {
     .photo-edit {
       float: left;
       width: 18%;
-      margin-right: 4%; } }
+      margin: 0 4% 0 2%; } }
   .photo-edit .gform_footer {
     margin-top: 15px; }
     .photo-edit .gform_footer input {
@@ -3783,6 +3779,9 @@ h6 {
   width: 100%; }
 .login-username input {
   width: 100%; }
+
+.gform_wrapper input[type="text"] {
+  border-radius: 0; }
 
 .gform_wrapper .top_label .gfield_label {
   padding-left: 8px; }
