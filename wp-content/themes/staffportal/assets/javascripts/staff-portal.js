@@ -16,15 +16,6 @@ function parseQueryString( queryString ) {
 $(document).ready(function() {
   var windowWidth = $(window).width();
 
-  //opening modal if profile_open is set to true on the query string.
-
-  parseQueryString(window.location.search);
-  request_vars = parseQueryString(window.location.search);
-  alert(request_vars.profile_open);
-  if( request_vars.profile_open == true ) {
-    $(".alert-toggle").trigger('click');
-  }
-
   $(".document-file").on('click',function() {
     tracker_url = '/wp-content/themes/staffportal/record_post_view.php';
     post_data = {
@@ -100,27 +91,38 @@ $(document).ready(function() {
   ]
 });
 
+function on_alert_toggle_click(clickedId) {
+  $('body').css({
+    'overflow': 'hidden',
+    'position': 'fixed'
+  });
+  $('.'+ clickedId + '-modal').fadeToggle().find('.modal-panel').addClass('scale-in');
+  last_id = $('.'+ clickedId + '-modal').data('last-id');
+  tracker_url = '/wp-content/themes/staffportal/record_alert_view.php';
+  post_data = {
+    alert_id: last_id,
+    user_id: $('.'+ clickedId + '-modal').data('userid')
+  }
+  $.post(tracker_url,post_data,function(data) {
+    console.log('tracked alert view');
+    if(data) {
+      console.log(data);
+    }
+  });
+  $(".alert-notification").hide();
+}
+
+//open alert modal toggle if request variable was set
+if($("#profile.alert-toggle").hasClass("open") ) {
+  var clickedId = this.id;
+  on_alert_toggle_click('profile');
+  // $("#profile.alert-toggle").trigger('click');
+}
+
   // alert Modal toggle
   $(".alert-toggle").on('click',function(evt) {
     var clickedId = this.id;
-    $('body').css({
-      'overflow': 'hidden',
-      'position': 'fixed'
-    });
-    $('.'+ clickedId + '-modal').fadeToggle().find('.modal-panel').addClass('scale-in');
-    last_id = $('.'+ clickedId + '-modal').data('last-id');
-    tracker_url = '/wp-content/themes/staffportal/record_alert_view.php';
-    post_data = {
-      alert_id: last_id,
-      user_id: $('.'+ clickedId + '-modal').data('userid')
-    }
-    $.post(tracker_url,post_data,function(data) {
-      console.log('tracked alert view');
-      if(data) {
-        console.log(data);
-      }
-    });
-    $(".alert-notification").hide();
+    on_alert_toggle_click(clickedId);
   });
 
   $(".remove-alert").on('click',function() {

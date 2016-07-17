@@ -58,7 +58,7 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
             <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon alert-icon">Alerts<?php if($unread_alerts) { ?><span class="alert-notification"></span><?php } ?></span></a>
             <li class="sp-navlink"><a href="https://mail.fourpointenergy.com" target="_blank"><span class="sp-icon mail-icon">Mail</span></a>
             </li>
-            <li class="sp-navlink alert-toggle" id="profile">
+            <li class="sp-navlink alert-toggle<?php if( array_key_exists('profile_open',$_REQUEST) && $_REQUEST['profile_open'] == true ) { ?> open<?php } ?>" id="profile">
               <a href="#">
                 <img src="<?php $theme->images_path() ?>/icons/icon_profile_blue-01.svg" class="profile-img-nav" />
                 <span class="sp-icon">My Profile</span>
