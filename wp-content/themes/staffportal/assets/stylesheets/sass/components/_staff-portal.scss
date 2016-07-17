@@ -133,7 +133,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     }
     &#profile {
       position: relative;
-      
+
       @include tablet-landscape-and-up {
         // margin: 0 0 -3px 28px;
         &:after {
@@ -1287,7 +1287,7 @@ a.link {
     height:150px;
     overflow:hidden;
     img {
-        width:150px;
+        width:130px;
     }
 }
 
@@ -1539,7 +1539,7 @@ a.modal-link {
     width:100%;
     max-width:380px;
     padding-left: 10px;
-    
+
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: $sp-med_light-gray;

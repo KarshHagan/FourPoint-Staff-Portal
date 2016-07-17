@@ -1,5 +1,29 @@
+function parseQueryString( queryString ) {
+    var params = {}, queries, temp, i, l;
+
+    // Split into key/value pairs
+    queries = queryString.split("&amp;");
+
+    // Convert the array of strings into an object
+    for ( i = 0, l = queries.length; i < l; i++ ) {
+        temp = queries[i].split('=');
+        params[temp[0]] = temp[1];
+    }
+
+    return params;
+};
+
 $(document).ready(function() {
   var windowWidth = $(window).width();
+
+  //opening modal if profile_open is set to true on the query string.
+
+  parseQueryString(window.location.search);
+  request_vars = parseQueryString(window.location.search);
+  alert(request_vars.profile_open);
+  if( request_vars.profile_open == true ) {
+    $(".alert-toggle").trigger('click');
+  }
 
   $(".document-file").on('click',function() {
     tracker_url = '/wp-content/themes/staffportal/record_post_view.php';
@@ -75,7 +99,6 @@ $(document).ready(function() {
     }
   ]
 });
-
 
   // alert Modal toggle
   $(".alert-toggle").on('click',function(evt) {
@@ -301,7 +324,7 @@ TicketSort.prototype.sortTickets = function() {
     _this.$ticket.each(function() {
 
       var ticketCategoryToDisplay = $(this).data('it-category');
-      
+
       if(selectedItemCategory === 'all' || selectedItemCategory === ticketCategoryToDisplay) {
         $(this).fadeIn(250);
       } else {

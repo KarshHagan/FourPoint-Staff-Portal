@@ -1032,11 +1032,14 @@ function set_post_acf_gallery_field( $entry ) {
 	wp_get_current_user();
 	$gf_images_field_id = 11; // the upload field id
 	$acf_field_id = 'field_576d3b096e8ef'; // the acf gallery field id
-	$attach_id = convert_upload_field_url_to_attachment( $current_user->ID, $entry[11]);
-	update_field('profile_photo', $attach_id, 'user_'.$current_user->ID);
+	if( $entry[$gf_images_field_id] != '' ) {
+			$attach_id = convert_upload_field_url_to_attachment( $current_user->ID, $entry[$gf_images_field_id]);
+			update_field('profile_photo', $attach_id, 'user_'.$current_user->ID);
+	}
 }
 
 function convert_upload_field_url_to_attachment( $post_id, $field_value) {
+		require ( ABSPATH . 'wp-admin/includes/image.php' );
 	  $success = false;
 		$filename = $field_value;
 
@@ -1055,7 +1058,8 @@ function convert_upload_field_url_to_attachment( $post_id, $field_value) {
 		    $abs_path = getcwd();
 		    $actual_file = str_replace(site_url(),$abs_path,$filename);
 		    $attach_id = wp_insert_attachment( $attachment, $actual_file, $post_id );
-
+				$attach_metadata = wp_generate_attachment_metadata( $attach_id, $actual_file );
+				wp_update_attachment_metadata( $attach_id, $attach_metadata );
 		}
 
 		return $attach_id;
