@@ -6,10 +6,10 @@
   </div>
     <div class="photo-edit">
       <?php
-        $profile_photo = get_field('profile_photo','user_'.$current_user->data->ID);
+      $profile_photo = get_profile_photo($current_user->data->ID);
       ?>
       <div class="profile-img-wrapper">
-        <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
+        <img class="profile-img" src="<?php echo $profile_photo ?>">
       </div>
     </div>
     <div class="form-container">

@@ -24,7 +24,7 @@ get_header();
         <h3><?php echo $office->name ?></h3>
         <p><?php the_field('address',$office) ?></p>
         <a href="tel:<?php echo preg_replace("/[^0-9]/", "", get_field('phone',$office)); ?>"><?php the_field('phone',$office) ?></a>
-        <!-- <a href="<?php the_field('org_chart_file',$office) ?>" target="_blank"><?php echo $office->name ?> Organizational Chart</a> --> 
+        <!-- <a href="<?php the_field('org_chart_file',$office) ?>" target="_blank"><?php echo $office->name ?> Organizational Chart</a> -->
       </div>
       <?php } ?>
     </div>
@@ -67,7 +67,8 @@ get_header();
           $extension = get_field('extension','user_'.$employee->ID);
           $mobile_number = get_field('mobile_number','user_'.$employee->ID);
           $conf_call_id = get_field('conf_call_id','user_'.$employee->ID);
-          $profile_photo = get_field('profile_photo','user_'.$employee->ID);
+
+          $profile_photo = get_profile_photo($employee->ID);
           $last_name_category = $theme->get_last_name_filer($employee->last_name);
           // $offices = get_field('employee_office','user_'.$employee->ID);
           $offices = wp_get_object_terms( $employee->ID, 'office' );
@@ -83,7 +84,7 @@ get_header();
         <li class="employee-bio-container" data-office="<?php echo $office_slug ?>" data-name="<?php echo $last_name_category ?>">
           <div class="employee-bio">
             <div class="front shadow-border">
-              <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
+              <img class="profile-img" src="<?php echo $profile_photo ?>">
               <h2><?php echo $employee->display_name ?></h2>
               <h3><?php echo $user_title ?></h3>
               <p class="office"><?php echo $office_name ?></p>
@@ -97,7 +98,7 @@ get_header();
             </div>
 
             <div class="back shadow-border">
-              <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
+              <img class="profile-img" src="<?php echo $profile_photo ?>">
               <div class="inner">
                 <p><?php echo $employee->description ?></p>
               </div>
