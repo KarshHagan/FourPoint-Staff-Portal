@@ -80,7 +80,7 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
       <li class="nav-btn-big"><a href="/brand-center" class="btn-blue btn-wide button"><span class="sp-icon"></span>Brand Center</a></li>
     </ul>
   </div>
-  <section class="hero-main"<?php if(get_field('page_heading_bg')) { ?> style="background:url('<?php the_field('page_heading_bg'); ?>')"<?php } ?>>
+  <section class="hero-main"<?php if(get_field('page_heading_bg')) { ?> style="background-image:url('<?php the_field('page_heading_bg'); ?>')"<?php } ?>>
     <div class="container">
       <div class="search-left">
         <h1><?php if(get_field('page_heading')) {
