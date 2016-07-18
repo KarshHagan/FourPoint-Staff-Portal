@@ -22,7 +22,7 @@
     </div>
 
     <div class="link-container">
-      <h4>Documents & Forms</h4>
+      <h4>Documents &amp; Forms</h4>
       <ul>
         <?php
           if(!isset($document_categories)) {
@@ -32,7 +32,7 @@
             ));
           }
           foreach($document_categories as $document_category) { ?>
-          <li><a href="/documents-and-forms#<?php echo $document_category->slug ?>"><?php echo $document_category->name ?></a></li>
+          <li><a href="/documents-forms#<?php echo $document_category->slug ?>"><?php echo $document_category->name ?></a></li>
         <?php
           }
         ?>

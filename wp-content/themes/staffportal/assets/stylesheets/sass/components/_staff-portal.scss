@@ -310,8 +310,11 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  padding:60px 0;
+  padding: 0;
   position: relative;
+  @include tablet-portrait-and-up {
+    padding: 60px 0;
+  }
   &:after {
     position: absolute;
     content: '';
@@ -325,10 +328,12 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     .container {
       position: relative;
       z-index: 3;
-        margin-top: 0;
-        @include tablet-portrait-and-up {
-            margin-top: 60px;
-        }
+      margin-top: 0;
+      margin-bottom: 30px;
+      @include tablet-portrait-and-up {
+          margin-top: 60px;
+          margin-bottom: 60px;
+      }
     }
 
     h1 {
@@ -340,6 +345,11 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
   overflow:auto;
   @include tablet-portrait-and-up {
     padding: 80px 30px;
+  }
+  .container {
+    @media (max-width: 767px) {
+      margin: 20px auto 50px;
+    }
   }
   .recently-viewed, .most-popular {
     padding-left: 6px;
@@ -647,7 +657,7 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     .to-top {
         color: $white;
         &:after {
-            background: url('../images/icons/icon_arrows_blu-01.svg') no-repeat center center;
+            background: url('../images/icons/icon_arrow dot_wht-01.svg') no-repeat center center;
         }
         &:hover {
           color: $yellow;
@@ -1511,20 +1521,19 @@ a.modal-link {
 }
 .search-form-wrap {
   position: relative;
-  &:after {
-    content: '';
-    background:url('../images/icons/icon_magnifying_glass.svg') no-repeat 14px white;
-    background-size: 22px 22px;
-    padding-left: 12px;
-    padding-right: 12px;
-    position: absolute;
-    top: 50%;
-    width: 22px;
-    height: 22px;
-    right: 10px;
-    background-position: center top;
-    margin-top: -11px;
-  }
+}
+
+.search-icon-submit {
+  background:url('../images/icons/icon_magnifying_glass.svg') no-repeat 14px transparent;
+  background-size: 22px 22px;
+  background-position: center center;
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  right: 0;
+  border: 0;
+  cursor: pointer;
 }
 #searchform {
   margin-top: 16px;

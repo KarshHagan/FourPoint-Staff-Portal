@@ -95,3 +95,9 @@ img {
     display: block;
   }
 }
+
+input, textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
