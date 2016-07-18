@@ -1023,7 +1023,7 @@ add_filter( "gform_after_submission_1", 'set_post_acf_gallery_field', 10, 2 );
 function set_post_acf_gallery_field( $entry ) {
 	global $current_user;
 	wp_get_current_user();
-	$gf_images_field_id = 11; // the upload field id
+	$gf_images_field_id = 9; // the upload field id
 	$acf_field_id = 'field_576d3b096e8ef'; // the acf gallery field id
 	if( $entry[$gf_images_field_id] != '' ) {
 			$attach_id = convert_upload_field_url_to_attachment( $entry[$gf_images_field_id], $current_user->ID);
@@ -1100,6 +1100,7 @@ add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 function password_reset_message($message, $reset_key)
 {
     // ...
+		$message = "Forgot password stuff goes here. Use \n to create line breaks. To add in the reset key use $reset_key";
 }
 
 function get_profile_photo($user_id) {
