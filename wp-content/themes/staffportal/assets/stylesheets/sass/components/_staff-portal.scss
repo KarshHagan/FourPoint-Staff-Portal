@@ -305,7 +305,6 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
 }
 
 .hero-main {
-  background-image: url("../images/sp-bg-1.jpg");
   background-color: $sp-light-gray;
   background-size: cover;
   background-position: center top;
@@ -1104,9 +1103,6 @@ a.link {
 
 // employee cards
 .employee-bio-container {
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
-    -ms-perspective: 1000px;
     width: 100%;
     height: 500px;
     padding: 0 1.5%;
@@ -1134,15 +1130,15 @@ a.link {
 
 .flip {
   .front {
-    -webkit-transform:perspective(1000px) rotateY(180deg) !important;
-    -moz-transform:perspective(1000px) rotateY(180deg) !important;
-    transform:perspective(1000px) rotateY(180deg) !important;
+    -webkit-transform: rotateY(180deg) !important;
+    -moz-transform: rotateY(180deg) !important;
+    transform: rotateY(180deg) !important;
   }
 
   .back {
-    -moz-transform:perspective(1000px) rotateY(0deg) !important;
-    -webkit-transform:perspective(1000px) rotateY(0deg) !important;
-    transform:perspective(1000px) rotateY(0deg) !important;
+    -moz-transform:rotateY(0deg) !important;
+    -webkit-transform:rotateY(0deg) !important;
+    transform:rotateY(0deg) !important;
   }
 }
 
@@ -1208,8 +1204,10 @@ a.link {
 
 .employee-bio {
     position: relative;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -ms-perspective: 1000px;
     -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
     width: 100%;
     height: 100%;
@@ -1230,7 +1228,6 @@ a.link {
         z-index: -1;
         background-color: $white;
         @include transition(0.25s ease);
-
         &:after {
             content: ' ';
             position: absolute;
@@ -1245,26 +1242,25 @@ a.link {
     .front {
         z-index: 2;
         padding: 6px;
-        -moz-transform:perspective(1000px) rotateY(0deg);
-        -webkit-transform:perspective(1000px) rotateY(0deg);
-        transform:perspective(1000px) rotateY(0deg);
+        @include transform(rotateY(0deg));
         h3 {
             margin: 0;
         }
     }
     .back {
-        -moz-transform:perspective(1000px) rotateY(-180deg);
-        -webkit-transform:perspective(1000px) rotateY(-180deg);
-        transform:perspective(1000px) rotateY(-180deg);
+        @include transform(rotateY(-180deg));
         .inner {
             background: $dark_gray;
-            margin-top: -46px;
+            margin-top: -38px;
             z-index: -1;
             padding-top: 2px;
+            height: 328px;
+            overflow: hidden;
             p {
-                padding: 20px 10px 20px 15px;
+                padding: 12px 10px 15px 15px;
                 text-align: left;
                 color: $white;
+                font-size: 15px;
             }
 
             span {
@@ -1289,6 +1285,9 @@ a.link {
     border: 6px solid white;
     margin: 20px auto 15px;
     max-width: 130px;
+    height: 130px;
+    z-index: 2;
+    position: relative;
     @include tablet-portrait-and-up {
       width: 100%;
     }
@@ -1611,17 +1610,6 @@ a.modal-link {
     padding-top: 15px;
     cursor: pointer;
     position: relative;
-    &:after {
-      content: 'Choose a File';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      padding-top: 13px;
-      padding-left: 5px;
-      background-color: $white;
-    }
     &:hover:after, &:active, &:focus {
       color: $fourpoint_blue !important;
       outline: 0;
