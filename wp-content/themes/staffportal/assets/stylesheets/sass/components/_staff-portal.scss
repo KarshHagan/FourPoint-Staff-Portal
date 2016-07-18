@@ -310,8 +310,11 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-  padding:60px 0;
+  padding: 0;
   position: relative;
+  @include tablet-portrait-and-up {
+    padding: 60px 0;
+  }
   &:after {
     position: absolute;
     content: '';
@@ -325,10 +328,12 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     .container {
       position: relative;
       z-index: 3;
-        margin-top: 0;
-        @include tablet-portrait-and-up {
-            margin-top: 60px;
-        }
+      margin-top: 0;
+      margin-bottom: 30px;
+      @include tablet-portrait-and-up {
+          margin-top: 60px;
+          margin-bottom: 60px;
+      }
     }
 
     h1 {
@@ -340,6 +345,11 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
   overflow:auto;
   @include tablet-portrait-and-up {
     padding: 80px 30px;
+  }
+  .container {
+    @media (max-width: 767px) {
+      margin: 20px auto 50px;
+    }
   }
   .recently-viewed, .most-popular {
     padding-left: 6px;
