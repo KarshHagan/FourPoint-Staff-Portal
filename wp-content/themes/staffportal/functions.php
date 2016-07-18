@@ -10,7 +10,7 @@ class Fourpoint {
 	 * @since 1.0
 	 */
 	private $theme_name = "Fourpoint";
-	private $scripts_version = '0.02';
+	private $scripts_version = '0.9';
 
 	function __construct() {
 		add_action('init', array($this, 'register_assets'));
@@ -27,9 +27,7 @@ class Fourpoint {
 		add_action( 'gform_after_submission_2', array($this, 'set_gform_custom_fields'));
 
 		add_theme_support('post-thumbnails');
-		set_post_thumbnail_size(596, 442, false);
-		add_image_size('Post Thumbnail',522, 348, false);
-		add_image_size('employee-photo',150, 150, false);
+		add_image_size('employee-photo',150, 150, true);
 
 		// enables wigitized sidebars
 		register_sidebars();
@@ -56,7 +54,7 @@ class Fourpoint {
 	function restrict_dashboard() {
 		// die("restrict dashboard");
 		if ( ! defined( 'DOING_AJAX' ) && ! current_user_can( 'manage_options' ) ) {
-			wp_redirect( "/login" ); //add this url here to where someone logged in on the front end
+			wp_redirect( "/" ); //add this url here to where someone logged in on the front end
 		}
 	}
 
@@ -993,8 +991,6 @@ function db_filter_authors_search( $posts_search ) {
 add_action("gform_user_updated", "map_taxonomy", 10, 4);
 function map_taxonomy($user_id, $config, $entry, $user_pass) {
 	global $wpdb;
-	// var_dump($entry);
-	// die('user updated filter');
 	// Get all taxonomies
 	$taxs = get_taxonomies();
 
@@ -1030,33 +1026,37 @@ function set_post_acf_gallery_field( $entry ) {
 	$gf_images_field_id = 11; // the upload field id
 	$acf_field_id = 'field_576d3b096e8ef'; // the acf gallery field id
 	if( $entry[$gf_images_field_id] != '' ) {
-			$attach_id = convert_upload_field_url_to_attachment( $current_user->ID, $entry[$gf_images_field_id]);
+			$attach_id = convert_upload_field_url_to_attachment( $entry[$gf_images_field_id], $current_user->ID);
 			update_field('profile_photo', $attach_id, 'user_'.$current_user->ID);
 	}
 }
 
-function convert_upload_field_url_to_attachment( $post_id, $field_value) {
-		require ( ABSPATH . 'wp-admin/includes/image.php' );
+function convert_upload_field_url_to_attachment( $field_value, $post_id) {
 	  $success = false;
 		$filename = $field_value;
-
 		if(!is_numeric($filename) && $filename != '') {
+			//Get the absolute path of the uploaded image by Gravity Forms
+			$abs_path = getcwd();
+			$actual_file = str_replace(site_url(),$abs_path,$filename);
 
 		     $wp_filetype = wp_check_filetype(basename($filename), null );
-
 		     $attachment = array(
+				'guid' => $wp_upload_dir['url'] . '/' . basename($filename),
 		     'post_mime_type' => $wp_filetype['type'],
 		     'post_title' => preg_replace('/\.[^.]+$/', '', basename($filename)),
 		     'post_content' => '',
 		     'post_status' => 'inherit'
 		    );
-
-		    //Get the absolute path of the uploaded image by Gravity Forms
-		    $abs_path = getcwd();
-		    $actual_file = str_replace(site_url(),$abs_path,$filename);
 		    $attach_id = wp_insert_attachment( $attachment, $actual_file, $post_id );
-				$attach_metadata = wp_generate_attachment_metadata( $attach_id, $actual_file );
-				wp_update_attachment_metadata( $attach_id, $attach_metadata );
+				apply_filters('wp_handle_upload', array('file' => $file_path, 'url' => $actual_file, 'type' => $wp_filetype['type']), 'upload');
+				require_once ( ABSPATH . 'wp-admin/includes/image.php' );
+				// $attach_metadata = wp_generate_attachment_metadata( $attach_id, $actual_file );
+				if ($attach_metadata = wp_generate_attachment_metadata($attach_id, $actual_file)) {
+				    wp_update_attachment_metadata( $attach_id, $attach_data );
+				} else {
+				    //failed to generate metadata
+				}
+				return $attach_id;
 		}
 
 		return $attach_id;
@@ -1095,3 +1095,23 @@ function my_login_logo_url_title() {
     return 'FourPoint Energy';
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+// add_filter('retrieve_password_message', 'password_reset_message', 10, 2);
+function password_reset_message($message, $reset_key)
+{
+    // ...
+}
+
+function get_profile_photo($user_id) {
+	if( get_field('profile_photo','user_'.$user_id)  ) {
+		$profile_photo = get_field('profile_photo','user_'.$user_id);
+		if(is_numeric($profile_photo)) {
+			$profile_photo = wp_get_attachment_image_src($profile_photo)[0];
+		} else {
+			$profile_photo = $profile_photo['sizes']['thumbnail'];
+		}
+	} else {
+		$profile_photo = get_bloginfo('template_url') . '/assets/images/profile_150x150-01.jpg';
+	}
+	return $profile_photo;
+}
