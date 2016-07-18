@@ -85,7 +85,7 @@ get_header();
           <div class="employee-bio">
             <div class="front shadow-border">
               <img class="profile-img" src="<?php echo $profile_photo ?>">
-              <h2><?php echo $employee->display_name ?></h2>
+              <h2><?php echo($employee->first_name." ".$employee->last_name) ?></h2>
               <h3><?php echo $user_title ?></h3>
               <p class="office"><?php echo $office_name ?></p>
               <ul class="contact-info">

@@ -993,18 +993,15 @@ function map_taxonomy($user_id, $config, $entry, $user_pass) {
 	global $wpdb;
 	// Get all taxonomies
 	$taxs = get_taxonomies();
-
 // Get all user meta
 	$all_meta_for_user = get_user_meta($user_id);
 
 // Loop through meta data and map to taxonomies with same name as user meta key
 	foreach ($all_meta_for_user as $taxonomy => $value ) {
-
 		if (in_array ($taxonomy, $taxs) ) {			// Check if there is a Taxonomy with the same name as the Custom user meta key
-
 		// Get term id
 			$term_id = get_user_meta($user_id, $taxonomy, true);
-			If (is_numeric($term_id)) {				// Check if Custom user meta is an ID
+			if (is_numeric($term_id)) {				// Check if Custom user meta is an ID
 
 				// Echo $taxonomy.'='.$term_id.'<br>';
 
@@ -1012,10 +1009,10 @@ function map_taxonomy($user_id, $config, $entry, $user_pass) {
 				$term = get_term( $term_id, $taxonomy );
 				$termslug = $term->slug;
 				wp_set_object_terms( $user_id, array( $termslug ), $taxonomy, false);
-
 			}
 		}
 	}
+	// die();
 }
 
 $gravity_form_id = 1; // gravity form id, or replace {$gravity_form_id} below with this number
@@ -1023,11 +1020,21 @@ add_filter( "gform_after_submission_1", 'set_post_acf_gallery_field', 10, 2 );
 function set_post_acf_gallery_field( $entry ) {
 	global $current_user;
 	wp_get_current_user();
-	$gf_images_field_id = 9; // the upload field id
+	$gf_images_field_id = 11; // the upload field id
+	$gf_offices_field_id = 9;
 	$acf_field_id = 'field_576d3b096e8ef'; // the acf gallery field id
-	if( $entry[$gf_images_field_id] != '' ) {
+	if( $entry[$gf_images_field_id] != '' &! is_numeric( $entry[$gf_images_field_id] ) ) {
 			$attach_id = convert_upload_field_url_to_attachment( $entry[$gf_images_field_id], $current_user->ID);
 			update_field('profile_photo', $attach_id, 'user_'.$current_user->ID);
+	}
+	if( $entry[$gf_offices_field_id] != '' ) {
+		// var_dump($entry[$gf_offices_field_id]);
+		// Add user to taxomomy term
+			$term = get_term( $entry[$gf_offices_field_id], 'office' );
+			$termslug = $term->slug;
+			// echo "setting terms for numeric office";
+			// echo("<br />".$termslug);
+			$success = wp_set_object_terms( $current_user->ID, array( $termslug ), 'office');
 	}
 }
 

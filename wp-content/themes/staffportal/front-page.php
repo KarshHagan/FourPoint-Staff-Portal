@@ -24,9 +24,10 @@ get_header(); ?>
           foreach($document_files as $document_file) {
             $file_parts = explode("/",get_field('file_path',$document_file->ID));
             $filename = $file_parts[count($file_parts)-1];
+            if($filename && $filename != "") {
         ?>
         <li><a href="<?php the_field('file_path',$document_file->ID) ?>" class="document-file" data-documentid="<?php echo $document_file->ID ?>" data-userid="<?php echo $current_user->ID ?>" target="_blank"><?php echo $filename ?></a></li>
-        <?php } ?>
+        <?php } } ?>
       </ul>
     </div>
     <div class="quick-links shadow-border most-popular">
@@ -45,9 +46,10 @@ get_header(); ?>
           foreach($document_files as $document_file) {
             $file_parts = explode("/",get_field('file_path',$document_file->ID));
             $filename = $file_parts[count($file_parts)-1];
+            if($filename && $filename != "") {
         ?>
         <li><a href="<?php the_field('file_path',$document_file->ID) ?>" class="document-file" data-documentid="<?php echo $document_file->ID ?>" data-userid="<?php echo $current_user->ID ?>" target="_blank"><?php echo $filename ?></a></li>
-        <?php } ?>
+        <?php } } ?>
       </ul>
     </div>
   </div>
