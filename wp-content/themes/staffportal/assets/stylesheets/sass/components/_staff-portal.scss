@@ -1316,6 +1316,12 @@ a.link {
     .gform_footer {
       margin-bottom: 30px;
     }
+    a {
+      color: $fourpoint_blue;
+      &:hover {
+        color:$yellow;
+      }
+    }
 }
 
 .alert-date {
@@ -1470,7 +1476,7 @@ a.modal-link {
 }
 
 .card-hidden {
-    // display: none !important;
+    display: none !important;
     opacity: 0;
     transform: scale(0);
     height: 0;
@@ -1481,7 +1487,7 @@ a.modal-link {
 }
 
 .card-visible {
-    // display: inline-block !important;
+    display: inline-block !important;
     opacity: 1;
     transform: scale(1);
     @include transition(0.40s ease-in-out);
@@ -1655,7 +1661,7 @@ a.modal-link {
     }
     label {
       width: 100%;
-      float: left;
+      // float: left;
       margin-left: 5px;
       color: $light_gray;
       margin-bottom: 8px;
