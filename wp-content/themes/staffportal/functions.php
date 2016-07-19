@@ -1103,10 +1103,24 @@ function my_login_logo_url_title() {
 }
 add_filter( 'login_headertitle', 'my_login_logo_url_title' );
 
-// add_filter('retrieve_password_message', 'password_reset_message', 10, 2);
-function password_reset_message($message, $reset_key)
-{
-    // ...
+add_filter('retrieve_password_message', 'password_reset_message', 10, 4);
+function password_reset_message($message, $reset_key, $user_login, $user_data) {
+	$reset_link = get_site_url().'/wp-login.php?action=rp&key='.$reset_key.'&login='.$user_login;
+	$message = <<<EOT
+There has been a request to change the password to the following FourPoint employee user account:
+
+Username: $user_login
+
+If you did not request to change your password on your account please disregard the link below and contact employee@fourpointenergy.com to make notification of this false attempt for access.
+
+To reset your password, please use this link: $reset_link
+
+Thank you,
+
+FourPoint
+EOT;
+
+	return $message;
 }
 
 function get_profile_photo($user_id) {
