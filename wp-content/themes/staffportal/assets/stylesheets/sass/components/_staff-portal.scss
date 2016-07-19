@@ -1281,16 +1281,14 @@ a.link {
 
 .profile-img {
     border-radius: 50%;
-    width: 45%;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
     border: 6px solid white;
     margin: 20px auto 15px;
-    max-width: 130px;
+    width: 130px;
     height: 130px;
-    z-index: 2;
     position: relative;
-    @include tablet-portrait-and-up {
-      width: 100%;
-    }
 }
 .profile-img-wrapper {
     width:150px;

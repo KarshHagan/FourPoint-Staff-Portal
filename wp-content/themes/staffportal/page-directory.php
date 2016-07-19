@@ -84,7 +84,7 @@ get_header();
         <li class="employee-bio-container" data-office="<?php echo $office_slug ?>" data-name="<?php echo $last_name_category ?>">
           <div class="employee-bio">
             <div class="front shadow-border">
-              <img class="profile-img" src="<?php echo $profile_photo ?>">
+              <div class="profile-img" style="background-image:url('<?php echo $profile_photo ?>');"></div>
               <h2><?php echo($employee->first_name." ".$employee->last_name) ?></h2>
               <h3><?php echo $user_title ?></h3>
               <p class="office"><?php echo $office_name ?></p>
@@ -98,7 +98,7 @@ get_header();
             </div>
 
             <div class="back shadow-border">
-              <img class="profile-img" src="<?php echo $profile_photo ?>">
+              <div class="profile-img" style="background-image:url('<?php echo $profile_photo ?>');"></div>
               <div class="inner">
                 <p><?php echo $employee->description ?></p>
               </div>
