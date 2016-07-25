@@ -15,7 +15,6 @@ function parseQueryString( queryString ) {
 
 $(document).ready(function() {
   var windowWidth = $(window).width();
-
   $(".document-file").on('click',function() {
     tracker_url = '/wp-content/themes/staffportal/record_post_view.php';
     post_data = {
@@ -227,17 +226,17 @@ EmployeeSort.prototype.sortByOffice = function() {
 
         // if selected office (button) matches item's office and selected name (button) matches item's name OR selected office (button) matches item's office and selected name (button) is all, fade in
         if(selectedOffice == itemOffice && nameItemActive == $(this).data('name') || selectedOffice == itemOffice && nameItemActive == 'all') {
-            $(this).addClass('card-visible').removeClass('card-hidden');
+            $(this).fadeIn(850);
 
         // if office is all and name is all, fade everything in.
         } else if(selectedOffice == 'all' && nameItemActive == 'all') {
-            $(this).addClass('card-visible').removeClass('card-hidden');
+            $(this).fadeIn(850);
 
         // if office is all and chosen name is same as active name (button)
         } else if(selectedOffice == 'all' && nameItemActive == $(this).data('name')) {
-            $(this).addClass('card-visible').removeClass('card-hidden');
+            $(this).fadeIn(850);
         } else {
-            $(this).removeClass('card-visible').addClass('card-hidden');
+            $(this).fadeOut(80);
         }
 
     });
@@ -275,20 +274,20 @@ EmployeeSort.prototype.sortByName = function() {
 
             // if selected name matches name of card and office matches chosen office
             if(selectedName == itemName && officeItemActive == officeName || selectedName == itemName && officeItemActive == 'all' ) {
-                $(this).addClass('card-visible').removeClass('card-hidden');
+                $(this).fadeIn(850);
             }
             else if(selectedName == 'all' && officeItemActive == 'all') {
-                $(this).addClass('card-visible').removeClass('card-hidden');
+                $(this).fadeIn(850);
             }
 
             // if selected name is all and office matches chosen office
             else if(selectedName == 'all' && officeItemActive == officeName) {
-                $(this).addClass('card-visible').removeClass('card-hidden');
+                $(this).fadeIn(850);
             }
 
             // if nothing matches, fade out those items
             else {
-                $(this).addClass('card-hidden').removeClass('card-visible');
+              $(this).fadeOut(80);
             }
         });
 
