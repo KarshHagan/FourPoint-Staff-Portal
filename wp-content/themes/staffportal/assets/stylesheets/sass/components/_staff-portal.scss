@@ -329,9 +329,11 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
       z-index: 3;
       margin-top: 0;
       margin-bottom: 30px;
+      padding-bottom: 30px;
       @include tablet-portrait-and-up {
           margin-top: 60px;
           margin-bottom: 60px;
+          padding-bottom: 0;
       }
     }
 
@@ -1298,6 +1300,7 @@ a.link {
 .profile-img-wrapper {
     width:150px;
     overflow:hidden;
+    margin: 0 auto;
     img {
         width:130px;
     }
@@ -1506,6 +1509,9 @@ a.modal-link {
         color: $medium_gray;
         margin-bottom: 6px;
         font-size:0.825em;
+    }
+    a {
+      color: $black;
     }
     span {
         color: $black;

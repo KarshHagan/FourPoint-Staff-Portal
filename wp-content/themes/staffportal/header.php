@@ -55,7 +55,7 @@ if( count($alerts)>0 && $last_alert_id != $last_alert_viewed ) {
             <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/employee-benefits" class="btn-blue btn-wide button"><span class="sp-icon"></span>Benefits</a></li>
             <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/documents-forms" class="btn-blue btn-wide button"><span class="sp-icon"></span>Documents &amp; Forms</a></li>
             <li class="nav-buttons nav-btn-big-mobile nav-btn-big"><a href="/brand-center" class="btn-blue btn-wide button"><span class="sp-icon"></span>Brand Center</a></li>
-            <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon alert-icon">Alerts<?php if($unread_alerts) { ?><span class="alert-notification"></span><?php } ?></span></a>
+            <li class="sp-navlink alert-toggle" id="alert"><a href="#"><span class="sp-icon alert-icon">Alerts<?php if($unread_alerts) { ?><span class="alert-notification"><?php echo sizeof($unread_alerts) ?></span><?php } ?></span></a>
             <li class="sp-navlink"><a href="https://mail.fourpointenergy.com" target="_blank"><span class="sp-icon mail-icon">Mail</span></a>
             </li>
             <li class="sp-navlink alert-toggle<?php if( array_key_exists('profile_open',$_REQUEST) && $_REQUEST['profile_open'] == true ) { ?> open<?php } ?>" id="profile">
