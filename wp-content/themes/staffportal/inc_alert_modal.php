@@ -20,9 +20,9 @@ $removed_alerts = explode(",",$removed_alert_ids);
         <?php if( !array_search($alert->ID,$removed_alerts) ) { ?>
       <li class="alert-<?php echo $alert->ID ?>">
         <div class="modal-left">
-          <?php if(get_field('external_link')) { ?>
-            <p><span class="alert-date"><?php the_field('alert_date',$alert->ID) ?>  |</span><a href="<?php the_field('external_link'); ?>" target="_blank" class="modal-link"><?php the_field('external_link_name'); ?></a>
-            <?php echo $alert->content ?></p>
+          <?php if(get_field('external_link', $alert->ID)) { ?>
+            <p><span class="alert-date"><?php the_field('alert_date',$alert->ID) ?>  |</span><a href="<?php the_field('external_link', $alert->ID); ?>" target="_blank" class="modal-link"><?php the_field('external_link_name', $alert->ID); ?></a>
+            <?php echo $alert->post_content ?></p>
             <div class="document-files">
                 <a href="<?php the_field('external_link'); ?>" target="_blank"><?php the_field('external_link_name'); ?></a>
                 <span class="remove-alert text-arrow-link" data-alertid="<?php echo $alert->ID ?>" data-userid="<?php echo $current_user->data->ID ?>">Remove</span>
@@ -36,17 +36,15 @@ $removed_alerts = explode(",",$removed_alert_ids);
                 <a href="<?php echo get_permalink($linked_page->ID); ?>" class="go-to-page">view</a>
                 <span class="remove-alert text-arrow-link" data-alertid="<?php echo $alert->ID ?>" data-userid="<?php echo $current_user->data->ID ?>">Remove</span>
             </div>
-          <?php } elseif( get_field('linked_document') ) {
-            $document_file = get_field('linked_document'); ?>
-          <p><span class="alert-date"><?php the_field('alert_date',$alert->ID) ?>  |</span><a href="<?php echo get_permalink($alert->ID); ?>" class="modal-link"><?php echo $alert->post_title; ?></a>
-          <?php echo $alert->post_content ?></p>
+          <?php } elseif( get_field('linked_document', $alert->ID) ) {
+            $document_file = get_field('linked_document', $alert->ID); ?>
+          <p><span class="alert-date"><?php the_field('alert_date',$alert->ID) ?>  | </span><span class="alert-title"><?php echo $alert->post_title; ?></span><?php echo $alert->post_content ?></p>
           <div class="document-files">
             <a href="<?php the_field('file_path',$document_file->ID) ?>" target="_blank"><?php echo $document_file->post_title ?></a>
             <span class="remove-alert text-arrow-link" data-alertid="<?php echo $alert->ID ?>" data-userid="<?php echo $current_user->data->ID ?>">Remove</span>
           </div>
           <?php } else { ?>
-            <p><span class="alert-date"><?php the_field('alert_date',$alert->ID) ?>  |</span>
-            <?php echo $alert->post_content ?></p>
+            <p><span class="alert-date"><?php the_field('alert_date',$alert->ID) ?>  | </span><span class="alert-title"><?php echo $alert->post_title; ?></span><?php echo $alert->post_content ?></p>
             <div class="document-files">
               <span class="remove-alert text-arrow-link" data-alertid="<?php echo $alert->ID ?>" data-userid="<?php echo $current_user->data->ID ?>">Remove</span>
             </div>

@@ -329,9 +329,11 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
       z-index: 3;
       margin-top: 0;
       margin-bottom: 30px;
+      padding-bottom: 30px;
       @include tablet-portrait-and-up {
           margin-top: 60px;
           margin-bottom: 60px;
+          padding-bottom: 0;
       }
     }
 
@@ -749,8 +751,13 @@ a.link {
     content: '';
     background:url('../images/icons/icon_arrows_blu-01.svg') no-repeat 25px;
     background-position: center;
-    background-size:28px 28px;
+    background-size:12px 12px;
     padding-right:28px;
+    @include transition(0.2s ease);
+  }
+  &:hover:after {
+    margin-left: 5px;
+    @include transition(0.2s ease);
   }
 }
 .box-right {
@@ -1293,6 +1300,7 @@ a.link {
 .profile-img-wrapper {
     width:150px;
     overflow:hidden;
+    margin: 0 auto;
     img {
         width:130px;
     }
@@ -1327,6 +1335,11 @@ a.link {
     font-weight: bold;
     float: left;
     margin-right: 5px;
+}
+
+.alert-title {
+  color: $black;
+  display: block;
 }
 
 .alert-notification {
@@ -1473,24 +1486,6 @@ a.modal-link {
   }
 }
 
-.card-hidden {
-    display: none !important;
-    opacity: 0;
-    transform: scale(0);
-    height: 0;
-    width: 0;
-    padding: 0;
-    margin: 0;
-    @include transition(0.30s ease-in-out);
-}
-
-.card-visible {
-    display: inline-block !important;
-    opacity: 1;
-    transform: scale(1);
-    @include transition(0.40s ease-in-out);
-}
-
 .office-btn.active:hover, .name-btn.active:hover {
     background: $fourpoint_blue;
     border-color: $white;
@@ -1514,6 +1509,9 @@ a.modal-link {
         color: $medium_gray;
         margin-bottom: 6px;
         font-size:0.825em;
+    }
+    a {
+      color: $black;
     }
     span {
         color: $black;
