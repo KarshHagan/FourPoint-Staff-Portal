@@ -141,7 +141,8 @@ $employees = get_users( $args );
         $extension = get_field('extension','user_'.$employee->ID);
         $mobile_number = get_field('mobile_number','user_'.$employee->ID);
         $conf_call_id = get_field('conf_call_id','user_'.$employee->ID);
-        $profile_photo = get_field('profile_photo','user_'.$employee->ID);
+        // $profile_photo = get_field('profile_photo','user_'.$employee->ID);
+        $profile_photo = get_profile_photo($employee->ID);
         $last_name_category = $theme->get_last_name_filer($employee->last_name);
         // $offices = get_field('employee_office','user_'.$employee->ID);
         $offices = wp_get_object_terms( $employee->ID, 'office' );
@@ -155,7 +156,7 @@ $employees = get_users( $args );
         }
       ?>
       <li class="employee-bio-container" data-office="<?php echo $office_slug ?>" data-name="<?php echo $last_name_category ?>">
-        <div class="employee-bio">
+        <!-- <div class="employee-bio">
           <div class="front shadow-border">
             <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
             <h2><?php echo $employee->display_name ?></h2>
@@ -172,6 +173,30 @@ $employees = get_users( $args );
 
           <div class="back shadow-border">
             <img class="profile-img" src="<?php echo $profile_photo['sizes']['thumbnail'] ?>">
+            <div class="inner">
+              <p><?php echo $employee->description ?></p>
+            </div>
+            <a href="#" class="more-flip">Less</a>
+          </div>
+
+        </div> -->
+        <div class="employee-bio">
+          <div class="front shadow-border">
+            <div class="profile-img" style="background-image:url('<?php echo $profile_photo ?>');"></div>
+            <h2><?php echo($employee->first_name." ".$employee->last_name) ?></h2>
+            <h3><?php echo $user_title ?></h3>
+            <p class="office"><?php echo $office_name ?></p>
+            <ul class="contact-info">
+              <li class="email-addr">Email: <span><?php echo $employee->user_email ?></span></li>
+              <li>Direct Line: <span><?php echo $outside_dial ?></span></li>
+              <li>Ext: <span><?php echo $extension ?></span></li>
+              <li>Mobile: <span><?php echo $mobile_number ?></span></li>
+            </ul>
+            <a href="#" class="more-flip">More</a>
+          </div>
+
+          <div class="back shadow-border">
+            <div class="profile-img" style="background-image:url('<?php echo $profile_photo ?>');"></div>
             <div class="inner">
               <p><?php echo $employee->description ?></p>
             </div>

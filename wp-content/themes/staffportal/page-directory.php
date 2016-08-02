@@ -58,7 +58,10 @@ get_header();
       <ul>
         <?php
         $args = array(
-          'role' => 'employee'
+          'role' => 'employee',
+          'orderby' => 'meta_value',
+          'meta_key'  => 'last_name',
+          'order' => 'ASC'
         );
         $employees = get_users($args);
         foreach($employees as $employee) {

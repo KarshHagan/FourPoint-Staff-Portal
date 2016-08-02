@@ -1123,7 +1123,7 @@ EOT;
 	return $message;
 }
 
-function get_profile_photo($user_id) {
+function get_profile_photo($user_id,$small_photo = false) {
 	if( get_field('profile_photo','user_'.$user_id)  ) {
 		$profile_photo = get_field('profile_photo','user_'.$user_id);
 		if(is_numeric($profile_photo)) {
@@ -1132,7 +1132,12 @@ function get_profile_photo($user_id) {
 			$profile_photo = $profile_photo['sizes']['thumbnail'];
 		}
 	} else {
-		$profile_photo = get_bloginfo('template_url') . '/assets/images/profile_150x150-01.jpg';
+		if( $small_photo ) {
+			$profile_photo = get_bloginfo('template_url') . '/assets/images/icons/icon_profile_blue-01.svg';
+		} else {
+			$profile_photo = get_bloginfo('template_url') . '/assets/images/profile_150x150-01.jpg';
+		}
+
 	}
 	return $profile_photo;
 }
