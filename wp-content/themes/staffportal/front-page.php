@@ -59,8 +59,7 @@ get_header(); ?>
 <section class="holiday-schedule">
   <div class="holiday-wrapper">
     <h3 class="blue-caps-headline">Fourpoint Holiday Schedule</h3>
-    <a href="/wp-content/uploads/2016/06/Holiday-Schedule-2016-1.pdf" target="_blank">View Holiday Schedule</a>
-
+    <a href="/wp-content/themes/uploads/2016/09/Holiday-Schedule-2017.pdf" target="_blank">View Holiday Schedule</a>
     <div class="holiday-container">
       <?php $holidays = get_posts(
         array(

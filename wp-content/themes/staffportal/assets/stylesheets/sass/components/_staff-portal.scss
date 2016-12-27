@@ -324,22 +324,22 @@ nav .nav_wrap .main_nav_wrap #main_nav .sp-navlink {
     left: 0;
     z-index: 1;
   }
-    .container {
-      position: relative;
-      z-index: 3;
-      margin-top: 0;
-      margin-bottom: 30px;
-      padding-bottom: 30px;
-      @include tablet-portrait-and-up {
-          margin-top: 60px;
-          margin-bottom: 60px;
-          padding-bottom: 0;
-      }
+  .container {
+    position: relative;
+    z-index: 3;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    @include tablet-portrait-and-up {
+        margin-top: 60px;
+        margin-bottom: 60px;
+        padding-bottom: 0;
     }
+  }
 
-    h1 {
-      font-size: 30px;
-    }
+  h1 {
+    font-size: 30px;
+  }
 }
 
 .latest-docs {
